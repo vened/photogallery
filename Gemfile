@@ -1,11 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+#gem 'mysql2'
+gem 'sqlite3'
+
+gem 'haml-rails'
+
+##########################################
+# BEGIN CORE, TREE RESOURSES
+##########################################
+gem 'awesome_nested_set'
+gem 'the_sortable_tree', '~> 2.3.0'
+##########################################
+# END CORE, TREE RESOURSES
+##########################################
 
 
 # Gems used only for assets and not required
