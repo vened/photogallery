@@ -1,7 +1,8 @@
 Shikocc::Application.routes.draw do
-  resources :pages
 
-  root :to => 'page#index'
+  root :to => 'pages#index'
+
+  resources :pages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

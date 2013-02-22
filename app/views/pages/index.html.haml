@@ -4,6 +4,7 @@
   %tr
     %th Title
     %th Path
+    %th Full path
     %th
     %th
     %th
@@ -12,6 +13,13 @@
     %tr
       %td= page.title
       %td{:style => "padding:0 40px"}= page.path
+      %td{:style => "padding:0 40px"}
+        - page.ancestors.each do |p|
+          = p.path + "/"
+        = page.path
+
+
+
       %td= link_to 'Show', page
       %td= link_to 'Edit', edit_page_path(page)
       %td= link_to 'Destroy', page, :method => :delete, :data => { :confirm => 'Are you sure?' }
