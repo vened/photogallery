@@ -11,7 +11,6 @@ Shikocc::Application.routes.draw do
     get 'pages/*section/:id/edit' => 'pages#edit'
   end
 
-
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   #admin/pages/abt/abtasdea
@@ -20,7 +19,13 @@ Shikocc::Application.routes.draw do
 
   get '*section/:id' => 'pages#show'
 
-  resources :pages, :path => "/"
+  resources :pages, :path => "/" do
+    collection do
+      get :index
+      # required for Sortable GUI server side actions
+      post :rebuild, :path => "/"
+    end
+  end
 
 
   #root :to => 'pages#index'

@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
-  # GET /pages
-  # GET /pages.json
-  def index
-    @pages = Page.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pages }
-    end
+  include TheSortableTreeController::Rebuild
+  #
+  #def manage
+  #  @pages = Page.nested_set.select('id, title, parent_path, parent_id').all
+  #end
+
+  def index
+    #@pages = Page.all
+    @pages = Page.nested_set.select('id, title, parent_id').all
   end
 
   # GET /pages/1

@@ -4,6 +4,7 @@ ActiveAdmin.register Page do
   index do
     column :title
     column :parent_path
+    default_actions
   end
 
 

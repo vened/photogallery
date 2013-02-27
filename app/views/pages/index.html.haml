@@ -1,31 +1,6 @@
 %h1 Listing pages
-
-%table
-  %tr
-    %th Title
-    %th Path
-    %th Full path
-    %th
-    %th
-    %th
-
-  - @pages.each do |page|
-    %tr
-      %td= page.title
-      %td{:style => "padding:0 40px"}= page.path
-      %td{:style => "padding:0 40px"}
-        - page.ancestors.each do |p|
-          = p.path + "/"
-        = page.path
-        %br
-        %b
-          = page.parent_path
-        %br
-
-
-
-      %td= link_to 'Show', page
-
+%ol.tree= just_tree @pages
 %br
-
-= link_to 'New Page', new_page_path
+%br
+%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+  = sortable_tree @pages

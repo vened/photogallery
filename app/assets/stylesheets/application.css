@@ -10,4 +10,6 @@
  *
  *= require_self
  *= require_tree .
+ *= require sortable_tree
+ *= require nested_options
  */
