@@ -29,6 +29,7 @@ ActiveAdmin.register Page do
     end
   end
 
+
   member_action :edit do
     @page = Page.find_by_path(params[:id])
   end
