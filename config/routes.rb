@@ -2,26 +2,29 @@ Shikocc::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    #resources :pages
+    get 'pages/:id' => 'pages#new'
+    get 'pages/*section/:id' => 'pages#show'
+    get 'pages/*section/:id/edit' => 'pages#edit'
+  end
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  #admin/pages/abt/abtasdea
+  #get 'admin/pages/*section/:id/edit' => 'admin/pages#edit'
+
 
   get '*section/:id' => 'pages#show'
 
   resources :pages, :path => "/"
 
 
-
-
-
-
   #root :to => 'pages#index'
   #get '*pages' => 'pages#show'
-
-
-
-
-
-
-
 
 
   # The priority is based upon order of creation:
