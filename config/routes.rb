@@ -1,8 +1,28 @@
 Shikocc::Application.routes.draw do
 
-  root :to => 'pages#index'
+  ActiveAdmin.routes(self)
 
-  resources :pages
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  get '*section/:id' => 'pages#show'
+
+  resources :pages, :path => "/"
+
+
+
+
+
+
+  #root :to => 'pages#index'
+  #get '*pages' => 'pages#show'
+
+
+
+
+
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -17,6 +17,10 @@
         - page.ancestors.each do |p|
           = p.path + "/"
         = page.path
+        %br
+        %b
+          = page.parent_path
+        %br
 
 
 

@@ -10,6 +10,8 @@ gem 'sqlite3'
 
 gem 'haml-rails'
 
+gem 'activeadmin'
+
 ##########################################
 # BEGIN CORE, TREE RESOURSES
 ##########################################
