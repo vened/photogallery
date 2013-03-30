@@ -1,12 +1,17 @@
 # encoding: utf-8
 ActiveAdmin.register Page do
 
-  index do
-    column :title
-    column :parent_path
-    default_actions
-  end
+  config.batch_actions = false
 
+  #index do
+  #  column :title
+  #  column :parent_path
+  #  default_actions
+  #end
+
+  index do
+    render "index"
+  end
 
   form do |f|
     f.inputs "Details" do
@@ -17,42 +22,67 @@ ActiveAdmin.register Page do
     f.buttons
   end
 
-  member_action :new do
-    @page = Page.new
-  end
 
-  member_action :create do
-    @page = Page.new(params[:page])
-    if @page.save
-      redirect_to admin_pages_url, notice: 'страница успешно созданна'
-    else
-      render :new
+  controller do
+
+    def rebuild
+      id = params[:id].to_i
+      parent_id = params[:parent_id].to_i
+      prev_id = params[:prev_id].to_i
+      next_id = params[:next_id].to_i
+
+      render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
+      page = Page.find_by_id(id)
+
+      if prev_id.zero? && next_id.zero?
+        page.move_to_child_of Page.find(parent_id)
+      elsif !prev_id.zero?
+        page.move_to_right_of Page.find(prev_id)
+      elsif !next_id.zero?
+        page.move_to_left_of Page.find(next_id)
+      end
+
+      render(:nothing => true)
     end
-  end
 
-
-  member_action :edit do
-    @page = Page.find_by_path(params[:id])
-  end
-
-  member_action :update do
-    @page = Page.find_by_path(params[:id])
-    if @page.update_attributes(params[:page])
-      redirect_to admin_page_path, notice: 'страница успешно обновлена'
-    else
-      render :action => 'edit'
+    def new
+      @page = Page.new
     end
-  end
 
-  member_action :show do
-    @page = Page.find_by_path(params[:id])
-  end
+    def create
+      @page = Page.new(params[:page])
+      if @page.save
+        redirect_to admin_pages_url, notice: 'страница успешно созданна'
+      else
+        render :new
+      end
+    end
 
-  member_action :destroy do
-    @page = Page.find_by_path(params[:id])
-    @page.destroy
-    flash[:alert] = "Страница успешно удалена"
-    redirect_to admin_pages_url
+    def edit
+      @page = Page.find_by_path(params[:id])
+    end
+
+    def update
+      @page = Page.find_by_path(params[:id])
+      if @page.update_attributes(params[:page])
+        redirect_to admin_page_path, notice: 'страница успешно обновлена'
+      else
+        render :action => 'edit'
+      end
+    end
+
+    def show
+      @page = Page.find_by_path(params[:id])
+    end
+
+    def destroy
+      @page = Page.find_by_path(params[:id])
+      @page.destroy
+      flash[:alert] = "Страница успешно удалена"
+      redirect_to admin_pages_url
+    end
+
+
   end
 
 end

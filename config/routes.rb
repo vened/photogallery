@@ -1,20 +1,25 @@
 Shikocc::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
-    #resources :pages
-    get 'pages/:id' => 'pages#new'
-    get 'pages/*section/:id' => 'pages#show'
-    get 'pages/*section/:id/edit' => 'pages#edit'
+    resources :pages do
+      collection do
+        post :rebuild, :path => "/"
+        #get ':id' => 'pages#new'
+        #get '*section/:id/edit' => 'pages#edit'
+        #get '*section/:id' => 'pages#show'
+      end
+    end
   end
+
+  ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  #admin/pages/abt/abtasdea
-  #get 'admin/pages/*section/:id/edit' => 'admin/pages#edit'
+  get 'admin/pages/:id' => 'pages#new'
+  get 'admin/pages/*section/:id/edit' => 'pages#edit'
+  get 'admin/pages/*section/:id' => 'pages#show'
 
 
   get '*section/:id' => 'pages#show'
