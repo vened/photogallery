@@ -23,6 +23,10 @@ Shikocc::Application.routes.draw do
 
 
   get '*section/:id' => 'pages#show'
+  get 'home' => 'pages#home'
+  get 'page1' => 'pages#page1'
+  get 'page2' => 'pages#page2'
+  get 'page3' => 'pages#page3'
 
   resources :pages, :path => "/" do
     collection do
