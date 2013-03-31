@@ -1,0 +1,13 @@
+%h1 Listing pages
+
+%table
+  - @pages.each do |page|
+    %tr
+      %td= link_to page.title, page
+
+
+%ol.tree= just_tree @pages
+%br
+%br
+%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+  = sortable_tree @pages

@@ -1,4 +1,42 @@
 Shikocc::Application.routes.draw do
+
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :pages do
+      collection do
+        post :rebuild, :path => "/"
+        #get ':id' => 'pages#new'
+        #get '*section/:id/edit' => 'pages#edit'
+        #get '*section/:id' => 'pages#show'
+      end
+    end
+  end
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  get 'admin/pages/:id' => 'pages#new'
+  get 'admin/pages/*section/:id/edit' => 'pages#edit'
+  get 'admin/pages/*section/:id' => 'pages#show'
+
+
+  get '*section/:id' => 'pages#show'
+
+  resources :pages, :path => "/" do
+    collection do
+      get :index
+      # required for Sortable GUI server side actions
+      post :rebuild, :path => "/"
+    end
+  end
+
+
+  #root :to => 'pages#index'
+  #get '*pages' => 'pages#show'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
