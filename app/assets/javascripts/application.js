@@ -15,3 +15,24 @@
 //= require_tree .
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
+
+$(function(){
+	var $wrapper = $('#wrapper');
+	var $header = $('#header');
+	var $footer = $('#footer');
+	var $container = $('#container');
+	
+	var offsetTop = $wrapper.offset().top;
+	
+	$(window).on('resize', function(){
+		var winHeight = $(window).height();
+		
+		$wrapper.css({
+			'min-height': winHeight - offsetTop
+		});
+		
+		$container.css({
+			'min-height': winHeight - offsetTop - $footer.outerHeight(true)
+		});
+	}).trigger('resize');
+});
