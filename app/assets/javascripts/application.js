@@ -21,18 +21,18 @@ $(function(){
 	var $header = $('#header');
 	var $footer = $('#footer');
 	var $container = $('#container');
-	
 	var offsetTop = $wrapper.offset().top;
-	
-	$(window).on('resize', function(){
+
+	function updateHtml() {
 		var winHeight = $(window).height();
+		var wrapperHeight = winHeight - offsetTop;
 		
-		$wrapper.css({
-			'min-height': winHeight - offsetTop
-		});
-		
-		$container.css({
-			'min-height': winHeight - offsetTop - $footer.outerHeight(true)
-		});
-	}).trigger('resize');
+		$wrapper.css('min-height', wrapperHeight);
+		$container.css('min-height', wrapperHeight - $footer.outerHeight(true));
+	}
+	
+	$(window).on('resize', updateHtml);
+	
+	// init
+	updateHtml();
 });
