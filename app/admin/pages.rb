@@ -25,11 +25,25 @@ ActiveAdmin.register Page do
 
   controller do
 
+    def new
+      @page = Page.new
+    end
+
+    def create
+      @page = Page.new(params[:page])
+      if @page.save
+        redirect_to admin_pages_url, notice: 'страница успешно созданна'
+      else
+        render :new
+      end
+    end
+
     def rebuild
       id = params[:id].to_i
       parent_id = params[:parent_id].to_i
       prev_id = params[:prev_id].to_i
       next_id = params[:next_id].to_i
+
 
       render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
 
@@ -44,19 +58,6 @@ ActiveAdmin.register Page do
       end
 
       render(:nothing => true)
-    end
-
-    def new
-      @page = Page.new
-    end
-
-    def create
-      @page = Page.new(params[:page])
-      if @page.save
-        redirect_to admin_pages_url, notice: 'страница успешно созданна'
-      else
-        render :new
-      end
     end
 
     def edit
