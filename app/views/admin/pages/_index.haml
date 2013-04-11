@@ -1,6 +1,7 @@
 %ol.tree= just_tree @pages
 %br
 %br
-%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+-#%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_admin_pages_url } }
   = sortable_tree @pages
 

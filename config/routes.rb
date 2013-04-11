@@ -6,9 +6,11 @@ Shikocc::Application.routes.draw do
     resources :pages do
       collection do
         post :rebuild, :path => "/"
-        #get ':id' => 'pages#new'
-        #get '*section/:id/edit' => 'pages#edit'
-        #get '*section/:id' => 'pages#show'
+        post :create, :path => "/"
+        get ':id' => 'pages#new'
+        get '*section/:id/edit' => 'pages#edit'
+        get ':id/edit' => 'pages#edit'
+        get '*section/:id' => 'pages#show'
       end
     end
   end
@@ -17,9 +19,9 @@ Shikocc::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  get 'admin/pages/:id' => 'pages#new'
-  get 'admin/pages/*section/:id/edit' => 'pages#edit'
-  get 'admin/pages/*section/:id' => 'pages#show'
+  #get 'admin/pages/:id' => 'pages#new'
+  #get 'admin/pages/*section/:id/edit' => 'pages#edit'
+  #get 'admin/pages/*section/:id' => 'pages#show'
 
 
   get '*section/:id' => 'pages#show'
@@ -28,13 +30,16 @@ Shikocc::Application.routes.draw do
   get 'page2' => 'pages#page2'
   get 'page3' => 'pages#page3'
 
-  resources :pages, :path => "/" do
-    collection do
-      get :index
-      # required for Sortable GUI server side actions
-      post :rebuild, :path => "/"
-    end
-  end
+
+  resources :pages, :path => "/"
+
+  #resources :pages, :path => "/" do
+  #  collection do
+  #    get :index
+  #    # required for Sortable GUI server side actions
+  #    #post :rebuild, :path => "/"
+  #  end
+  #end
 
 
   #root :to => 'pages#index'
