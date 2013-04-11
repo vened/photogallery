@@ -1,7 +1,17 @@
 Shikocc::Application.routes.draw do
 
-  resources :pages, :path => "/", :only => [:index, :show]
 
+  get '/admin' => 'admin/dashboard#index'
+
+
+  get 'home' => 'pages#home'
+  get 'page1' => 'pages#page1'
+  get 'page2' => 'pages#page2'
+  get 'page3' => 'pages#page3'
+
+
+  resources :pages, :path => "/", :only => [:index, :show]
+  root :to => 'pages#index'
 
 
   ActiveAdmin.routes(self)
@@ -30,17 +40,11 @@ Shikocc::Application.routes.draw do
 
       end
     end
-
   end
 
 
-  get 'home' => 'pages#home'
-  get 'page1' => 'pages#page1'
-  get 'page2' => 'pages#page2'
-  get 'page3' => 'pages#page3'
-  get ':id' => 'pages#show'
-  get '*section/:id' => 'pages#show'
 
+  get '*section/:id' => 'pages#show'
 
   #get '*pages' => 'pages#show'
 
