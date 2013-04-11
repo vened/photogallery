@@ -32,6 +32,7 @@ ActiveAdmin.register Page do
       next_id = params[:next_id].to_i
 
       render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
+
       page = Page.find_by_id(id)
 
       if prev_id.zero? && next_id.zero?
@@ -65,7 +66,7 @@ ActiveAdmin.register Page do
     def update
       @page = Page.find_by_path(params[:id])
       if @page.update_attributes(params[:page])
-        redirect_to admin_page_path, notice: 'страница успешно обновлена'
+        redirect_to admin_page_url, notice: 'страница успешно обновлена'
       else
         render :action => 'edit'
       end
