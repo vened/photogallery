@@ -13,7 +13,7 @@ html, body {
 
 body, td, input, select, textarea {
 	font-size: 13px;
-	font-family: 'Calibri', Arial;
+	font-family: 'Calibri', 'PT Sans', 'Trebuchet MS', sans-serif;
 	color: #444;
 }
 
@@ -46,7 +46,7 @@ a {
 
 #wrap {
 	width: 980px;
-	padding-top: 20px;
+	padding: 20px 10px 0;
 	.center-block();
 }
 
@@ -71,11 +71,11 @@ a {
 		float: left;
 		margin-left: 90px;
 		margin-top: 48px;
-		width: 145px;
+		width: 150px;
 		font-size: 14px;
 		text-align: right;
-		line-height: 13px;
-		background: url('ico_phone.png') top left no-repeat;
+		line-height: 14px;
+		background: url('ico_phone.png') 0 3px no-repeat;
 		
 		span {
 			color: #333;
@@ -86,17 +86,17 @@ a {
 	.work-block {
 		.phone-block;
 		margin-left: 55px;
-		background: url('ico_time.png') top left no-repeat;
+		background: url('ico_time.png') 0 3px no-repeat;
 	}
 
 	.phone-number {
 		line-height: 30px;
 		color: #848485;
+		white-space: nowrap;
 	}
 
 	.work-time {
 		font-size: 12px;
-		white-space: nowrap;
 		.phone-number;
 	}
 	
