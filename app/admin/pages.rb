@@ -3,14 +3,12 @@ ActiveAdmin.register Page do
 
   config.batch_actions = false
 
-  #index do
-  #  column :title
-  #  column :parent_path
-  #  default_actions
-  #end
-
   index do
     render "index"
+  end
+
+  show do
+    render "show"
   end
 
   form do |f|

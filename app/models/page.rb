@@ -10,6 +10,8 @@ class Page < ActiveRecord::Base
             :length => {:minimum => 1},
             :format => {:with => /\A[a-zA-Z0-9]+\z/, :message => "Допускается только латиница и/или цифры"}
 
+  has_many :text_pages, :dependent => :destroy
+
   include TheSortableTree::Scopes
 
   def parent_path

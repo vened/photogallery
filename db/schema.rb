@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227124136) do
+ActiveRecord::Schema.define(:version => 20130413155320) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(:version => 20130227124136) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "text_pages", :force => true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.string   "meta_key"
+    t.string   "meta_desc"
+    t.integer  "pages_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

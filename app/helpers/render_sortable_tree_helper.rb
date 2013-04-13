@@ -34,7 +34,7 @@ module RenderSortableTreeHelper
         url  = h.url_for(ns + [node])
         title_field = options[:title]
 
-        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
+        "<h4>#{ h.link_to(node.send(title_field), '/admin/pages' + url) }</h4>"
       end
 
       def controls
