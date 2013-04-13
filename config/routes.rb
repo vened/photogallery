@@ -1,48 +1,51 @@
 Shikocc::Application.routes.draw do
 
-  namespace :admin do
-    # Directs /admin/products/* to Admin::ProductsController
-    # (app/controllers/admin/products_controller.rb)
-    resources :pages do
-      collection do
-        post :rebuild, :path => "/"
-        post :create, :path => "/"
-        get ':id' => 'pages#new'
-        get '*section/:id/edit' => 'pages#edit'
-        get ':id/edit' => 'pages#edit'
-        get '*section/:id' => 'pages#show'
-      end
-    end
-  end
 
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  #get 'admin/pages/:id' => 'pages#new'
-  #get 'admin/pages/*section/:id/edit' => 'pages#edit'
-  #get 'admin/pages/*section/:id' => 'pages#show'
+  get '/admin' => 'admin/dashboard#index'
 
 
-  get '*section/:id' => 'pages#show'
   get 'home' => 'pages#home'
   get 'page1' => 'pages#page1'
   get 'page2' => 'pages#page2'
   get 'page3' => 'pages#page3'
 
 
-  resources :pages, :path => "/"
-
-  #resources :pages, :path => "/" do
-  #  collection do
-  #    get :index
-  #    # required for Sortable GUI server side actions
-  #    #post :rebuild, :path => "/"
-  #  end
-  #end
+  resources :pages, :path => "/", :only => [:index, :show]
+  root :to => 'pages#index'
 
 
-  #root :to => 'pages#index'
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  namespace :admin do
+    resources :pages do
+      collection do
+
+        post :rebuild
+
+        get ':id/edit' => 'pages#edit'
+        get '*section/:id/edit' => 'pages#edit'
+
+        get ':id' => 'pages#show'
+        get '*section/:id' => 'pages#show'
+
+        get ':id' => 'pages#new'
+
+        put '*section/:id' => 'pages#update'
+        put ':id' => 'pages#update'
+
+        delete ':id' => 'pages#destroy'
+        delete '*section/:id' => 'pages#destroy'
+
+      end
+    end
+  end
+
+
+
+  get '*section/:id' => 'pages#show'
+
   #get '*pages' => 'pages#show'
 
 

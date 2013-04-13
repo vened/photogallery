@@ -67,7 +67,7 @@ ActiveAdmin.register Page do
     def update
       @page = Page.find_by_path(params[:id])
       if @page.update_attributes(params[:page])
-        redirect_to admin_page_path, notice: 'страница успешно обновлена'
+        redirect_to admin_page_url, notice: 'страница успешно обновлена'
       else
         render :action => 'edit'
       end
