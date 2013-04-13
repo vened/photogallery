@@ -14,10 +14,12 @@ ActiveAdmin.register Page do
   end
 
   form do |f|
-    f.inputs "Details" do
-      f.input :title
-      f.input :path
-      f.input :parent_id, :as => :select, :collection => nested_set_options(Page, @page) { |i| "#{'-' * i.level} #{i.title}" }
+    f.inputs "Новая страница" do
+      f.input :title, :label => "Заголовок страницы"
+      f.input :meta_key, :label => "SEO, ключевые слова"
+      f.input :meta_desc, :label => "SEO, краткое описание"
+      f.input :path, :label => "URL"
+      f.input :parent_id, :as => :select, :label => "Родительская страница", :collection => nested_set_options(Page, @page) { |i| "#{'-' * i.level} #{i.title}" }
     end
     f.buttons
   end
