@@ -1,0 +1,34 @@
+<div class="panel">
+  <h3><%= @page.title %></h3>
+
+  <div class="panel_contents">
+    <div class="attributes_table">
+      <%= form_for [:admin, @page], :html => {:multipart => true} do |f| %>
+          <table>
+            <tr class="row">
+              <th>URL</th>
+              <td><%= @page.parent_path %></td>
+            </tr>
+            <tr class="row">
+              <th>SEO, ключевые слова</th>
+              <td><%= @page.meta_key %></td>
+            </tr>
+            <tr class="row">
+              <th>SEO, краткое описание</th>
+              <td><%= @page.meta_desc %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :include_text_page, "Подключить текстовый модуль" %></th>
+              <td><%= f.check_box :include_text_page %></td>
+            </tr>
+          </table>
+          <p><%= f.submit "Сохранить" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--Если текстовый модуль подключен показываем форму-->
+<%- if @page.include_text_page %>
+    <h1>SDcszdc</h1>
+<% end %>
