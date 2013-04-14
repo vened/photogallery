@@ -55,8 +55,9 @@ ActiveRecord::Schema.define(:version => 20130413155320) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "include_text_page", :default => false
   end
 
   create_table "text_pages", :force => true do |t|
