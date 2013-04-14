@@ -3,21 +3,9 @@
     .box-main
       %a{:href => "/", :class => "logo"}
         %img{:src => "/assets/logo.png", :alt => "Шико Catering Club"}
-      .phone-block
-        Телефон для связи в&nbsp;Москве
-        .phone-number
-          + 7 495
-          %span
-            943-43-81
-      .work-block
-        Доставка и&nbsp;прием&nbsp;заказов
-        .work-time
-          %span
-            24
-          часа
-          %span
-            7
-          дней в неделю.
+
+      = render 'shared/header_info'
+
     .box-right
       %span.btn-cart
         Ваша корзина пуста
