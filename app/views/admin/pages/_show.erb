@@ -31,4 +31,16 @@
 <!--Если текстовый модуль подключен показываем форму-->
 <%- if @page.include_text_page %>
     <h1>SDcszdc</h1>
+
+
+    <%= form_for ([:admin, @page]), :url => "/admin/pages/#{@page.id}/text_pages" do |f| %>
+        <p>
+          <%= f.label :title %><br/>
+          <%= f.text_area :title %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+    <% end %>
+
 <% end %>

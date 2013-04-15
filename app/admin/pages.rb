@@ -75,6 +75,7 @@ ActiveAdmin.register Page do
 
     def show
       @page = Page.find_by_path(params[:id])
+      #@text_page = @page.text_pages
     end
 
     def destroy
