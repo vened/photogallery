@@ -1,9 +1,8 @@
 Shikocc::Application.routes.draw do
 
-  resources :attachments
+  #resources :attachments, :only => [:show]
 
-
-  resources :products
+  resources :products, :only => [:index, :show]
 
 
   resources :feedbacks, :only => [:index, :create]
@@ -18,9 +17,7 @@ Shikocc::Application.routes.draw do
   get 'page3' => 'pages#page3'
 
 
-  resources :pages, :path => "/", :only => [:index, :show] do
-    resources :text_pages
-  end
+  resources :pages, :path => "/", :only => [:index, :show]
   root :to => 'pages#index'
 
 

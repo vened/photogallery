@@ -1,31 +1,19 @@
-%h1 Listing products
+%h1 Меню
 
 %table
   %tr
-    %th Title
-    %th Desc
-    %th Metakey
-    %th Metadesc
-    %th Price
-    %th Old price
-    %th Weight
-    %th
-    %th
-    %th
+    %th Название
+    %th Описание
+    %th Изображение
+    %th Цена
+    %th Старая цена
+    %th Вес
 
   - @products.each do |product|
     %tr
-      %td= product.title
+      %td= link_to product.title, product
       %td= product.desc
-      %td= product.metakey
-      %td= product.metadesc
+      %td= image_tag product.attachments.find_last.file_url(:thumb)
       %td= product.price
       %td= product.old_price
       %td= product.weight
-      %td= link_to 'Show', product
-      %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Product', new_product_path

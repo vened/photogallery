@@ -89,14 +89,4 @@ ActiveRecord::Schema.define(:version => 20130416094217) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "text_pages", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "meta_key"
-    t.string   "meta_desc"
-    t.integer  "pages_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
 end

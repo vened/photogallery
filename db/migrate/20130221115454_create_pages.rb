@@ -16,9 +16,6 @@ class CreatePages < ActiveRecord::Migration
 
       t.timestamps
 
-      #подключение текстового модуля
-      t.boolean :include_text_page, :default => false
-
     end
   end
 end

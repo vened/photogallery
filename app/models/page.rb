@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Page < ActiveRecord::Base
   acts_as_nested_set
-  attr_accessible :title, :text, :meta_key, :meta_desc, :path, :parent_id, :include_text_page
+  attr_accessible :title, :text, :meta_key, :meta_desc, :path, :parent_id
 
 
   validates :title, :length => {:minimum => 1}
@@ -9,8 +9,6 @@ class Page < ActiveRecord::Base
             :uniqueness => true,
             :length => {:minimum => 1},
             :format => {:with => /\A[a-zA-Z0-9]+\z/, :message => "Допускается только латиница и/или цифры"}
-
-  has_many :text_pages, :dependent => :destroy
 
   include TheSortableTree::Scopes
 

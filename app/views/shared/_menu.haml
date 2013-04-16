@@ -9,17 +9,10 @@
     %li.del
       %span
         &bull;
-    %li{:class => "#{'selected' if @page.parent_path == 'menu' if @page}"}
-      %a{:href => "/menu"}
-        %span
-          Меню
-    %li.del
-      %span
-        &bull;
-    %li
+    %li{:class => "#{'selected' if @products || @product}"}
       %a{:href => "/products"}
         %span
-          Product
+          Меню
     %li.del
       %span
         &bull;

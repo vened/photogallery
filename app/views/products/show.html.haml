@@ -1,27 +1,14 @@
-%p#notice= notice
-
+%h1= @product.title
 %p
-  %b Title:
-  = @product.title
+  -@images.each do |at|
+    =image_tag at.file_url(:thumb)
+%p= @product.desc
 %p
-  %b Desc:
-  = @product.desc
-%p
-  %b Metakey:
-  = @product.metakey
-%p
-  %b Metadesc:
-  = @product.metadesc
-%p
-  %b Price:
+  %b Цена:
   = @product.price
 %p
-  %b Old price:
+  %b Старая цена:
   = @product.old_price
 %p
-  %b Weight:
+  %b Вес:
   = @product.weight
-
-= link_to 'Edit', edit_product_path(@product)
-\|
-= link_to 'Back', products_path
