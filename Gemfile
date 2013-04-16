@@ -12,6 +12,12 @@ gem 'haml-rails'
 
 gem 'activeadmin'
 
+
+#begin uploader gems
+gem 'carrierwave'
+gem 'mini_magick'
+#end uploader gems
+
 ##########################################
 # BEGIN CORE, TREE RESOURSES
 ##########################################

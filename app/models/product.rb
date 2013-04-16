@@ -1,3 +1,8 @@
 class Product < ActiveRecord::Base
-  attr_accessible :desc, :metadesc, :metakey, :old_price, :price, :title, :weight
+  attr_accessible :desc, :metadesc, :metakey, :old_price, :price, :title, :weight, :attachments_attributes
+
+  has_many :attachments, :dependent => :destroy
+
+  accepts_nested_attributes_for :attachments
+
 end
