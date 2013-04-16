@@ -41,3 +41,10 @@
       %a{:href => "/contacts"}
         %span
           Контакты
+    %li.del
+      %span
+        &bull;
+    %li{:class => "#{'selected' if @feedbacks || @feedback}"}
+      %a{:href => "/feedbacks"}
+        %span
+          Отзывы

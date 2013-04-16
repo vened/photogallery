@@ -1,5 +1,8 @@
 Shikocc::Application.routes.draw do
 
+  resources :feedbacks, :only => [:index, :create]
+
+
   get '/admin' => 'admin/dashboard#index'
 
 

@@ -1,0 +1,16 @@
+%h1 Отзывы
+
+%table
+  %tr
+    %th Username
+    %th Text
+
+  - @feedbacks.each do |feedback|
+    %tr
+      %td= feedback.username
+      %td= feedback.text
+%br
+
+= render 'form'
+
+-#= link_to 'Написать отзыв', new_feedback_path
