@@ -25,26 +25,6 @@ ActiveAdmin.register Page do
 
   controller do
 
-    def rebuild
-      id = params[:id].to_i
-      parent_id = params[:parent_id].to_i
-      prev_id = params[:prev_id].to_i
-      next_id = params[:next_id].to_i
-
-      render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
-      page = Page.find_by_id(id)
-
-      if prev_id.zero? && next_id.zero?
-        page.move_to_child_of Page.find(parent_id)
-      elsif !prev_id.zero?
-        page.move_to_right_of Page.find(prev_id)
-      elsif !next_id.zero?
-        page.move_to_left_of Page.find(next_id)
-      end
-
-      render(:nothing => true)
-    end
-
     def new
       @page = Page.new
     end
@@ -58,6 +38,28 @@ ActiveAdmin.register Page do
       end
     end
 
+    def rebuild
+      id = params[:id].to_i
+      parent_id = params[:parent_id].to_i
+      prev_id = params[:prev_id].to_i
+      next_id = params[:next_id].to_i
+
+
+      render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
+
+      page = Page.find_by_id(id)
+
+      if prev_id.zero? && next_id.zero?
+        page.move_to_child_of Page.find(parent_id)
+      elsif !prev_id.zero?
+        page.move_to_right_of Page.find(prev_id)
+      elsif !next_id.zero?
+        page.move_to_left_of Page.find(next_id)
+      end
+
+      render(:nothing => true)
+    end
+
     def edit
       @page = Page.find_by_path(params[:id])
     end
@@ -65,7 +67,7 @@ ActiveAdmin.register Page do
     def update
       @page = Page.find_by_path(params[:id])
       if @page.update_attributes(params[:page])
-        redirect_to admin_page_path, notice: 'страница успешно обновлена'
+        redirect_to admin_page_url, notice: 'страница успешно обновлена'
       else
         render :action => 'edit'
       end
