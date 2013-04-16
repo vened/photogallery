@@ -1,7 +1,9 @@
 # encoding: utf-8
 ActiveAdmin.register Product do
 
+
   index do
+    selectable_column
     column "Название", :title, :sortable => :title
     column "Описание", :desc, :sortable => false
     column "Фото", :attachments, :sortable => false do |product|
