@@ -3,6 +3,7 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
 
       t.string :title
+      t.string :text
       t.string :meta_key
       t.string :meta_desc
 
