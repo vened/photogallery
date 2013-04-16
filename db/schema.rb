@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416051403) do
+ActiveRecord::Schema.define(:version => 20130416083101) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(:version => 20130416051403) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.boolean  "include_text_page", :default => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.string   "metakey"
+    t.string   "metadesc"
+    t.decimal  "price"
+    t.decimal  "old_price"
+    t.decimal  "weight"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "text_pages", :force => true do |t|

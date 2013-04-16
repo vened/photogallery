@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @product.title
+%p
+  %b Desc:
+  = @product.desc
+%p
+  %b Metakey:
+  = @product.metakey
+%p
+  %b Metadesc:
+  = @product.metadesc
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Old price:
+  = @product.old_price
+%p
+  %b Weight:
+  = @product.weight
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

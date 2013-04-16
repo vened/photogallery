@@ -1,5 +1,8 @@
 Shikocc::Application.routes.draw do
 
+  resources :products
+
+
   resources :feedbacks, :only => [:index, :create]
 
 

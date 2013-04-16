@@ -16,6 +16,13 @@
     %li.del
       %span
         &bull;
+    %li
+      %a{:href => "/products"}
+        %span
+          Product
+    %li.del
+      %span
+        &bull;
     %li{:class => "#{'selected' if @page.parent_path == 'portfolio' if @page}"}
       %a{:href => "portfolio"}
         %span
