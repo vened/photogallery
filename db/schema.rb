@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20130413155320) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
-    t.string   "text"
+    t.text     "text"
     t.string   "meta_key"
     t.string   "meta_desc"
     t.string   "path"

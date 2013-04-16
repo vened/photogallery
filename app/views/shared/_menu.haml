@@ -2,42 +2,42 @@
   .yellow_rounds
    
   %ul
-    %li.selected
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'about' if @page}"}
+      %a{:href => "/about"}
         %span
           О компании
     %li.del
       %span
         &bull;
-    %li
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'menu' if @page}"}
+      %a{:href => "/menu"}
         %span
           Меню
     %li.del
       %span
         &bull;
-    %li
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'portfolio' if @page}"}
+      %a{:href => "portfolio"}
         %span
           Портфолио
     %li.del
       %span
         &bull;
-    %li
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'pl' if @page}"}
+      %a{:href => "pl"}
         %span
           Площадки
     %li.del
       %span
         &bull;
-    %li
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
+      %a{:href => "clients"}
         %span
           Наши клиенты
     %li.del
       %span
         &bull;
-    %li
-      %a{:href => ""}
+    %li{:class => "#{'selected' if @page.parent_path == 'contacts' if @page}"}
+      %a{:href => "/contacts"}
         %span
           Контакты

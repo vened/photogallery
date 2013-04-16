@@ -14,6 +14,7 @@ ActiveAdmin.register Page do
   form do |f|
     f.inputs "Новая страница" do
       f.input :title, :label => "Заголовок страницы"
+      f.input :text, :label => "Текст страницы"
       f.input :meta_key, :label => "SEO, ключевые слова"
       f.input :meta_desc, :label => "SEO, краткое описание"
       f.input :path, :label => "URL"
