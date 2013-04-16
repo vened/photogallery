@@ -1,6 +1,5 @@
 Shikocc::Application.routes.draw do
 
-
   get '/admin' => 'admin/dashboard#index'
 
 
@@ -10,7 +9,9 @@ Shikocc::Application.routes.draw do
   get 'page3' => 'pages#page3'
 
 
-  resources :pages, :path => "/", :only => [:index, :show]
+  resources :pages, :path => "/", :only => [:index, :show] do
+    resources :text_pages
+  end
   root :to => 'pages#index'
 
 

@@ -3,21 +3,21 @@ ActiveAdmin.register Page do
 
   config.batch_actions = false
 
-  #index do
-  #  column :title
-  #  column :parent_path
-  #  default_actions
-  #end
-
   index do
     render "index"
   end
 
+  show do
+    render "show"
+  end
+
   form do |f|
-    f.inputs "Details" do
-      f.input :title
-      f.input :path
-      f.input :parent_id, :as => :select, :collection => nested_set_options(Page, @page) { |i| "#{'-' * i.level} #{i.title}" }
+    f.inputs "Новая страница" do
+      f.input :title, :label => "Заголовок страницы"
+      f.input :meta_key, :label => "SEO, ключевые слова"
+      f.input :meta_desc, :label => "SEO, краткое описание"
+      f.input :path, :label => "URL"
+      f.input :parent_id, :as => :select, :label => "Родительская страница", :collection => nested_set_options(Page, @page) { |i| "#{'-' * i.level} #{i.title}" }
     end
     f.buttons
   end
@@ -75,6 +75,7 @@ ActiveAdmin.register Page do
 
     def show
       @page = Page.find_by_path(params[:id])
+      #@text_page = @page.text_pages
     end
 
     def destroy
