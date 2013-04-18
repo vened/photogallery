@@ -13,4 +13,4 @@
   %b Вес:
   = @product.weight
 
-%p= button_to "Добавить в корзину", :action => :add_to_cart, :id => @product
+%p.ajax_btn= button_to "Добавить в корзину", :action => :add_to_cart, :id => @product

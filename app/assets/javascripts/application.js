@@ -13,23 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 
-$(function(){
-	var $wrapper = $('#wrapper');
-	var $header = $('#header');
-	var $footer = $('#footer');
-	var $container = $('#container');
-	var offsetTop = $wrapper.offset().top;
+$(function () {
+    var $wrapper = $('#wrapper');
+    var $header = $('#header');
+    var $footer = $('#footer');
+    var $container = $('#container');
+    var offsetTop = $wrapper.offset().top;
 
-	function updateHtml() {
-		var winHeight = $(window).height();
-		var wrapperHeight = winHeight - offsetTop;
-		
-		$wrapper.css('min-height', wrapperHeight);
-		$container.css('min-height', wrapperHeight - $footer.outerHeight(true));
-	}
-	
-	$(window).on('resize', updateHtml);
-	
-	// init
-	updateHtml();
+    function updateHtml() {
+        var winHeight = $(window).height();
+        var wrapperHeight = winHeight - offsetTop;
+
+        $wrapper.css('min-height', wrapperHeight);
+        $container.css('min-height', wrapperHeight - $footer.outerHeight(true));
+    }
+
+    $(window).on('resize', updateHtml);
+
+    // init
+    updateHtml();
 });
