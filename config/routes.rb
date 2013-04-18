@@ -5,6 +5,7 @@ Shikocc::Application.routes.draw do
   resources :products, :only => [:index, :show]
 
   post 'add_to_cart' => 'products#add_to_cart'
+  post 'empty_cart' => 'products#empty_cart'
   resources :feedbacks, :only => [:index, :create]
 
 

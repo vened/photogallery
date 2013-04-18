@@ -1,4 +1,7 @@
-%h1 cart
+#cart
+  -for item in @cart.items
+    %p
+      = item.title
+      = item.quantity
 
--for item in @cart.items
-  %p= item.title
+  = button_to "clear cart", :action => :empty_cart
