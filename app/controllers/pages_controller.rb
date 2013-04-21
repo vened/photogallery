@@ -20,7 +20,6 @@ class PagesController < ApplicationController
     @page = Page.find_by_path(params[:id])
     @metakey = @page.meta_key
     @metadesc = @page.meta_desc
-    @html=Haml::Engine.new(@page.text).render
   end
 
 end
