@@ -1,17 +1,5 @@
 class PagesController < ApplicationController
 
-  def home
-  end
-
-  def page1
-  end
-
-  def page2
-  end
-
-  def page3
-  end
-
   def index
     @pages = Page.nested_set.all
   end
@@ -22,4 +10,9 @@ class PagesController < ApplicationController
     @metadesc = @page.meta_desc
   end
 
+  def save_to_disk
+    File.open(Rails.public_path + "/" + @page.title + ".html", "w") do |f|
+      f.write(@page.text)
+    end
+  end
 end
