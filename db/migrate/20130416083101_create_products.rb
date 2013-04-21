@@ -5,8 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.text :desc
       t.string :metakey
       t.string :metadesc
-      t.decimal :price
-      t.decimal :old_price
+      t.decimal :price, :scale => 2
       t.decimal :weight
 
       t.timestamps

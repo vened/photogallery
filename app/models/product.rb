@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :desc, :metadesc, :metakey, :old_price, :price, :title, :weight, :attachments_attributes
+  attr_accessible :desc, :metadesc, :metakey, :price, :title, :weight, :attachments_attributes
 
   has_many :attachments, :dependent => :destroy
 

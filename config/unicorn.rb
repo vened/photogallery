@@ -1,13 +1,13 @@
 worker_processes 4
-working_directory "/home/ninja/www/production"
+working_directory "/home/clauz/www/production"
 
-listen "/home/ninja/www/production/tmp/sockets/unicorn.sock", :backlog => 64
-pid "/home/ninja/www/production/tmp/pids/unicorn.pid"
+listen "/home/clauz/www/production/tmp/sockets/unicorn.sock", :backlog => 64
+pid "/home/clauz/www/production/tmp/pids/unicorn.pid"
 
 timeout 30
 
-stderr_path "/home/ninja/www/production/log/unicorn.stderr.log"
-stdout_path "/home/ninja/www/production/log/unicorn.stdout.log"
+stderr_path "/home/clauz/www/production/log/unicorn.stderr.log"
+stdout_path "/home/clauz/www/production/log/unicorn.stdout.log"
 
 preload_app true
 check_client_connection false

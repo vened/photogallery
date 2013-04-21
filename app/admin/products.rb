@@ -12,7 +12,6 @@ ActiveAdmin.register Product do
     column "Metakey", :metakey, :sortable => false
     column "Metadesc", :metadesc, :sortable => false
     column "Цена", :price, :sortable => :price
-    column "Старая цена", :old_price, :sortable => :old_price
     column "Вес", :weight, :sortable => :weight
     actions :defaults => true
   end
@@ -22,7 +21,6 @@ ActiveAdmin.register Product do
       f.input :title, :label => "Название"
       f.input :desc, :label => "Описание"
       f.input :price, :label => "Цена"
-      f.input :old_price, :label => "Старая цена"
       f.input :weight, :label => "Вес"
       f.input :metakey, :label => "Metakey"
       f.input :metadesc, :label => "Metadesc"
@@ -39,7 +37,6 @@ ActiveAdmin.register Product do
       attributes_table_for product do
         row("Описание") { product.desc }
         row("Цена") { product.price }
-        row("Старая цена") { product.old_price }
         row("Вес") { product.weight }
         row("metakey") { product.metakey }
         row("Metadesc") { product.metadesc }
