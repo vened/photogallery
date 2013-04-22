@@ -19,4 +19,7 @@ module PagesHelper
     end
   end
 
+  def include
+    "ololo"
+  end
 end

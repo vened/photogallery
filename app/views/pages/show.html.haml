@@ -1,2 +1,2 @@
 %h1= @page.title
-%div{ :class => :container }= raw @html
+= Haml::Engine.new(@page.text).render
