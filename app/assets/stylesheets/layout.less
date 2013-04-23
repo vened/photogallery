@@ -36,6 +36,10 @@ a {
 	color: @linkColor;
 }
 
+p {
+	margin-bottom: 20px;
+}
+
 hr {
 	height: 0px;
 	overflow: hidden;
@@ -50,7 +54,20 @@ hr {
 
 
 h1 {
+	font-family: Georgia;
+	font-style: italic;
+	font-size: 24px;
+	color: @linkColor;
 	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 18px;
+	line-height: 22px;
+	color: @linkColor;
+	font-style: italic;
+	font-family: Georgia;
+	text-align: center;
 }
 
 h3 {
@@ -234,10 +251,30 @@ h3 {
 }
 
 .breadcrumbs {
-	padding: 30px 0 0px 0;
+	padding: 40px 0 0px 0;
 	color: @gray;
 }
 
 .box-main-container {
 	padding-top: 20px;
+}
+
+.text-del {
+	h2 {
+		position: relative;
+		margin-bottom: -10px;
+		
+		span {
+			padding: 0 15px;
+			background: #f4f4f4;
+		}
+		
+		a {
+			color: @linkColor;
+		}
+	}
+	
+	hr {
+		margin: 0;
+	}
 }
