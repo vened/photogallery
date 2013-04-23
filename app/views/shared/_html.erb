@@ -1,0 +1,52 @@
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+
+<div class="box-container page-contacts">
+	<div class="rounds-top"></div>
+	<div class="box-left box-gray">
+		<div class="box-inner">
+			<h3>Наши<br />контакты</h3>
+			<hr />
+			<dl>
+				<dt>Адрес:</dt>
+				<dd>Москва, ул. Обручева, д.40, стр.4</dd>
+			</dl>
+			<dl>
+				<dt>Телефоны и факсы:</dt>
+				<dd>(495) 943-43-81, (495) 641-70-13.</dd>
+			</dl>
+			<dl>
+				<dt>Электронная почта:</dt>
+				<dd><a href="mailto:info@shikocc.ru">info@shikocc.ru</a>.</dd>
+			</dl>
+		</div>
+	</div>
+	<div id="map" class="box-fluid"></div>
+	<div class="rounds-bottom"></div>
+</div>
+
+<script>
+$(function(){
+	ymaps.ready(init);
+	
+	var myMap, myPlacemark;
+	var lonlat = [55.651333,37.541359]; // Москва, ул. Обручева, д.40, стр.4
+	
+	function init(){ 
+	    myMap = new ymaps.Map ("map", {
+	        center: lonlat,
+	        zoom: 15
+	    }); 
+	    
+	    myPlacemark = new ymaps.Placemark(lonlat, {
+	        content: 'www.shikocc.ru',
+	        //balloonContent: '<img src="/assets/logo.png" alt="" />',
+	        hintContent: 'Мы находимся здесь'
+	    }, {
+            iconImageHref: '/assets/marker.png',
+            iconImageSize: [24, 37],
+	    });
+	    
+	    myMap.geoObjects.add(myPlacemark);
+	}
+});
+</script>
