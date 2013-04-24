@@ -1,2 +1,5 @@
-%h1= @page.title
-= Haml::Engine.new(@page.text).render
+= render 'shared/breadcrumbs'
+
+.box-container.box-main-container
+  %h1= @page.title
+  = @rendered

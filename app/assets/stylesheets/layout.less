@@ -12,7 +12,7 @@ html, body {
 }
 
 body, td, input, select, textarea {
-	font-size: 13px;
+	font-size: 12px;
 	font-family: Arial, sans-serif;
 	color: #444;
 }
@@ -32,20 +32,49 @@ body {
 	text-overflow: ellipsis;
 }
 
+a {
+	color: @linkColor;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
 hr {
 	height: 0px;
 	overflow: hidden;
-	margin: 20px 0;
+	margin: 15px 0;
 	padding: 0;
 	color: @white;
 	background: none;
 	border: 0;
 	border-top: 1px solid @white;
-	border-bottom: 1px solid #e2e2e2;
+	border-bottom: 1px solid #c4c4c4;
 }
 
-a {
+
+h1 {
+	font-family: Georgia;
+	font-style: italic;
+	font-size: 24px;
 	color: @linkColor;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 18px;
+	line-height: 22px;
+	color: @linkColor;
+	font-style: italic;
+	font-family: Georgia;
+	text-align: center;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 22px;
+	font-style: italic;
+	font-family: Georgia;
 }
 
 #wrap {
@@ -76,6 +105,7 @@ a {
 		margin-left: 90px;
 		margin-top: 48px;
 		width: 150px;
+		font-size: 13px;
 		text-align: right;
 		line-height: 13px;
 		background: url('ico_phone.png') 0 0px no-repeat;
@@ -121,11 +151,28 @@ a {
 }
 
 #footer {
+	margin-top: 30px;
 	color: #fff;
 	padding: 30px 20px;
 	background-image: url('footer.png');
 	background-repeat: repeat-x;
 	background-position: top left;
+}
+
+.rounds-top,
+.rounds-bottom {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	height: 6px;
+	overflow: hidden;
+	z-index: 2;
+	background: url('rounds_top.png') top left repeat-x;
+}
+
+.rounds-bottom {
+	margin-top: -6px;
+	background: url('rounds_bottom.png') bottom left repeat-x;
 }
 
 .yellow_noise() {
@@ -204,7 +251,30 @@ a {
 }
 
 .breadcrumbs {
-	padding: 50px 0 20px 0;
-	font-size: 12px;
+	padding: 40px 0 0px 0;
 	color: @gray;
+}
+
+.box-main-container {
+	padding-top: 20px;
+}
+
+.text-del {
+	h2 {
+		position: relative;
+		margin-bottom: -10px;
+		
+		span {
+			padding: 0 15px;
+			background: #f4f4f4;
+		}
+		
+		a {
+			color: @linkColor;
+		}
+	}
+	
+	hr {
+		margin: 0;
+	}
 }
