@@ -9,10 +9,4 @@ class PagesController < ApplicationController
     @metakey = @page.meta_key
     @metadesc = @page.meta_desc
   end
-
-  def save_to_disk
-    File.open(Rails.public_path + "/" + @page.title + ".html", "w") do |f|
-      f.write(@page.text)
-    end
-  end
 end
