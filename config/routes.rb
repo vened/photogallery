@@ -7,7 +7,7 @@ Shikocc::Application.routes.draw do
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   resources :feedbacks, :only => [:index, :create]
-
+  resources :order, :only => [:index]
 
   get '/admin' => 'admin/dashboard#index'
 
