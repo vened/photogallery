@@ -6,7 +6,6 @@
     %th Описание
     %th Изображение
     %th Цена
-    %th Старая цена
     %th Вес
 
   - @products.each do |product|
@@ -15,5 +14,4 @@
       %td= product.desc
       %td= image_tag product.attachments.find_last.file_url(:thumb)
       %td= product.price
-      %td= product.old_price
       %td= product.weight

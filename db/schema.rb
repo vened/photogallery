@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418045332) do
+ActiveRecord::Schema.define(:version => 20130421114507) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20130418045332) do
 
   add_index "attachments", ["product_id"], :name => "index_attachments_on_product_id"
 
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "feedbacks", :force => true do |t|
     t.string   "username"
     t.text     "text"
@@ -83,7 +91,6 @@ ActiveRecord::Schema.define(:version => 20130418045332) do
     t.string   "metakey"
     t.string   "metadesc"
     t.decimal  "price"
-    t.decimal  "old_price"
     t.decimal  "weight"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
