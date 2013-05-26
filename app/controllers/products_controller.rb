@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
     @cart.add_product(product)
   end
 
+  def cart
+    @cart = find_cart
+  end
+
+
   def empty_cart
     session[:cart] = nil
     flash[:notice] = "cart empty!"

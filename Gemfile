@@ -12,6 +12,8 @@ gem 'haml-rails'
 
 gem 'activeadmin'
 
+gem 'cells'
+
 
 #begin uploader gems
 gem 'carrierwave'

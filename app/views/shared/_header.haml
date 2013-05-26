@@ -7,5 +7,5 @@
       = render 'shared/header_info'
 
     .box-right
-      %span.btn-cart
-        Ваша корзина пуста
+      %a.btn-cart{:href => "cart"}
+        = render_cell :cart, :show

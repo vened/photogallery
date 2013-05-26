@@ -1,0 +1,7 @@
+-if @cart.items == false
+  Ваша корзина пуста
+-else
+  - @value = []
+  -for item in @cart.items
+    -@value += [item.quantity]
+  = @value.inject(0){ |result, elem| result + elem }
