@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def cart
-    @cart = find_cart
+    @cart = session[:cart]
   end
 
 

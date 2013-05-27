@@ -1,9 +1,21 @@
 %br
 %br
-#cart
-  -for item in @cart.items
-    %p
-      = item.title
-      = item.quantity
+%br
+%table
+  %tr
+    %td Товар
+    %td Количество
+    %td Перерасчёт
+  -for cart_item in @cart.items
+    %tr
+      %td= cart_item.title
+      %td= cart_item.quantity
+      %td= cart_item.id
+      %td= button_to "Добавить в корзину", :action => :add_to_cart, :id => cart_item.id
 
-  = button_to "clear cart", :action => :empty_cart
+%br
+%br
+= debug @cart
+%br
+%br
+= button_to "clear cart", :action => :empty_cart
