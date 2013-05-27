@@ -17,6 +17,15 @@ class ProductsController < ApplicationController
     @cart.add_product(product)
   end
 
+  def update_quantity
+    @cart = find_cart
+    product = Product.find(params[:id])
+    qa = params[:quantity]
+    prod = [product, qa]
+    @cart.update_product(prod)
+    redirect_to :action => :cart
+  end
+
   def cart
     @cart = session[:cart]
   end

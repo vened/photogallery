@@ -11,6 +11,14 @@ class CartItem
     @quantity += 1
   end
 
+  def update_quantity(qa)
+    if qa.to_i > 1
+      @quantity = qa.to_i
+    else
+      @quantity = 1
+    end
+  end
+
   def id
     @product.id
   end
