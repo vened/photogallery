@@ -5,10 +5,15 @@ class CartItem
   def initialize(product)
     @product = product
     @quantity = 1
+    @id_product = product.id
   end
 
-  def increment_quantity
-    @quantity += 1
+  def increment_quantity(qa)
+    if qa.to_i > 1
+      @quantity = qa.to_i
+    else
+      @quantity = 1
+    end
   end
 
   def update_quantity(qa)

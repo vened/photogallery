@@ -17,3 +17,8 @@
       %td= image_tag product.attachments.find_last.file_url(:thumb)
       %td= product.price
       %td= product.weight
+      %td
+        %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{product.id}"}
+          %input{:type=>"text", :value=>"", :name=>"quantity"}
+          %input{:type=>"submit", :value=>"Добавить в корзину"}
+          %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}

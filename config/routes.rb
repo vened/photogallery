@@ -7,6 +7,7 @@ Shikocc::Application.routes.draw do
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   post 'update_quantity' => 'products#update_quantity'
+  delete 'destroy_item' => 'products#destroy_item'
   get 'cart' => 'products#cart'
   resources :feedbacks, :only => [:index, :create]
 

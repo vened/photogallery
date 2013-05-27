@@ -14,7 +14,10 @@ class ProductsController < ApplicationController
   def add_to_cart
     @cart = find_cart
     product = Product.find(params[:id])
-    @cart.add_product(product)
+    qa = params[:quantity]
+    prod = [product, qa]
+    @cart.add_product(prod)
+    redirect_to :back
   end
 
   def update_quantity
@@ -23,6 +26,14 @@ class ProductsController < ApplicationController
     qa = params[:quantity]
     prod = [product, qa]
     @cart.update_product(prod)
+    redirect_to :action => :cart
+  end
+
+  def destroy_item
+    @cart = find_cart
+    #product_id = params[:id]
+    product_id = Product.find(params[:id])
+    @cart.delete_product(product_id)
     redirect_to :action => :cart
   end
 
