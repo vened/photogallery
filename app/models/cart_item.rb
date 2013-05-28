@@ -2,9 +2,11 @@ class CartItem
 
   attr_reader :product, :quantity, :id, :title
 
-  def initialize(product)
+  def initialize(prod)
+    product = prod[0]
+    qa = prod[1]
     @product = product
-    @quantity = 1
+    @quantity = qa.to_i
     @id_product = product.id
   end
 

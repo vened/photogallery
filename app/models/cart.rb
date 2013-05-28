@@ -13,7 +13,7 @@ class Cart
     if current_item
       current_item.increment_quantity(qa)
     else
-      @items << CartItem.new(product)
+      @items << CartItem.new(prod)
     end
   end
 
