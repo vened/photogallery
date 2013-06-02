@@ -18,12 +18,11 @@
         -#%td= cart_item.id
         -#%td
         -#  = button_to "Добавить в корзину", :action => :add_to_cart, :id => cart_item.id
-        -#%td
-          %form{:method=>"post", :class=>"button_to", :action=>"/update_quantity?id=#{cart_item.id}"}
+        %td
+          %form{:method=>"post", :class=>"button_to", :action=>"/update_quantity?id=#{cart_item[0]}"}
             %input{:type=>"text", :value=>"", :name=>"quantity"}
             %input{:type=>"submit", :value=>"Обновить"}
             %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
-        -#%td= link_to 'Убрать из заказа', cart_item.id
         %td
           %a{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}} Delete
 %br
