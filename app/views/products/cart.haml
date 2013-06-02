@@ -5,19 +5,20 @@
   %tr
     %td Товар
     %td Количество
-    %td ID
+    %td Стоимость за единицу
+    %td Общая стоимость
     %td Перерасчёт
+    %td
+  - @prices = 0
   -for cart_item in @cart.items
     %tr
       -if cart_item
-        -#%td= cart_item.title
-        -#%td= cart_item.quantity
-        %td= cart_item[0]
+        -product = Product.find(cart_item[0])
+        - @prices += product.price * cart_item[1]
+        %td= link_to product.title, product
         %td= cart_item[1]
-        -#%td= cart_item
-        -#%td= cart_item.id
-        -#%td
-        -#  = button_to "Добавить в корзину", :action => :add_to_cart, :id => cart_item.id
+        %td= product.price
+        %td= product.price * cart_item[1]
         %td
           %form{:method=>"post", :class=>"button_to", :action=>"/update_quantity?id=#{cart_item[0]}"}
             %input{:type=>"text", :value=>"", :name=>"quantity"}
@@ -25,6 +26,13 @@
             %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
         %td
           %a{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}} Delete
+%br
+%br
+.all_price
+  Стоимость заказа:
+  %b
+    = @prices
+    руб.
 %br
 %br
 = debug @cart
