@@ -1,3 +1,4 @@
+# encoding: utf-8
 ActiveAdmin.register Page do
 
   config.batch_actions = false
