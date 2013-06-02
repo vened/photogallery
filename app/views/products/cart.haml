@@ -17,8 +17,8 @@
         - @prices += product.price * cart_item[1]
         %td= link_to product.title, product
         %td= cart_item[1]
-        %td= product.price
-        %td= product.price * cart_item[1]
+        %td= product.price.to_i
+        %td= product.price.to_i * cart_item[1]
         %td
           %form{:method=>"post", :class=>"button_to", :action=>"/update_quantity?id=#{cart_item[0]}"}
             %input{:type=>"text", :value=>"", :name=>"quantity"}
@@ -31,7 +31,7 @@
 .all_price
   Стоимость заказа:
   %b
-    = @prices
+    = @prices.to_i
     руб.
 %br
 %br

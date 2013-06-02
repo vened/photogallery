@@ -5,9 +5,9 @@
 %p= @product.desc
 %p
   %b Цена:
-  = @product.price
+  = @product.price.to_i
 %p
   %b Вес:
-  = @product.weight
+  = @product.weight.to_i
 
 %p.ajax_btn= button_to "Добавить в корзину", :action => :add_to_cart, :id => @product
