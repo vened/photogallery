@@ -208,5 +208,6 @@ DEPENDENCIES
   sqlite3
   the_sortable_tree (~> 2.3.0)
   therubyracer
+  tilt
   uglifier (>= 1.0.3)
   unicorn

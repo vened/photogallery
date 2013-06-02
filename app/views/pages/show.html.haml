@@ -1,2 +1,5 @@
-%h1= @page.title
-%div{ :class => :container }= raw @html
+= render 'shared/breadcrumbs'
+
+.box-container.box-main-container
+  %h1= @page.title
+  = @rendered

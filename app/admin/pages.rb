@@ -1,4 +1,3 @@
-# encoding: utf-8
 ActiveAdmin.register Page do
 
   config.batch_actions = false
@@ -67,6 +66,9 @@ ActiveAdmin.register Page do
 
     def update
       @page = Page.find_by_path(params[:id])
+
+      save_to_disk
+
       if @page.update_attributes(params[:page])
         redirect_to admin_page_url, notice: 'страница успешно обновлена'
       else
@@ -81,12 +83,24 @@ ActiveAdmin.register Page do
 
     def destroy
       @page = Page.find_by_path(params[:id])
+
       @page.destroy
+      File.delete(Rails.root + "public/#{@page.path}.html")
+
       flash[:alert] = "Страница успешно удалена"
       redirect_to admin_pages_url
     end
 
+    def save_to_disk
+      @page = Page.find_by_path(params[:id])
+      @rendered = render_to_string(@page.text, :template => 'pages/show.html.haml', :layout => 'application')
+      #@rendered = Haml::Engine.new(@page.text).render
 
+
+      File.open(Rails.root + "public/#{@page.path}.html", "w") do |f|
+        f.write(@rendered)
+        f.close()
+      end
+    end
   end
-
 end

@@ -1,2 +1,15 @@
-#footer
-  © Шико Catering Club. Все права защищены.
+#footer.clearfix
+  .pull-left
+    .copyright © Шико Catering Club. Все права защищены.
+    .search-block
+      %form
+        %input{:name => "", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
+        %input{:name => "", :value => "", :type => "image", :src => "/assets/icon_search.png"}
+        
+  .pull-right
+    .social-block
+      .social-text Мы в социальных сетях:
+      %a{:href => "", :class => "icon-social icon-social-fb"}
+      %a{:href => "", :class => "icon-social icon-social-vk"}
+      %a{:href => "", :class => "icon-social icon-social-tw"}
+      %a{:href => "", :class => "icon-social icon-social-ok"}

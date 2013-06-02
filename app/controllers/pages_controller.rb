@@ -1,16 +1,5 @@
 class PagesController < ApplicationController
-
-  def home
-  end
-
-  def page1
-  end
-
-  def page2
-  end
-
-  def page3
-  end
+  include PagesHelper
 
   def index
     @pages = Page.nested_set.all
@@ -20,7 +9,5 @@ class PagesController < ApplicationController
     @page = Page.find_by_path(params[:id])
     @metakey = @page.meta_key
     @metadesc = @page.meta_desc
-    @html=Haml::Engine.new(@page.text).render
   end
-
 end
