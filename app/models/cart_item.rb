@@ -6,7 +6,11 @@ class CartItem
     product = prod[0]
     qa = prod[1]
     @product = product
-    @quantity = qa.to_i
+    if qa.to_i < 1
+      @quantity = 1
+    else
+      @quantity = qa.to_i
+    end
     @id_product = product.id
   end
 
