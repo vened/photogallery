@@ -3,18 +3,19 @@ class Cart
   attr_reader :items
 
   def initialize
-    @items = []
+    @items = {}
   end
 
   def add_product(prod)
-    product = prod[0]
-    qa = prod[1]
-    current_item = @items.find { |item| item.product == product }
-    if current_item
-      current_item.increment_quantity(qa)
+    if prod[1] < "1"
+      @items[prod[0]] = "1"
     else
-      @items << CartItem.new(prod)
+      @items[prod[0]] = prod[1]
     end
+  end
+
+  def delete_product(cart_item)
+    @items.delete(cart_item)
   end
 
   def update_product(prod)
@@ -26,14 +27,6 @@ class Cart
     else
       @items << CartItem.new(product)
     end
-  end
-
-  def delete_product(product_id)
-    current_item = @items.find { |item| item.product == product_id }
-    #current_item.delete(product)
-
-    @items[0] = nil
-    #@items << CartItem.destroy(product_id)
   end
 
 end
