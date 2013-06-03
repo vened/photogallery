@@ -1,7 +1,26 @@
 class OrderController < ApplicationController
-	def index
-	end
+  def index
+  end
 
-	def show
-	end
+  def new
+    @cart = session[:cart]
+    @order = Order.new
+  end
+
+  def create
+    @cart = session[:cart]
+    @order = Order.new(params[:order])
+
+    if @order.save
+      redirect_to :action => :show, :id => @order.id
+    else
+      render :action => :new
+    end
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
+
 end

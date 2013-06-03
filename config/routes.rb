@@ -10,7 +10,16 @@ Shikocc::Application.routes.draw do
   delete 'destroy_item' => 'products#destroy_item'
   get 'cart' => 'products#cart'
   resources :feedbacks, :only => [:index, :create]
-  resources :order, :only => [:index]
+
+
+
+  #begin order
+  #resources :order
+  get '/order/new' => 'order#new'
+  post 'order/create' => 'order#create'
+  get 'order/:id' => 'order#show'
+  #end order
+
 
 
   get '/admin' => 'admin/dashboard#index'

@@ -1,4 +1,11 @@
-%br
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    = link_to 'Меню', '/products'
+    &nbsp;|&nbsp;
+    %span
+      Корзина
 %br
 %br
 %table
@@ -35,7 +42,9 @@
     руб.
 %br
 %br
-= debug @cart
+
+= link_to "Оформить заказ", :order_new
+
 %br
 %br
 = button_to "clear cart", :action => :empty_cart
