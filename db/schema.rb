@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20130603182939) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
-    t.text     "desc"
-    t.integer  "parent_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.string   "path"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "feedbacks", :force => true do |t|

@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
   end
 
   def category
-    @category = Category.find(params[:id])
-    @products = Product.where("category_id == #{params[:id]}").order("created_at DESC")
+    @category = Category.find_by_path(params[:id])
+    @products = Product.where("category_id == #{@category.id}").order("created_at DESC")
   end
 
   def show

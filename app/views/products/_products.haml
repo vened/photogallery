@@ -3,7 +3,7 @@
     %li
       .photo
         .product-category
-          %a{:href=>"/category/#{product.category.id}"}= product.category.title
+          %a{:href=>"/category/#{product.category.path}"}= product.category.title
         = image_tag product.attachments.find_last.file_url(:thumb)
       .product-info
         %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{product.id}"}
