@@ -82,8 +82,9 @@ ActiveRecord::Schema.define(:version => 20130603182939) do
     t.text     "comment"
     t.text     "data"
     t.decimal  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "order_confirm"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "pages", :force => true do |t|
