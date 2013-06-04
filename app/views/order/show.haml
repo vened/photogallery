@@ -1,1 +1,34 @@
-%h1 confirm
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    = link_to 'Меню', '/products'
+    &nbsp;|&nbsp;
+    = link_to 'Корзина', '/cart'
+    &nbsp;|&nbsp;
+    %span Оформление заказа
+.box-container.box-main-container
+  %h1 Заказ успешно оформлен
+
+%h3
+  Стоимость заказа
+  %b
+    = @order.price.to_i
+    руб.
+
+%h3 Заказано:
+
+%table
+  %tr
+    %td Товар
+    %td Количество
+    %td Стоимость за единицу
+    %td Общая стоимость
+  -for cart_item in JSON.parse(@order.data)
+    %tr
+      -if cart_item
+        -product = Product.find(cart_item[0])
+        %td= link_to product.title, product
+        %td= cart_item[1]
+        %td= product.price.to_i
+        %td= product.price.to_i * cart_item[1]

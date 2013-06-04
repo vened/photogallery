@@ -21,11 +21,13 @@
     %td Перерасчёт
     %td
   - @prices = 0
+  - @order_items = {}
   -for cart_item in @cart.items
     %tr
       -if cart_item
-        -product = Product.find(cart_item[0])
+        - product = Product.find(cart_item[0])
         - @prices += product.price * cart_item[1]
+        - @order_items[cart_item[0]] = cart_item[1]
         %td= link_to product.title, product
         %td= cart_item[1]
         %td= product.price.to_i
@@ -33,7 +35,15 @@
 
 %br
 %br
+.all_price
+  Стоимость заказа:
+  %b
+    = @prices.to_i
+    руб.
+%br
+%br
 = render 'form'
 %br
 %br
 = debug @cart
+= debug @order_items

@@ -1,4 +1,9 @@
 = form_for :order, :url => { :action => :create } do |f|
+
+  %input{:type=>"hidden", :name=>"order[data]", :value=> @order_items.to_json}
+  %input{:type=>"hidden", :name=>"order[price]", :value=> @prices}
+
+
   - if @order.errors.any?
     #error_explanation
       %h2= "#{pluralize(@order.errors.count, "error")}:"
