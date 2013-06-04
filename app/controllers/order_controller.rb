@@ -12,9 +12,10 @@ class OrderController < ApplicationController
     @order = Order.new(params[:order])
 
     if @order.save
-      #session[:cart] = nil
+      session[:cart] = nil
       redirect_to :action => :show, :id => @order.id
       OrderMailer.order_cofirm(@order).deliver
+      OrderMailer.order_cofirm_user(@order).deliver
     else
       render :action => :new
     end

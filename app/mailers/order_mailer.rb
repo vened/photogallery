@@ -3,16 +3,16 @@ class OrderMailer < ActionMailer::Base
 
   default_url_options[:host] = "shikocc.ru"
 
-  default :from => "maxstbn@gmail.com"
+  default :from => "order@shikocc.ru"
 
   def order_cofirm(order)
     @order = order
-    mail(:to => "maxstbn@gmail.com, maxstbn@yandex.ru", :subject => "На промосайте кандид.рф, появился новый вопрос.")
+    mail(:to => "maxstbn@yandex.ru", :subject => "Поступил новый заказ на сайте www.shikocc.ru")
   end
 
-  def reply_query(feedback)
-    @feedback = feedback
-    mail(:to => feedback.email, :subject => "На сайте кандид.рф получен ответ на ваш вопрос.")
+  def order_cofirm_user(order)
+    @order = order
+    mail(:to => @order.email , :subject => "Заказ на сайте www.shikocc.ru")
   end
 
 end

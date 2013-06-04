@@ -5,13 +5,14 @@
 </head>
 <body>
 
-<h2>Поступил новый заказ на сайте <a href="http://shikocc.ru" target="_blank">www.shikocc.ru</a></h2>
+<h2>Вы сделали заказ на сайте <a href="http://shikocc.ru" target="_blank">www.shikocc.ru</a></h2>
 
-<h3>Номер заказа #<b><%= @order.id %></b></h3>
+<h3>Номер вашего заказа #<b><%= @order.id %></b></h3>
 
 <h3>Стоимость заказа <b><%= @order.price.to_i %> руб.</b></h3>
 
-<h3>Реквизиты заказчика:</h3>
+<h3>Детали заказа</h3>
+
 <p>Имя: <b><%= @order.surname %> <%= @order.username %></b></p>
 <p>Электронная почта: <b><%= @order.email %></b></p>
 <p>Телефон для связи: <b><%= @order.phone %></b></p>
@@ -19,8 +20,6 @@
 <p>Дата доставки: <b><%= @order.date %></b></p>
 <p>Время доставки: <b>c <%= @order.first_time %> до <%= @order.last_time %></b></p>
 <p>Комментарий к заказу: <b><%= @order.comment %></b></p>
-
-<h3>Детали заказа</h3>
 
 <table>
   <tr>
@@ -41,8 +40,6 @@
       </tr>
   <%- end %>
 </table>
-
-
 
 </body>
 </html>

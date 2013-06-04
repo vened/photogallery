@@ -21,6 +21,34 @@
     = @order.price.to_i
     руб.
 
+%p
+  Имя:
+  %b
+    = @order.surname
+    = @order.username
+%p
+  Электронная почта:
+  %b= @order.email
+%p
+  Телефон для связи:
+  %b= @order.phone
+%p
+  Адрес доставки:
+  %b= @order.address
+%p
+  Дата доставки:
+  %b= @order.date
+%p
+  Время доставки:
+  %b
+    c
+    = @order.first_time
+    до
+    = @order.last_time
+%p
+  Комментарий к заказу:
+  %b= @order.comment
+
 %h3 Заказано:
 
 %table
