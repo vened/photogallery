@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def category
+    @category = Category.find(params[:id])
+    @products = Product.where("category_id == #{params[:id]}").order("created_at DESC")
+  end
+
   def show
     @product = Product.find(params[:id])
     @images = @product.attachments

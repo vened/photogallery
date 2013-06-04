@@ -109,8 +109,9 @@ ActiveRecord::Schema.define(:version => 20130603182939) do
     t.string   "metadesc"
     t.decimal  "price"
     t.decimal  "weight"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "sessions", :force => true do |t|

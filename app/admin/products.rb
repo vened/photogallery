@@ -13,6 +13,7 @@ ActiveAdmin.register Product do
     column "Metadesc", :metadesc, :sortable => false
     column "Цена", :price, :sortable => :price
     column "Вес", :weight, :sortable => :weight
+    column "Категория", :category, :sortable => :weight
     actions :defaults => true
   end
 
@@ -24,6 +25,7 @@ ActiveAdmin.register Product do
       f.input :weight, :label => "Вес"
       f.input :metakey, :label => "Metakey"
       f.input :metadesc, :label => "Metadesc"
+      f.input :category, :label => "Категория"
       f.has_many :attachments, :through => Product do |s|
         s.input :file, :as => :file, :label => "Фото",:hint => s.object.file.nil? ? s.template.content_tag(:span, "Нет фото") : s.template.image_tag(s.object.file_url(:thumb))
         s.input :_destroy, :as => :boolean, :label => "Удалить"
@@ -40,6 +42,7 @@ ActiveAdmin.register Product do
         row("Вес") { product.weight }
         row("metakey") { product.metakey }
         row("Metadesc") { product.metadesc }
+        row("Категория") { product.category }
         product.attachments.each do |at|
           row ("Photo") { image_tag(at.file_url(:thumb)) }
         end
