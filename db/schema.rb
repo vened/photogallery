@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606182346) do
+ActiveRecord::Schema.define(:version => 20130606182347) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(:version => 20130606182346) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.string   "meta_key"
+    t.string   "meta_desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "news", ["title"], :name => "index_news_on_title"
+
   create_table "orders", :force => true do |t|
     t.string   "username"
     t.string   "surname"
@@ -112,11 +123,13 @@ ActiveRecord::Schema.define(:version => 20130606182346) do
   create_table "photos", :force => true do |t|
     t.string   "file"
     t.integer  "album_id"
+    t.integer  "news_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
+  add_index "photos", ["news_id"], :name => "index_photos_on_news_id"
 
   create_table "products", :force => true do |t|
     t.string   "title"

@@ -13,20 +13,20 @@ Shikocc::Application.routes.draw do
   resources :feedbacks, :only => [:index, :create]
 
 
-
   #begin order
   get '/order/new' => 'order#new'
   post 'order/create' => 'order#create'
   get 'order/:id' => 'order#show'
   #end order
 
-  #bagin albums
+  #begin albums
   get '/photos' => 'albums#index', :as => :albums
   get '/nggallery/page-20/album-2/:id' => 'albums#show', :as => :album
   #end albums
 
-
-
+  #begin news
+  resources :news, :only => [:index, :show]
+  #end news
 
 
   get '/admin' => 'admin/dashboard#index'

@@ -1,0 +1,12 @@
+%br
+
+.box-news.mt10
+  %h3 Наши новости
+  %hr
+  %ul
+    - @news.each do |news|
+      %li
+        .date= raw I18n.l news.created_at, :format => :short
+        .title
+          = link_to news.title, news
+        .text= raw truncate(news.desc, :length => 100, :separator => ' ')

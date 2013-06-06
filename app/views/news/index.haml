@@ -1,0 +1,15 @@
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    %span Новости
+
+  %h1 Новости
+
+  %ul
+    - @news_all.each do |news|
+      %li
+        %h3
+          =link_to news.title, news
+        %p= news.desc
+        = image_tag news.photos.find_last.file_url(:thumb)
