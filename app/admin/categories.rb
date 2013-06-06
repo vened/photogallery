@@ -1,5 +1,8 @@
 # encoding: utf-8
 ActiveAdmin.register Category do
+
+  menu :label => "Категории продуктов"
+
   #index do
   #  selectable_column
   #  column "Название", :title, :sortable => :title

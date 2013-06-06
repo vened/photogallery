@@ -1,0 +1,17 @@
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    -#= link_to 'Портфолио', albums_path
+    %span Портфолио
+
+  %h1 Portfolio
+
+  %ul
+    - @albums.each do |album|
+      %li
+        %h3
+          =link_to album.title, album
+        %p= album.desc
+        =link_to album do
+          = image_tag album.photos.find_last.file_url(:thumb)

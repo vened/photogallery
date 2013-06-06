@@ -1,6 +1,8 @@
 # encoding: utf-8
 ActiveAdmin.register Page do
 
+  menu :label => "Стастические страницы"
+
   config.batch_actions = false
 
   index do

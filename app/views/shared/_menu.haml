@@ -16,22 +16,22 @@
     %li.del
       %span
         &bull;
-    %li{:class => "#{'selected' if @page.parent_path == 'portfolio' if @page}"}
-      %a{:href => "portfolio"}
+    %li{:class => "#{'selected' if @albums || @album}"}
+      =link_to albums_path do
         %span
           Портфолио
     %li.del
       %span
         &bull;
     %li{:class => "#{'selected' if @page.parent_path == 'pl' if @page}"}
-      %a{:href => "pl"}
+      %a{:href => "/pl"}
         %span
           Площадки
     %li.del
       %span
         &bull;
     %li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
-      %a{:href => "clients"}
+      %a{:href => "/clients"}
         %span
           Наши клиенты
     %li.del

@@ -1,0 +1,14 @@
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    = link_to 'Портфолио', albums_path
+    &nbsp;|&nbsp;
+    %span= @album.title
+
+%h1= @album.title
+%p= @album.desc
+
+-@photos.each do |photo|
+  =link_to photo.file_url(:large) do
+    =image_tag photo.file_url(:thumb)

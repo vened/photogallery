@@ -1,6 +1,7 @@
 # encoding: utf-8
 ActiveAdmin.register Product do
 
+  menu :label => "Продукты"
 
   index do
     selectable_column
