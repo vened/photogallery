@@ -32,4 +32,44 @@ $(function () {
 
     // init
     updateHtml();
+    
+    
+    
+    function initQuantity() {
+    	var $quantity = $('.quantity');
+    	var $plus = $('.plus', $quantity);
+    	var $minus = $('.minus', $quantity);
+    	var $input = $('input[type=text]', $quantity);
+
+		function update() {
+			var $this = $(this);
+			var $input = $this.closest('.quantity').find('input[type=text]');
+			var value = $input.val()*1;
+			var newvalue = value + ($this.hasClass('minus') ? -1 : 1);
+			
+			if(newvalue < 1) {
+				newvalue = 1;
+			}
+			
+			$input.val(newvalue);
+			
+			return false;
+		}
+
+		$plus.on('click', update);
+		$minus.on('click', update);
+		$input.on('keyup', function(e){
+			if(this.value && this.value < 1) {
+				this.value = 1;
+			}
+		});
+		
+		$input.on('blur', function(e){
+			if(!this.value) {
+				this.value = 1;
+			}
+		})
+	}
+
+	initQuantity();
 });

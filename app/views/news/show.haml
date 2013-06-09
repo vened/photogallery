@@ -6,9 +6,18 @@
     &nbsp;|&nbsp;
     %span= @news.title
 
-%h1= @news.title
-%p= @news.desc
+.box-container.box-main-container
+  .box-main
 
--@photos.each do |photo|
-  =link_to photo.file_url(:large) do
-    =image_tag photo.file_url(:thumb)
+    %h1= @news.title
+    
+    %ul.cols.images
+      -@photos.each do |photo|
+        %li
+          =link_to photo.file_url(:large) do
+            =image_tag photo.file_url(:thumb)
+    
+    %p= @news.desc
+    
+  .box-right
+    = render_cell :news, :show

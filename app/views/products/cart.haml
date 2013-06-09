@@ -6,48 +6,61 @@
     &nbsp;|&nbsp;
     %span
       Корзина
-%br
-%br
--if @cart.items.size == 0
-  Корзина пуста
--else
-  %table
-    %tr
-      %td Товар
-      %td Количество
-      %td Стоимость за единицу
-      %td Общая стоимость
-      %td Перерасчёт
-      %td
-    - @prices = 0
-    -for cart_item in @cart.items
-      %tr
-        -if cart_item
-          -product = Product.find(cart_item[0])
-          - @prices += product.price * cart_item[1]
-          %td= link_to product.title, product
-          %td= cart_item[1]
-          %td= product.price.to_i
-          %td= product.price.to_i * cart_item[1]
-          %td
-            %form{:method=>"post", :class=>"button_to", :action=>"/update_quantity?id=#{cart_item[0]}"}
-              %input{:type=>"text", :value=>"", :name=>"quantity"}
-              %input{:type=>"submit", :value=>"Обновить"}
-              %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
-          %td
-            %a{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}} Delete
-  %br
-  %br
-  .all_price
-    Стоимость заказа:
-    %b
-      = @prices.to_i
-      руб.
-  %br
-  %br
 
-  = link_to "Оформить заказ", :order_new
+.box-container.box-main-container.page-cart
+  -if @cart.items.size == 0
+    %h1 Ваша корзина пуста
+  -else
+    %h1 Ваша корзина
+    .cart-box
+      %table
+        - @prices = 0
+        -for cart_item in @cart.items
+          %tr
+            -if cart_item
+              -product = Product.find(cart_item[0])
+              - @prices += product.price * cart_item[1]
+              %td
+                .cart-heading.cart-title
+                  = link_to product.title, product
+                .gray Роллы, рулеты, блинчики 
+              %td
+                .quantity.m0
+                  .gray.cart-heading Количество порций
+                  .minus -
+                  %input.calc{:type=>"text", :value=> cart_item[1], :name=>"quantity", :autocomplete=>"off"}
+                  .plus +
+              %td
+                .price-dose
+                  .gray.cart-heading Цена за порцию
+                  = product.price.to_i
+                  руб.
+              %td.remove-from-cart
+                .cart-heading
+                %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}}
+                
+        -#
+          %tr
+            %td{:colspan=>"4"}
+              .price-dose-total
+                = product.price.to_i * cart_item[1]
+                руб.
+              
+              %hr
+    
+    .price-total
+      Итоговая стоимость заказа:
+      %span 
+        = @prices.to_i
+        руб.
 
-  %br
-  %br
-  = button_to "clear cart", :action => :empty_cart
+    %hr
+
+    .cart-getorder
+      = link_to "Вернуться к покупкам", "/"
+      %input.cart-order{:type=>"submit", :value=>"Оформить заказ"}
+
+    
+    /*= button_to "clear cart", :action => :empty_cart*/
+    
+    %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}

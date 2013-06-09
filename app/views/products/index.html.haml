@@ -7,13 +7,29 @@
 
 .box-container.box-main-container
   .box-main
-    -@products.group_by(&:category).each do |category, products|
+    %h1 Интернет-магазин
+    
+    .products-nav
       .text-del
+        %h2
+          %span Самое лучшее для вас
+        %hr
+        
+        %ul.products-nav-list.clearfix
+          -@products.group_by(&:category).each do |category, products|
+            %li
+              = link_to category.title, "/category/#{category.path}"
+          
+  
+    -@products.group_by(&:category).each do |category, products|
+      .text-del.mt30
         %h2
           %span
             %a{:href=>"/category/#{category.path}"}= category.title
         %hr
       = render :partial => 'products', :object => products
+      .products-more
+        = link_to "Все блюда раздела «#{category.title}»", "/category/#{category.path}"
 
 
   .box-right

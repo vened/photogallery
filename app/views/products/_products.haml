@@ -13,7 +13,7 @@
           .pull-right
             .quantity
               .minus -
-              %input.calc{:type=>"text", :value=>"", :name=>"quantity"}
+              %input.calc{:type=>"text", :value=>"1", :name=>"quantity", :autocomplete=>"off"}
               .plus +
             .price
               = product.price.to_i

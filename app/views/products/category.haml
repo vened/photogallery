@@ -1,9 +1,5 @@
 .box-container.box-main-container
   .box-main
-    .text-del
-      %h2
-        %span
-          = @category.title
-      %hr
+    %h1= @category.title
 
     = render :partial => 'products', :object => @products

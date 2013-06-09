@@ -4,12 +4,48 @@
     &nbsp;|&nbsp;
     %span Новости
 
-  %h1 Новости
+.box-container.box-main-container
+  .box-main
+    %h1 Новости
+  
+    %ul.cols-products
+      - @news_all.each do |news|
+        %li
+          .photo
+            = image_tag news.photos.find_last.file_url(:thumb)
+          
+          .product-info
+            .title
+              =link_to news.title, news
+              
+            %p= news.desc
 
-  %ul
-    - @news_all.each do |news|
-      %li
-        %h3
-          =link_to news.title, news
-        %p= news.desc
-        = image_tag news.photos.find_last.file_url(:thumb)
+  .box-right
+    .box-gray
+      .rounds-top
+      .box-inner
+        %h3 Требования к заказу
+        %hr
+        %h4 Количество и стоимость
+        %ul
+          %li
+            %span Минимальное количество для заказа — 10 штучек одного вида.
+          %li
+            %span Минимальная сума заказа — 2000 рублей.
+        %hr
+        %h4 Условия доставки
+        %ul
+          %li
+            %span Бесплатно по Москве, если сумма заказа составляет 5000 рублей и выше.
+          %li
+            %span При сумме заказа до 5000 рублей стоимость доставки 300 рублей в пределах г.Москвы.
+        .mt5 Для заказов по Московской области стоимость доставки обсуждается с менеджером индивидуально.
+
+        %hr
+        %h4 Варианты оплаты
+        %ul
+          %li
+            %span Наличный расчет.
+          %li
+            %span Безналичный расчет.
+      .rounds-bottom

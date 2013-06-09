@@ -1,58 +1,85 @@
 = form_for :order, :url => { :action => :create } do |f|
 
-  %input{:type=>"hidden", :name=>"order[data]", :value=> @order_items.to_json}
-  %input{:type=>"hidden", :name=>"order[price]", :value=> @prices}
-
-
   - if @order.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@order.errors.count, "error")}:"
       %ul
         - @order.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    %label{:for=>:username}
-      Ваше имя
-      %b *
-    = f.text_field :username
-  .field
-    %label{:for=>:surname} Ваша фамилия
-    = f.text_field :surname
-  .field
-    %label{:for=>:email}
-      Электронная почта
-      %b *
-    = f.text_field :email
-  .field
-    %label{:for=>:phone}
-      Телефон для связи
-      %b *
-    = f.text_field :phone
-  .field
-    %label{:for=>:address}
-      Адрес доставки
-      %b *
-    = f.text_field :address
-  .field
-    %label{:for=>:date}
-      Дата доставки
-      %b *
-    = f.text_field :date
-  .field
-    %div
-      Время доставки
-      %b *
-    %label{:for=>:first_time} Мне удобно с
-    = f.text_field :first_time
-    %label{:for=>:last_time} до
-    = f.text_field :last_time
-  .field
-    %label{:for=>:comment} Комментарий к заказу
-    = f.text_area :comment
 
-
-
-  .actions
+  .cart-box.clearfix
+    %input{:type=>"hidden", :name=>"order[data]", :value=> @order_items.to_json}
+    %input{:type=>"hidden", :name=>"order[price]", :value=> @prices}
+  
+    %dl
+      %dt
+        Ваше имя
+        %span.star *
+      %dd
+        = f.text_field :username
+  
+    %dl
+      %dt
+        Ваше фамилия
+      %dd
+        = f.text_field :surname
+  
+    %dl.invalid
+      %dt
+        Электронная почта
+        %span.star *
+      %dd
+        = f.text_field :email
+  
+    %dl
+      %dt
+        Телефон для связи
+        %span.star *
+      %dd
+        = f.text_field :phone
+  
+    %dl.fluid
+      %dt
+        Адрес доставки
+        %span.star *
+      %dd
+        = f.text_field :address
+  
+    %dl
+      %dt
+        Дата доставки
+        %span.star *
+      %dd
+        = f.text_field :date
+  
+    %dl.delivery-time
+      %dt
+        Время доставки
+        %span.star *
+      %dd
+        Мне удобно с
+        = f.text_field :first_time
+        до
+        = f.text_field :last_time
+    -#
+      %dl
+        %dt
+          Способ оплаты
+        %dd
+          = f.text_field :payment
+          
+      %dl.fluid
+        %dt
+          Реквизиты
+        %dd
+          = f.text_field :details
+          
+    %dl.fluid.m0
+      %dt
+        Комментарий к заказу
+      %dd
+        = f.text_area :comment
+  
+  .cart-order-confirm
     = link_to "Вернуться в корзину", "/cart"
-    = f.submit 'Подтвердить заказ'
+    %input.cart-confirm{:type=>"submit", :value=>"Подтвердить заказ"}

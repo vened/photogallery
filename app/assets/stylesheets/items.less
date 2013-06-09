@@ -12,6 +12,7 @@
 		margin-left: 15px;
 		font-size: 13px;
 		.inline-block();
+		vertical-align: top;
 		
 		.photo {
 			position: relative;
@@ -80,34 +81,34 @@
 			.pull-right {
 				text-align: right;
 			}
-			
-			.quantity {
-				margin-bottom: 15px;
-				
-				.minus,
-				.plus  {
-					.inline-block();
-					width: 15px;
-					height: 16px;
-					white-space: nowrap;
-					text-indent: 100%;
-					overflow: hidden;
-					vertical-align: middle;
-					background: url('plus.png') no-repeat;
-					cursor: pointer;
-				}
-				
-				.minus {
-					background: url('minus.png') no-repeat;
-				}
-				
-				input {
-					font-size: 11px;
-					color: @gray;
-					width: 20px;
-					text-align: center;
-				}
-			}
 		}
+	}
+}
+
+.quantity {
+	margin-bottom: 15px;
+	
+	.minus,
+	.plus  {
+		.inline-block();
+		width: 15px;
+		height: 16px;
+		white-space: nowrap;
+		text-indent: 100%;
+		overflow: hidden;
+		vertical-align: middle;
+		background: url('plus.png') no-repeat;
+		cursor: pointer;
+	}
+	
+	.minus {
+		background: url('minus.png') no-repeat;
+	}
+	
+	input {
+		font-size: 11px;
+		color: #333;
+		width: 20px;
+		text-align: center;
 	}
 }

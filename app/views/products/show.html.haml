@@ -1,13 +1,72 @@
-%h1= @product.title
-%p
-  -@images.each do |at|
-    =image_tag at.file_url(:thumb)
-%p= @product.desc
-%p
-  %b Цена:
-  = @product.price.to_i
-%p
-  %b Вес:
-  = @product.weight.to_i
+.box-container.box-main-container
+  .box-main.page-product
+    %h1= @product.title
+    
+    .photo
+      -@images.each do |at|
+        =image_tag at.file_url(:thumb)
+      
+    .product-info
+      %h3 Состав
+      %hr
+      .descr 
+        = @product.desc
+      %hr
+      .weight
+        %span.gray Вес порции:
+        = @product.weight.to_i
+        гр.
+      %span.gray Количество порций:
+      %span.quantity
+        .minus -
+        %input.calc{:type=>"text", :value=>"1", :name=>"quantity", :autocomplete=>"off"}
+        .plus +
+      
+      %hr
+      
+      %input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
+      %span.price
+        = @product.price.to_i
+        руб
+  
+  .box-right
+    .box-gray
+      .rounds-top
+      .box-inner
+        %h3 Требования к заказу
+        %hr
+        %h4 Количество и стоимость
+        %ul
+          %li
+            %span Минимальное количество для заказа — 10 штучек одного вида.
+          %li
+            %span Минимальная сума заказа — 2000 рублей.
+        %hr
+        %h4 Условия доставки
+        %ul
+          %li
+            %span Бесплатно по Москве, если сумма заказа составляет 5000 рублей и выше.
+          %li
+            %span При сумме заказа до 5000 рублей стоимость доставки 300 рублей в пределах г.Москвы.
+        .mt5 Для заказов по Московской области стоимость доставки обсуждается с менеджером индивидуально.
 
-%p.ajax_btn= button_to "Добавить в корзину", :action => :add_to_cart, :id => @product
+        %hr
+        %h4 Варианты оплаты
+        %ul
+          %li
+            %span Наличный расчет.
+          %li
+            %span Безналичный расчет.
+      .rounds-bottom
+
+
+.box-container
+  .box-main
+  
+    .text-del.offset-h3
+      %h2
+        %span С этим блюдом обычно покупают
+      %hr
+
+  .box-right
+    = render_cell :news, :show
