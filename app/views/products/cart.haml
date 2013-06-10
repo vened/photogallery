@@ -58,6 +58,7 @@
 
     .cart-getorder
       = link_to "Вернуться к покупкам", "/"
+      = link_to "Оформить заказ", :order_new, :class => "cart-order"
       %input.cart-order{:type=>"submit", :value=>"Оформить заказ"}
 
     

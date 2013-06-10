@@ -1,7 +1,7 @@
 # encoding: utf-8
 ActiveAdmin.register Page do
 
-  menu :label => "Стастические страницы"
+  menu :label => "Статические страницы"
 
   config.batch_actions = false
 
@@ -70,7 +70,8 @@ ActiveAdmin.register Page do
     def update
       @page = Page.find_by_path(params[:id])
 
-      save_to_disk
+      #закомментил Стасову сохранялку на диск
+      #save_to_disk
 
       if @page.update_attributes(params[:page])
         redirect_to admin_page_url, notice: 'страница успешно обновлена'
@@ -94,16 +95,18 @@ ActiveAdmin.register Page do
       redirect_to admin_pages_url
     end
 
-    def save_to_disk
-      @page = Page.find_by_path(params[:id])
-      @rendered = render_to_string(@page.text, :template => 'pages/show.html.haml', :layout => 'application')
-      #@rendered = Haml::Engine.new(@page.text).render
+    #закомментил Стасову сохранялку на диск
+    #def save_to_disk
+    #  @page = Page.find_by_path(params[:id])
+    #  @rendered = render_to_string(@page.text, :template => 'pages/show.html.haml', :layout => 'application')
+    #  #@rendered = Haml::Engine.new(@page.text).render
+    #
+    #
+    #  File.open(Rails.root + "public/#{@page.path}.html", "w") do |f|
+    #    f.write(@rendered)
+    #    f.close()
+    #  end
+    #end
 
-
-      File.open(Rails.root + "public/#{@page.path}.html", "w") do |f|
-        f.write(@rendered)
-        f.close()
-      end
-    end
   end
 end
