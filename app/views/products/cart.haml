@@ -28,11 +28,13 @@
                   = link_to product.title, product
                 .gray= product.category.title
               %td
-                .quantity.m0
-                  .gray.cart-heading Количество порций
-                  .minus -
-                  %input.calc{:type=>"text", :value=> cart_item[1], :name=>"quantity", :autocomplete=>"off"}
-                  .plus +
+                %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{cart_item[0]}", :data => {:remote => "true"} }
+                  %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
+                  .quantity.m0
+                    .gray.cart-heading Количество порций
+                    .minus -
+                    %input.calc{:type=>"text", :value=> cart_item[1], :name=>"quantity", :autocomplete=>"off"}
+                    .plus +
               %td
                 .price-dose
                   .gray.cart-heading Цена за порцию

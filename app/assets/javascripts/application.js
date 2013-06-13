@@ -32,9 +32,9 @@ $(function () {
 
     // init
     updateHtml();
-    
-    
-    
+
+
+
     function initQuantity() {
     	var $quantity = $('.quantity');
     	var $plus = $('.plus', $quantity);
@@ -46,14 +46,20 @@ $(function () {
 			var $input = $this.closest('.quantity').find('input[type=text]');
 			var value = $input.val()*1;
 			var newvalue = value + ($this.hasClass('minus') ? -1 : 1);
-			
+
 			if(newvalue < 1) {
 				newvalue = 1;
 			}
-			
+
 			$input.val(newvalue);
-			
-			return false;
+
+
+            //Обновление товара в корзине
+            $this.closest('.cart_update_quantity').submit()
+
+
+
+            return false;
 		}
 
 		$plus.on('click', update);
@@ -63,7 +69,7 @@ $(function () {
 				this.value = 1;
 			}
 		});
-		
+
 		$input.on('blur', function(e){
 			if(!this.value) {
 				this.value = 1;
