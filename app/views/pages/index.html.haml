@@ -30,4 +30,16 @@
         %p
           У нас в штате только настоящие профессионалы своего дела, их навыки отточены и проверены годами на многочисленных мероприятиях, база персонала очень обширная, поэтому мы можем предоставить персонал на любое мероприятие в любом количестве.
       = link_to "Подробнее об аренде персонала", "/about"
-= render 'shared/templates'
+-#= render 'shared/templates'
+
+.box-container.box-main-container
+  .box-main
+    .text-del
+      %h2
+        %span Самое лучшее для вас
+      %hr
+
+
+    = render_cell :product, :home_page
+
+  = render :partial => 'shared/product_right_col'

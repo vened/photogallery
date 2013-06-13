@@ -18,51 +18,18 @@
         %ul.products-nav-list.clearfix
           -@products.group_by(&:category).each do |category, products|
             %li
-              = link_to category.title, "/category/#{category.path}"
+              = link_to category.title, category
           
   
     -@products.group_by(&:category).each do |category, products|
       .text-del.mt30
         %h2
           %span
-            %a{:href=>"/category/#{category.path}"}= category.title
+            = link_to category.title, category
         %hr
       = render :partial => 'products', :object => products
       .products-more
-        = link_to "Все блюда раздела «#{category.title}»", "/category/#{category.path}"
+        = link_to "Все блюда раздела «#{category.title}»", category
 
 
-  .box-right
-    .box-gray
-      .rounds-top
-      .box-inner
-        %h3 Требования к заказу
-        %hr
-        %h4 Количество и стоимость
-        %ul
-          %li
-            %span Минимальное количество для заказа — 10 штучек одного вида.
-          %li
-            %span Минимальная сума заказа — 2000 рублей.
-        %hr
-        %h4 Условия доставки
-        %ul
-          %li
-            %span Бесплатно по Москве, если сумма заказа составляет 5000 рублей и выше.
-          %li
-            %span При сумме заказа до 5000 рублей стоимость доставки 300 рублей в пределах г.Москвы.
-        .mt5 Для заказов по Московской области стоимость доставки обсуждается с менеджером индивидуально.
-
-        %hr
-        %h4 Варианты оплаты
-        %ul
-          %li
-            %span Наличный расчет.
-          %li
-            %span Безналичный расчет.
-
-
-
-      .rounds-bottom
-
-    = render_cell :news, :show
+  = render :partial => 'shared/product_right_col'
