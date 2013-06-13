@@ -31,11 +31,10 @@ Shikocc::Application.routes.draw do
 
   get '/admin' => 'admin/dashboard#index'
 
-
-  get 'home' => 'pages#home'
-  get 'page1' => 'pages#page1'
-  get 'page2' => 'pages#page2'
-  get 'page3' => 'pages#page3'
+  #begin static pages
+  get 'contacts' => 'pages#contacts'
+  get 'about' => 'pages#about'
+  #end static pages
 
 
   resources :pages, :path => "/", :only => [:index, :show]

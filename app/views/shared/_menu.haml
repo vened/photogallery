@@ -2,7 +2,7 @@
   .yellow_rounds
    
   %ul
-    %li{:class => "#{'selected' if @page.parent_path == 'about' if @page}"}
+    %li{:class => "#{'selected' if @about }"}
       %a{:href => "/about"}
         %span
           О компании
@@ -37,7 +37,7 @@
     %li.del
       %span
         &bull;
-    %li{:class => "#{'selected' if @page.parent_path == 'contacts' if @page}"}
+    %li{:class => "#{'selected' if @contacts }"}
       %a{:href => "/contacts"}
         %span
           Контакты

@@ -1,6 +1,13 @@
-<hr/>
+<%- @about = true %>
 
-<!-- ABOUT -->
+<div class="box-container mb25">
+  <div class="breadcrumbs">
+    <%= link_to 'Главная', '/' %>
+    &nbsp;|&nbsp;
+    <span>О компании</span>
+  </div>
+</div>
+
 <div class="box-container">
 
   <div class="page-about">
@@ -96,7 +103,6 @@
         </div>
         <div class="rounds-bottom"></div>
       </div>
-      <%= render_cell :news, :show %>
     </div>
   </div>
 
