@@ -3,7 +3,6 @@ class FeedbacksController < ApplicationController
   def index
     @feedbacks = Feedback.all
     @feedback = Feedback.new
-    @contacts = true
   end
 
   def create

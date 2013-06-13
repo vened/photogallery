@@ -20,10 +20,13 @@
             -if cart_item
               -product = Product.find(cart_item[0])
               - @prices += product.price * cart_item[1]
+              %td{:rowspan=>"2"}
+                .photo
+                  = image_tag product.attachments.find_last.file_url(:thumb)
               %td
                 .cart-heading.cart-title
                   = link_to product.title, product
-                .gray Роллы, рулеты, блинчики 
+                .gray= product.category.title
               %td
                 .quantity.m0
                   .gray.cart-heading Количество порций
@@ -38,15 +41,13 @@
               %td.remove-from-cart
                 .cart-heading
                 %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}}
-                
-        -#
+
           %tr
             %td{:colspan=>"4"}
+              %hr
               .price-dose-total
                 = product.price.to_i * cart_item[1]
                 руб.
-              
-              %hr
     
     .price-total
       Итоговая стоимость заказа:
@@ -59,7 +60,6 @@
     .cart-getorder
       = link_to "Вернуться к покупкам", "/"
       = link_to "Оформить заказ", :order_new, :class => "cart-order"
-      %input.cart-order{:type=>"submit", :value=>"Оформить заказ"}
 
     
     /*= button_to "clear cart", :action => :empty_cart*/
