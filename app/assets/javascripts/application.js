@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ajax
 
 $(function () {
+
     var $wrapper = $('#wrapper');
     var $header = $('#header');
     var $footer = $('#footer');
@@ -34,48 +36,50 @@ $(function () {
     updateHtml();
 
 
-
     function initQuantity() {
-    	var $quantity = $('.quantity');
-    	var $plus = $('.plus', $quantity);
-    	var $minus = $('.minus', $quantity);
-    	var $input = $('input[type=text]', $quantity);
+        var $quantity = $('.quantity');
+        var $plus = $('.plus', $quantity);
+        var $minus = $('.minus', $quantity);
+        var $input = $('input[type=text]', $quantity);
 
-		function update() {
-			var $this = $(this);
-			var $input = $this.closest('.quantity').find('input[type=text]');
-			var value = $input.val()*1;
-			var newvalue = value + ($this.hasClass('minus') ? -1 : 1);
+        function update() {
+            var $this = $(this);
+            var $input = $this.closest('.quantity').find('input[type=text]');
+            var value = $input.val() * 1;
+            var newvalue = value + ($this.hasClass('minus') ? -1 : 1);
 
-			if(newvalue < 1) {
-				newvalue = 1;
-			}
+            if (newvalue < 1) {
+                newvalue = 1;
+            }
 
-			$input.val(newvalue);
+            $input.val(newvalue);
 
-
-            //Обновление товара в корзине
-            $this.closest('.cart_update_quantity').submit()
-
-
+            var form = $this.closest('.cart_update_quantity');
+            form.submit();
 
             return false;
-		}
+        }
 
-		$plus.on('click', update);
-		$minus.on('click', update);
-		$input.on('keyup', function(e){
-			if(this.value && this.value < 1) {
-				this.value = 1;
-			}
-		});
+        $input.on('change, keyup', function(){
+            var $this = $(this);
+            var form = $this.closest('.cart_update_quantity');
+            form.submit();
+        });
 
-		$input.on('blur', function(e){
-			if(!this.value) {
-				this.value = 1;
-			}
-		})
-	}
+        $plus.on('click', update);
+        $minus.on('click', update);
+        $input.on('keyup', function (e) {
+            if (this.value && this.value < 1) {
+                this.value = 1;
+            }
+        });
 
-	initQuantity();
+        $input.on('blur', function (e) {
+            if (!this.value) {
+                this.value = 1;
+            }
+        })
+    }
+
+    initQuantity();
 });

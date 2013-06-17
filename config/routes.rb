@@ -24,6 +24,12 @@ Shikocc::Application.routes.draw do
   get '/nggallery/page-20/album-2/:id' => 'albums#show', :as => :album
   #end albums
 
+  #begin ajax
+  get '/ajax/cart' => 'ajax#cart'
+  #end ajax
+
+
+
   #begin news
   resources :news, :only => [:index, :show]
   #end news
