@@ -38,7 +38,7 @@
               %td
                 .price-dose
                   .gray.cart-heading Цена за порцию
-                  = product.price.to_i
+                  %span.price-dose-js= product.price.to_i
                   руб.
               %td.remove-from-cart
                 .cart-heading
@@ -48,12 +48,12 @@
             %td{:colspan=>"4"}
               %hr
               .price-dose-total
-                = product.price.to_i * cart_item[1]
+                %span.price-dose-total-js= product.price.to_i * cart_item[1]
                 руб.
     
     .price-total
       Итоговая стоимость заказа:
-      %span 
+      %span.price-total-js
         = @prices.to_i
         руб.
 
