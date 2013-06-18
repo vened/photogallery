@@ -2,14 +2,17 @@ Shikocc::Application.routes.draw do
 
   #resources :attachments, :only => [:show]
 
-  resources :products, :only => [:index, :show]
+  #resources :products, :only => [:index, :show]
+
+  get '/internet-magazin' => 'products#index', :as => :products
+  get '/internet-magazin/:id' => 'products#show', :as => :product
 
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   post 'update_quantity' => 'products#update_quantity'
   delete 'destroy_item' => 'products#destroy_item'
   get 'cart' => 'products#cart'
-  get 'category/:id' => 'products#category', :as => :category
+  get '/shop/:id' => 'products#category', :as => :category
   resources :feedbacks, :only => [:index, :create]
 
 
