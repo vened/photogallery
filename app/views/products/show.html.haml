@@ -7,28 +7,30 @@
         =image_tag at.file_url(:thumb)
       
     .product-info
-      %h3 Состав
-      %hr
-      .descr 
-        = @product.desc
-      %hr
-      .weight
-        %span.gray Вес порции:
-        = @product.weight.to_i
-        гр.
-      %span.gray Количество порций:
-      %span.quantity
-        .minus -
-        %input.calc{:type=>"text", :value=>"1", :name=>"quantity", :autocomplete=>"off"}
-        .plus +
-      
-      %hr
-      
-      %input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
-      %span.price
-        = @product.price.to_i
-        руб
-  
+      %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@product.id}"}
+        %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
+        %h3 Состав
+        %hr
+        .descr
+          = @product.desc
+        %hr
+        .weight
+          %span.gray Вес порции:
+          = @product.weight.to_i
+          гр.
+        %span.gray Количество порций:
+        %span.quantity
+          .minus -
+          %input.calc{:type=>"text", :value=>"1", :name=>"quantity", :autocomplete=>"off"}
+          .plus +
+
+        %hr
+
+        %input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
+        %span.price
+          = @product.price.to_i
+          руб
+
   .box-right
     .box-gray
       .rounds-top
