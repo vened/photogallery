@@ -8,7 +8,7 @@ class Page < ActiveRecord::Base
   validates :path,
             :uniqueness => true,
             :length => {:minimum => 1},
-            :format => {:with => /\A[a-zA-Z0-9]+\z/, :message => "Допускается только латиница и/или цифры"}
+            :format => {:with => /\A[a-zA-Z0-9\-]+\z/, :message => "Допускается только латиница и/или цифры"}
 
   include TheSortableTree::Scopes
 
