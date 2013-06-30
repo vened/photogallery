@@ -64,19 +64,19 @@
         = f.text_field :first_time
         до
         = f.text_field :last_time
-    -#
-      %dl
-        %dt
-          Способ оплаты
-        %dd
-          = f.text_field :payment
-          
-      %dl.fluid
-        %dt
-          Реквизиты
-        %dd
-          = f.text_field :details
-          
+
+    %dl.fluid.payment_method
+      %dt
+        Способ оплаты
+      %dd
+        = f.select(:payment_method, [['Наличными курьеру', 0], ['Безналичный расчёт', 1]])
+
+    %dl.fluid.payment_details
+      %dt
+        Реквизиты для выставления счёта
+      %dd
+        = f.text_area :details
+
     %dl.fluid.m0
       %dt
         Комментарий к заказу

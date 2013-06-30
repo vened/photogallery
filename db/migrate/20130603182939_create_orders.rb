@@ -11,8 +11,10 @@ class CreateOrders < ActiveRecord::Migration
       t.string :last_time
       t.text :comment
       t.text :data
+      t.text :details
       t.decimal :price
       t.boolean :order_confirm
+      t.boolean :payment_method
 
       t.timestamps
     end

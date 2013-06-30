@@ -99,10 +99,12 @@ ActiveRecord::Schema.define(:version => 20130606182347) do
     t.string   "last_time"
     t.text     "comment"
     t.text     "data"
+    t.text     "details"
     t.decimal  "price"
     t.boolean  "order_confirm"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.boolean  "payment_method"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "pages", :force => true do |t|
@@ -139,8 +141,9 @@ ActiveRecord::Schema.define(:version => 20130606182347) do
     t.decimal  "price"
     t.decimal  "weight"
     t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "path",        :limit => nil
   end
 
   create_table "sessions", :force => true do |t|

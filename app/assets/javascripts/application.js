@@ -83,3 +83,24 @@ $(function () {
 
     initQuantity();
 });
+
+$(document).ready(function () {
+    var payment_details = $(".payment_details"),
+        order_payment_method = $("#order_payment_method");
+
+    payment_details.hide();
+
+    if (order_payment_method.val() == 1){
+        payment_details.show();
+    }
+
+    order_payment_method.on("change", function(){
+        if ($(this).val() == 1){
+            payment_details.show();
+        }else{
+            payment_details.hide();
+        }
+    });
+
+
+});
