@@ -2,7 +2,7 @@
   - products.each do |product|
     %li
       .photo
-        -if product.attachments
+        -if product.attachments.find_last
           = image_tag product.attachments.find_last.file_url(:thumb)
       .product-info
         %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{product.id}"}
