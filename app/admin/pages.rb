@@ -74,7 +74,7 @@ ActiveAdmin.register Page do
       #save_to_disk
 
       if @page.update_attributes(params[:page])
-        redirect_to admin_page_url, notice: 'страница успешно обновлена'
+        render :action => 'show'
       else
         render :action => 'edit'
       end
