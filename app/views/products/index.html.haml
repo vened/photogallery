@@ -17,13 +17,14 @@
         
         %ul.products-nav-list.clearfix
           -@categories.each do |category|
-            %li
-              = link_to category.title, category
+            -if category.products.length > 0
+              %li
+                = link_to category.title, category
           
 
 
     -@categories.each do |category|
-      -if category.products
+      -if category.products.length > 0
         .text-del.mt30
           %h2
             %span
