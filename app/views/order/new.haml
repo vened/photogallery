@@ -2,7 +2,7 @@
   .breadcrumbs
     = link_to 'Главная', '/'
     &nbsp;|&nbsp;
-    = link_to 'Меню', '/products'
+    =link_to 'Интернет-магазин', products_path
     &nbsp;|&nbsp;
     = link_to 'Корзина', '/cart'
     &nbsp;|&nbsp;
@@ -12,6 +12,8 @@
   %h1 Оформление заказа
 
   .box-main
+
+
     = render 'form'
     
   .box-right
@@ -21,13 +23,9 @@
         %h3 Товары в вашей корзине
         %hr
         %ul
-          - @prices = 0
-          - @order_items = {}
           -for cart_item in @cart.items
             -if cart_item
               - product = Product.find(cart_item[0])
-              - @prices += product.price * cart_item[1]
-              - @order_items[cart_item[0]] = cart_item[1]
               %li
                 .price
                   = product.price.to_i * cart_item[1]
@@ -37,12 +35,28 @@
                 .dose
                   = cart_item[1]
                   порций
-        %hr
-        .price.price-total-small
-          = @prices.to_i
-          руб.
-          
-        Итоговая стоимость:
+        -if @prices < 5000
+          %hr
+          .price.price-total-small
+            = @prices
+            руб.
+          Стоимость заказа:
+          %hr
+          .price.price-total-small
+            = 300
+            руб.
+          %span{:style => "width:120px;display: inline-block;"}Стоимость доставки (бесплатно при заказе от 5000 руб.):
+          %hr
+          .price.price-total-small
+            = @prices + 300
+            руб.
+          Итоговая стоимость:
+        -else
+          %hr
+          .price.price-total-small
+            = @prices.to_i
+            руб.
+          Итоговая стоимость:
 
 
       .rounds-bottom

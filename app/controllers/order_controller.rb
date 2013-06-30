@@ -5,6 +5,11 @@ class OrderController < ApplicationController
   def new
     @cart = session[:cart]
     @order = Order.new
+    @prices = 0
+    for item in @cart.items
+      product = Product.find(item[0])
+      @prices = @prices + product.price.to_i * item[1]
+    end
   end
 
   def create
