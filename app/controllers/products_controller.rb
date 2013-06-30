@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def category
     @category = Category.find_by_path(params[:id])
-    @products = Product.where("category_id == #{@category.id}").order("created_at DESC")
+    @products = Product.where("category_id = #{@category.id}").order("created_at DESC")
   end
 
   def show
