@@ -15,6 +15,7 @@ ActiveAdmin.register Product do
     column "Цена", :price, :sortable => :price
     column "Вес", :weight, :sortable => :weight
     column "Категория", :category, :sortable => :weight
+    column "Url", :path, :sortable => :false
     actions :defaults => true
   end
 
@@ -27,6 +28,7 @@ ActiveAdmin.register Product do
       f.input :metakey, :label => "Metakey"
       f.input :metadesc, :label => "Metadesc"
       f.input :category, :label => "Категория"
+      f.input :path, :label => "Url"
       f.has_many :attachments, :through => Product do |s|
         s.input :file, :as => :file, :label => "Фото",:hint => s.object.file.nil? ? s.template.content_tag(:span, "Нет фото") : s.template.image_tag(s.object.file_url(:thumb))
         s.input :_destroy, :as => :boolean, :label => "Удалить"
@@ -44,11 +46,40 @@ ActiveAdmin.register Product do
         row("metakey") { product.metakey }
         row("Metadesc") { product.metadesc }
         row("Категория") { product.category }
+        row("Url") { product.path }
         product.attachments.each do |at|
           row ("Photo") { image_tag(at.file_url(:thumb)) }
         end
       end
     end
+  end
+
+  controller do
+
+    def show
+      @product = Product.find_by_path(params[:id])
+    end
+
+    def edit
+      @product = Product.find_by_path(params[:id])
+    end
+
+    def update
+      @product = Product.find_by_path(params[:id])
+      if @product.update_attributes(params[:product])
+        redirect_to admin_product_url, notice: 'Товар успешно обновлен'
+      else
+        render :action => 'edit'
+      end
+    end
+
+    def destroy
+      @product = Product.find_by_path(params[:id])
+      @product.destroy
+      flash[:alert] = "Товар успешно удален"
+      redirect_to admin_products_url
+    end
+
   end
 
 end

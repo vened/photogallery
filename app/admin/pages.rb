@@ -89,7 +89,7 @@ ActiveAdmin.register Page do
       @page = Page.find_by_path(params[:id])
 
       @page.destroy
-      File.delete(Rails.root + "public/#{@page.path}.html")
+      #File.delete(Rails.root + "public/#{@page.path}.html")
 
       flash[:alert] = "Страница успешно удалена"
       redirect_to admin_pages_url

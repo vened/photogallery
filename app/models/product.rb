@@ -1,7 +1,11 @@
 class Product < ActiveRecord::Base
-  attr_accessible :desc, :metadesc, :metakey, :price, :title, :weight, :attachments_attributes, :category_id
+  attr_accessible :desc, :metadesc, :metakey, :price, :title, :weight, :attachments_attributes, :category_id, :path
 
   has_many :attachments, :dependent => :destroy
+
+  def to_param
+    "#{path}"
+  end
 
   belongs_to :category
 

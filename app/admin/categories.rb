@@ -3,6 +3,35 @@ ActiveAdmin.register Category do
 
   menu :label => "Категории продуктов"
 
+  controller do
+
+    def show
+      @category = Category.find_by_path(params[:id])
+    end
+
+    def edit
+      @category = Category.find_by_path(params[:id])
+    end
+
+    def update
+      @category = Category.find_by_path(params[:id])
+      if @category.update_attributes(params[:category])
+        redirect_to admin_category_url, notice: 'Категория успешно обновлена'
+      else
+        render :action => 'edit'
+      end
+    end
+
+    def destroy
+      @category = Category.find_by_path(params[:id])
+      @category.destroy
+      flash[:alert] = "Категория успешно удалена"
+      redirect_to admin_categories_url
+    end
+
+  end
+
+
   #index do
   #  selectable_column
   #  column "Название", :title, :sortable => :title

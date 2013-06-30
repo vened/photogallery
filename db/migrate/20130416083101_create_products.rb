@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.text :desc
       t.string :metakey
       t.string :metadesc
+      t.string :path
       t.decimal :price, :scale => 2
       t.decimal :weight
       t.references :category
