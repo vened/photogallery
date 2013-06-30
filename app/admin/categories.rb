@@ -3,6 +3,11 @@ ActiveAdmin.register Category do
 
   menu :label => "Категории продуктов"
 
+
+  action_item :only => :show do
+    link_to "New Category", new_admin_category_path
+  end
+
   controller do
 
     def show
