@@ -23,15 +23,16 @@
 
 
     -@categories.each do |category|
-      .text-del.mt30
-        %h2
-          %span
-            = link_to category.title, category
-        %hr
-      = render :partial => 'products', :object => category.products.first(3)
+      -if category.products
+        .text-del.mt30
+          %h2
+            %span
+              = link_to category.title, category
+          %hr
+        = render :partial => 'products', :object => category.products.first(3)
 
-      .products-more
-        = link_to "Все блюда раздела «#{category.title}»", category
+        .products-more
+          = link_to "Все блюда раздела «#{category.title}»", category
 
 
   = render :partial => 'shared/product_right_col'
