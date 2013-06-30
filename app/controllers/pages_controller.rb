@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   include PagesHelper
 
   def index
-    @pages = Page.nested_set.all
+    #@pages = Page.nested_set.all
+    @categories = Category.all
   end
 
   def show
