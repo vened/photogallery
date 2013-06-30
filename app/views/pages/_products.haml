@@ -6,7 +6,8 @@
         .photo
           .product-category
             = link_to category.title, category
-          = image_tag @prod.attachments.find_last.file_url(:thumb)
+          -if @prod.attachments.find_last
+            = image_tag @prod.attachments.find_last.file_url(:thumb)
         .product-info
           %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@prod.id}"}
             %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
