@@ -16,18 +16,20 @@
         %hr
         
         %ul.products-nav-list.clearfix
-          -@products.group_by(&:category).each do |category, products|
+          -@categories.each do |category|
             %li
               = link_to category.title, category
           
-  
-    -@products.group_by(&:category).each do |category, products|
+
+
+    -@categories.each do |category|
       .text-del.mt30
         %h2
           %span
             = link_to category.title, category
         %hr
-      = render :partial => 'products', :object => products
+      = render :partial => 'products', :object => category.products.first(3)
+
       .products-more
         = link_to "Все блюда раздела «#{category.title}»", category
 
