@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'sqlite3'
+gem 'activerecord-postgresql-adapter', '~> 0.0.1'
 gem 'haml-rails'
 gem 'activeadmin'
 gem 'cells'
