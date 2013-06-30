@@ -29,6 +29,7 @@ Shikocc::Application.routes.draw do
 
   #begin ajax
   get '/ajax/cart' => 'ajax#cart'
+  get '/ajax/cart_price' => 'ajax#cart_price'
   #end ajax
 
 

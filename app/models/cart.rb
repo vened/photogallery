@@ -20,11 +20,16 @@ class Cart
 
   def update_product(prod)
     if prod[1] < 1
-      pr = { prod[0] => 1 }
+      pr = {prod[0] => 1}
     else
-      pr = { prod[0] => prod[1] }
+      pr = {prod[0] => prod[1]}
     end
     @items.update(pr)
+  end
+
+  def products_cart(cart)
+    product_keys = cart.items.keys
+    Product.find(product_keys)
   end
 
 end

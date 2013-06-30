@@ -8,62 +8,61 @@
       Корзина
 
 .box-container.box-main-container.page-cart
+
   -if @cart.items.size == 0
     %h1 Ваша корзина пуста
   -else
     %h1 Ваша корзина
     .cart-box
       %table
-        - @prices = 0
-        -for cart_item in @cart.items
+        -for item in @products
           %tr
-            -if cart_item
-              -product = Product.find(cart_item[0])
-              - @prices += product.price * cart_item[1]
-              %td{:rowspan=>"2"}
-                .photo
-                  = image_tag product.attachments.find_last.file_url(:thumb)
-              %td
-                .cart-heading.cart-title
-                  = link_to product.title, product
-                .gray= product.category.title
-              %td
-                %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{cart_item[0]}", :data => {:remote => "true"} }
-                  %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
-                  .quantity.m0
-                    .gray.cart-heading Количество порций
-                    .minus -
-                    %input.calc{:type=>"text", :value=> cart_item[1], :name=>"quantity", :autocomplete=>"off"}
-                    .plus +
-              %td
-                .price-dose
-                  .gray.cart-heading Цена за порцию
-                  %span.price-dose-js= product.price.to_i
-                  руб.
-              %td.remove-from-cart
-                .cart-heading
-                %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{cart_item[0]}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}}
-
+            %td{:rowspan=>"2"}
+              .photo
+                = image_tag item.attachments.find_last.file_url(:thumb)
+            %td
+              .cart-heading.cart-title
+                = link_to item.title, item
+              .gray= item.category.title
+            %td
+              %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{item.id}", :data => {:remote => "true"} }
+                %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
+                .quantity.m0
+                  .gray.cart-heading Количество порций
+                  .minus -
+                  %input.calc{:type=>"text", :value=> @cart.items[item.id], :name=>"quantity", :autocomplete=>"off"}
+                  .plus +
+            %td
+              .price-dose
+                .gray.cart-heading Цена за порцию
+                %span.price-dose-js= item.price.to_i
+                руб.
+            %td.remove-from-cart
+              .cart-heading
+              %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{item.id}", :data => {:method=>"delete", :confirm=>"Are you sure you want to delete this?"}}
           %tr
             %td{:colspan=>"4"}
               %hr
               .price-dose-total
-                %span.price-dose-total-js= product.price.to_i * cart_item[1]
+                %span.price-dose-total-js= item.price.to_i * @cart.items[item.id]
                 руб.
+
     
     .price-total
       Итоговая стоимость заказа:
       %span.price-total-js
-        = @prices.to_i
+        = @prices
         руб.
-
     %hr
-
     .cart-getorder
       = link_to "Вернуться к покупкам", "/"
-      = link_to "Оформить заказ", :order_new, :class => "cart-order"
+      %span.js-cart-getorder
+        -if @prices >= 2500
+          = link_to "Оформить заказ", :order_new, :class => "cart-order"
+        -else
+          &nbsp;
+          %b Оформление заказа не возможно, минимальная сумма заказа 2500 руб.
 
-    
-    /*= button_to "clear cart", :action => :empty_cart*/
-    
-    %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
+
+
+-#= button_to "clear cart", :action => :empty_cart

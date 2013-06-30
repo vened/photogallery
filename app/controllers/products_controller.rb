@@ -44,6 +44,12 @@ class ProductsController < ApplicationController
 
   def cart
     @cart = session[:cart]
+    @products = @cart.products_cart(@cart)
+    @prices = 0
+    for item in @cart.items
+      product = Product.find(item[0])
+      @prices = @prices + product.price.to_i * item[1]
+    end
   end
 
 
