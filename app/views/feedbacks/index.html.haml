@@ -1,15 +1,5 @@
-%h1 Отзывы
+%h1 Обратная связь
 
-%table
-  %tr
-    %th Username
-    %th Text
-
-  - @feedbacks.each do |feedback|
-    %tr
-      %td= feedback.username
-      %td= feedback.text
-%br
 
 = render 'form'
 
