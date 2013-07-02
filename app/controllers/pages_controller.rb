@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
     #@pages = Page.nested_set.all
-    @categories = Category.all
+    @cat = Category.all
   end
 
   def show

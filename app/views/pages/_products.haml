@@ -1,5 +1,5 @@
 %ul.cols-products
-  - @categories.each do |category|
+  - @cat.each do |category|
     -if category.products.length > 0
       - @prod = Product.find_by_category_id(category.id)
       %li
