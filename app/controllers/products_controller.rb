@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_path(params[:id])
+    @all_prod = Product.last(3)
     @images = @product.attachments
     @metakey = @product.metakey
     @metadesc = @product.metadesc

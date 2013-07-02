@@ -69,6 +69,7 @@
       %h2
         %span С этим блюдом обычно покупают
       %hr
+    = render :partial => 'products', :object => @all_prod
 
   .box-right
     = render_cell :news, :show
