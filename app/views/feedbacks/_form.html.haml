@@ -6,14 +6,28 @@
         - @feedback.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :username, "Ваше имя"
-    = f.text_field :username
-  .field
-    = f.label :email, "E-mail"
-    = f.text_field :email
-  .field
-    = f.label :text, "Текст отзыва"
-    = f.text_area :text
-  .actions
-    = f.submit 'Сохранить'
+  .cart-box.clearfix
+    %dl.fluid
+      %dt
+        = f.label :username, "Ваше имя"
+        %span.star *
+      %dd
+        = f.text_field :username
+        
+    -#
+      %dl.fluid
+        %dt
+          = f.label :email, "E-mail"
+          %span.star *
+        %dd
+          = f.text_field :email
+
+    %dl.fluid
+      %dt
+        = f.label :text, "Ваш отзыв"
+        %span.star *
+      %dd
+        = f.text_area :text
+      
+  .cart-order-confirm
+    %input.cart-confirm{:type=>"submit", :value=>"Отправить сообщение"}

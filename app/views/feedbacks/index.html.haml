@@ -1,6 +1,16 @@
-%h1 Обратная связь
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    -#= link_to 'Портфолио', albums_path
+    %span Обратная связь
 
 
-= render 'form'
-
--#= link_to 'Написать отзыв', new_feedback_path
+.box-container.box-main-container.page-cart
+  .box-main
+    %h1 Обратная связь
+    
+    
+    = render 'form'
+    
+    -#= link_to 'Написать отзыв', new_feedback_path

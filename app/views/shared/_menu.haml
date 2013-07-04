@@ -23,20 +23,24 @@
     %li.del
       %span
         &bull;
-    %li{:class => "#{'selected' if @page.parent_path == 'dostavka-kanape' if @page}"}
-      %a{:href => "/dostavka-kanape/"}
+        
+    -#
+      %li{:class => "#{'selected' if @page.parent_path == 'dostavka-kanape' if @page}"}
+        %a{:href => "/dostavka-kanape/"}
+          %span
+            Доставка канапе
+      %li.del
         %span
-          Доставка канапе
-    %li.del
-      %span
-        &bull;
-    %li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
-      %a{:href => "/clients"}
+          &bull;
+      
+      %li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
+        %a{:href => "/clients"}
+          %span
+            Наши клиенты
+      %li.del
         %span
-          Наши клиенты
-    %li.del
-      %span
-        &bull;
+          &bull;
+    
     %li{:class => "#{'selected' if @contacts }"}
       %a{:href => "/contacts"}
         %span
