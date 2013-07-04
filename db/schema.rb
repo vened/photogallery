@@ -117,9 +117,8 @@ ActiveRecord::Schema.define(:version => 20130606182347) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.boolean  "include_text_page", :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
@@ -138,12 +137,12 @@ ActiveRecord::Schema.define(:version => 20130606182347) do
     t.text     "desc"
     t.string   "metakey"
     t.string   "metadesc"
+    t.string   "path"
     t.decimal  "price"
     t.decimal  "weight"
     t.integer  "category_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "path",        :limit => nil
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -155,15 +154,5 @@ ActiveRecord::Schema.define(:version => 20130606182347) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "text_pages", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "meta_key"
-    t.string   "meta_desc"
-    t.integer  "pages_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end
