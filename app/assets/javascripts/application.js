@@ -11,11 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require slimbox2
 //= require jquery_ujs
 //= require ajax
 
 $(function () {
-
     var $wrapper = $('#wrapper');
     var $header = $('#header');
     var $footer = $('#footer');
@@ -80,8 +80,21 @@ $(function () {
             }
         })
     }
+    
+    function initSlimbox() {
+		jQuery(function(){
+			jQuery('.size-thumbnail').parent().add($('.shutterset_')).slimbox({
+		        overlayOpacity: 0.6,
+		        captionAnimationDuration: 1,
+		        counterText: "Image {x} sur {y}",
+		        closeKeys: [27, 70],
+		        nextKeys: [39, 83]
+			});
+		});
+    }
 
     initQuantity();
+    initSlimbox();
 });
 
 $(document).ready(function () {

@@ -1,15 +1,55 @@
-#footer.clearfix
-  .pull-left
-    .copyright © Шико Catering Club. Все права защищены.
-    .search-block
-      %form
-        %input{:name => "", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
-        %input{:name => "", :value => "", :type => "image", :src => "/assets/icon_search.png"}
+#footer
+  .second-nav.clearfix
+    %ul
+      %li
+        = link_to "Свадебный фуршет", "/svadebnyj-furshet/"
+      %li
+        = link_to "Организация фуршета", "/organizaciya-fursheta/"
+      %li
+        = link_to "Фото Фуршетов", "/fotografii-furshetov/"
+      %li
+        = link_to "Выездной фуршет", "/vyezdnoj-furshet/"
+      %li
+        = link_to "Банкет или фуршет", "/banket-furshet/"
+      %li
+        = link_to "Закуски для фуршета", "/zakuski-dlya-fursheta/"
         
-  .pull-right
-    .social-block
-      .social-text Мы в социальных сетях:
-      %a{:href => "", :class => "icon-social icon-social-fb"}
-      %a{:href => "", :class => "icon-social icon-social-vk"}
-      %a{:href => "", :class => "icon-social icon-social-tw"}
-      %a{:href => "", :class => "icon-social icon-social-ok"}
+    %ul
+      %li
+        = link_to "Свадебный кейтеринг", "/service/wedding-kathering/"
+      %li
+        = link_to "Детские праздники", "/service/kids/"
+      %li
+        = link_to "Кухня", "/cuisine/"
+      %li
+        = link_to "Кондитерское производство", "/candy/"
+      %li
+        = link_to "Пирамида из шампанского", "/service/piramida-iz-shampanskogo-2/"
+        
+    %ul
+      %li
+        = link_to "Доставка канапе", "/dostavka-kanape/"
+      %li
+        = link_to "Кофе-брейк", "/kofe-brejk/"
+      %li
+        = link_to "Аренда персонала", "/arenda-oficianta/"
+      %li
+        = link_to "Экспресс-кейтеринг", "/express-catering/"
+      %li
+        = link_to "Дополнительные возможности", "/additional/"
+  
+  .clearfix
+    .pull-left
+      .copyright © Шико Catering Club. Все права защищены.
+      .search-block
+        %form
+          %input{:name => "", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
+          %input{:name => "", :value => "", :type => "image", :src => "/assets/icon_search.png"}
+  -#
+    .pull-right
+      .social-block
+        .social-text Мы в социальных сетях:
+        %a{:href => "", :class => "icon-social icon-social-fb"}
+        %a{:href => "", :class => "icon-social icon-social-vk"}
+        %a{:href => "", :class => "icon-social icon-social-tw"}
+        %a{:href => "", :class => "icon-social icon-social-ok"}
