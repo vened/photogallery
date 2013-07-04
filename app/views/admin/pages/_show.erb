@@ -9,8 +9,14 @@
           <td><%= raw @page.text %></td>
         </tr>
         <tr class="row">
-          <th>URL</th>
-          <td><%= @page.parent_path %></td>
+          <th>URL страницы</th>
+          <td>
+            <a href="/<%= @page.parent_path %>"><%= @page.parent_path %></a>
+          </td>
+        </tr>
+        <tr class="row">
+          <th>SEO, Title</th>
+          <td><%= @page.meta_title %></td>
         </tr>
         <tr class="row">
           <th>SEO, ключевые слова</th>

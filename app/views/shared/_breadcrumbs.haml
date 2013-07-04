@@ -1,6 +1,10 @@
 .box-container
   .breadcrumbs
     = link_to 'Главная', '/'
+    -if @page.parent_id
+      - @parent_page = Page.find(@page.parent_id)
+      &nbsp;|&nbsp;
+      %a{ :href=> "/#{@parent_page.parent_path}"}= @parent_page.title
     &nbsp;|&nbsp;
     %span
       = @page.title
