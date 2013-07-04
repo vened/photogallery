@@ -1,6 +1,15 @@
 # encoding: utf-8
 module PagesHelper
 
+  def title
+    base_title = "Шико Catering Club"
+    if @meta_title.nil?
+      base_title
+    else
+      "#{@meta_title} | #{base_title}"
+    end
+  end
+
   def metakey
     base_meta_key = "кейтеринг, выездной фуршет, фуршет"
     if @metakey.nil?

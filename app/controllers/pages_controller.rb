@@ -8,7 +8,9 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by_path(params[:id])
+    @meta_title = @page.meta_title
     @metakey = @page.meta_key
     @metadesc = @page.meta_desc
   end
+
 end
