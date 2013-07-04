@@ -35,7 +35,7 @@
                 .dose
                   = cart_item[1]
                   порций
-        -if @prices < 5000
+        -if @prices.to_i < 5000
           %hr
           .price.price-total-small
             = @prices
@@ -48,7 +48,7 @@
           %span{:style => "width:120px;display: inline-block;"}Стоимость доставки (бесплатно при заказе от 5000 руб.):
           %hr
           .price.price-total-small
-            = @prices + 300
+            = @prices.to_i + 300
             руб.
           Итоговая стоимость:
         -else

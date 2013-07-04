@@ -2,17 +2,24 @@
 
   - if @order.errors.any?
     #error_explanation
+      %h3 Возникли следующие ошибки при оформлении заказа:
       %ul
-        - @order.errors.full_messages.each do |msg|
-          %li= msg
+        %li= @order.errors.messages[:username].join
+        %li= @order.errors.messages[:email].join
+        %li= @order.errors.messages[:phone].join
+        %li= @order.errors.messages[:address].join
+        %li= @order.errors.messages[:date].join
+        %li= @order.errors.messages[:first_time].join
+        %li= @order.errors.messages[:last_time].join
+
 
 
   .cart-box.clearfix
     %input{:type=>"hidden", :name=>"order[data]", :value=> "#{@cart.items.to_json}"}
-    -if @prices < 5000
-      %input{:type=>"hidden", :name=>"order[price]", :value=> @prices + 300}
+    -if @prices.to_i < 5000
+      %input{:type=>"hidden", :name=>"order[price]", :value=> @prices.to_i + 300}
     -else
-      %input{:type=>"hidden", :name=>"order[price]", :value=> @prices}
+      %input{:type=>"hidden", :name=>"order[price]", :value=> @prices.to_i}
 
     %dl
       %dt

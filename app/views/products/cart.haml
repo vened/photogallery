@@ -19,7 +19,8 @@
           %tr
             %td{:rowspan=>"2"}
               .photo
-                = image_tag item.attachments.find_last.file_url(:thumb)
+                -if item.attachments.find_last
+                  = image_tag item.attachments.find_last.file_url(:thumb)
             %td
               .cart-heading.cart-title
                 = link_to item.title, item
