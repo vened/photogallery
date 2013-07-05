@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def index
     #@pages = Page.nested_set.all
     @cat = Category.all
-    @meta_title = "О компании"
   end
 
   def show

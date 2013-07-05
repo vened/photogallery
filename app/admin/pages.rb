@@ -75,7 +75,8 @@ ActiveAdmin.register Page do
       #save_to_disk
 
       if @page.update_attributes(params[:page])
-        render :action => 'show'
+        redirect_to admin_page_url
+        #render :action => 'show'
       else
         render :action => 'edit'
       end
