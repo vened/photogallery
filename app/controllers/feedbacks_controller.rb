@@ -10,7 +10,8 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
     @feedback = Feedback.new(params[:feedback])
     if @feedback.save
-      redirect_to feedbacks_url
+      redirect_to feedbacks_url, notice: "Ваш отзыв успешно отправлен"
+      FeedbackMailer.feedback_site(@feedback).deliver
     else
       render :action => 'index'
     end
