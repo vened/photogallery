@@ -18,8 +18,12 @@
 %h3
   Стоимость заказа
   %b
-    = @order.price.to_i
-    руб.
+    -if @prices.to_i < 5000
+      = @prices.to_i + 300
+      руб.
+    -else
+      = @prices.to_i
+      руб.
 
 %p
   Имя:

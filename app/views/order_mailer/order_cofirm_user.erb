@@ -9,16 +9,37 @@
 
 <h3>Номер вашего заказа #<b><%= @order.id %></b></h3>
 
-<h3>Стоимость заказа <b><%= @order.price.to_i %> руб.</b></h3>
+<h3>Стоимость заказа
+  <b>
+    <%- @prices = 0 %>
+    <%- for cart_item in JSON.parse(@order.data) %>
+        <%- product = Product.find(cart_item[0]) %>
+        <%- @prices = @prices + product.price.to_i * cart_item[1] %>
+    <% end %>
+    <%- if @prices.to_i < 5000 %>
+        <%= @prices.to_i + 300 %>
+        руб.
+    <% else %>
+        <%= @prices.to_i %>
+        руб.
+    <% end %>
+  </b>
+</h3>
 
 <h3>Детали заказа</h3>
 
 <p>Имя: <b><%= @order.surname %> <%= @order.username %></b></p>
+
 <p>Электронная почта: <b><%= @order.email %></b></p>
+
 <p>Телефон для связи: <b><%= @order.phone %></b></p>
+
 <p>Адрес доставки: <b><%= @order.address %></b></p>
+
 <p>Дата доставки: <b><%= @order.date %></b></p>
+
 <p>Время доставки: <b>c <%= @order.first_time %> до <%= @order.last_time %></b></p>
+
 <p>Комментарий к заказу: <b><%= @order.comment %></b></p>
 
 <table>

@@ -15,7 +15,6 @@ class OrderController < ApplicationController
   def create
     @cart = session[:cart]
     @order = Order.new(params[:order])
-
     if @order.save
       session[:cart] = nil
       redirect_to :action => :show, :id => @order.id
@@ -28,6 +27,11 @@ class OrderController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @prices = 0
+    for item in JSON.parse(@order.data)
+      product = Product.find(item[0])
+      @prices = @prices + product.price.to_i * item[1]
+    end
   end
 
 
