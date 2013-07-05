@@ -4,13 +4,18 @@ class News < ActiveRecord::Base
 
   validates :title, :length => {:minimum => 1}
   validates :desc, :length => {:minimum => 10}
+  validates :path, :length => {:minimum => 1}
 
   has_many :photos, :dependent => :destroy
 
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
   def to_param
-    "#{path}"
+    if path.nil?
+      "#{id}"
+    else
+      "#{path}"
+    end
   end
 
 end

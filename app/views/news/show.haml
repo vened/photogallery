@@ -10,12 +10,13 @@
   .box-main
 
     %h1= @news.title
-    
-    %ul.cols.images
-      -@photos.each do |photo|
-        %li
-          =link_to photo.file_url(:large) do
-            =image_tag photo.file_url(:thumb)
+
+    -if @news.photos.find_last
+      %ul.cols.images
+        -@photos.each do |photo|
+          %li
+            =link_to photo.file_url(:large) do
+              =image_tag photo.file_url(:thumb)
     
     %p= @news.desc
     

@@ -12,7 +12,8 @@
       - @news_all.each do |news|
         %li
           .photo
-            = image_tag news.photos.find_last.file_url(:thumb)
+            -if news.photos.find_last
+              = image_tag news.photos.find_last.file_url(:thumb)
           
           .product-info
             .title
