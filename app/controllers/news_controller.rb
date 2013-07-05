@@ -6,7 +6,7 @@ class NewsController < ApplicationController
   end
 
   def show
-    @news = News.find(params[:id])
+    @news = News.find_by_path(params[:id])
     @photos = @news.photos
     @meta_title = @news.title
   end
