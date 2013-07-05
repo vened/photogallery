@@ -1,10 +1,12 @@
 # encoding: utf-8
 class News < ActiveRecord::Base
-  attr_accessible :title, :desc, :meta_key, :meta_desc, :path, :photos_attributes
+  attr_accessible :title, :desc, :meta_key, :meta_desc, :path, :photos_attributes, :created_at
 
   validates :title, :length => {:minimum => 1}
   validates :desc, :length => {:minimum => 10}
-  validates :path, :length => {:minimum => 1}
+  validates :path,
+            :uniqueness => true,
+            :length => {:minimum => 1}
 
   has_many :photos, :dependent => :destroy
 

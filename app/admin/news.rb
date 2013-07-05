@@ -8,6 +8,7 @@ ActiveAdmin.register News do
       f.input :title, :label => "Заголовок"
       f.input :desc, :label => "Текст"
       f.input :path, :label => "URL"
+      #f.input :created_at, :label => "Дата"
       f.has_many :photos, :through => Photo do |s|
         s.input :file, :as => :file, :label => "Фото", :hint => s.object.file.nil? ? s.template.content_tag(:span, "Нет фото") : s.template.image_tag(s.object.file_url(:thumb))
         s.input :_destroy, :as => :boolean, :label => "Удалить"

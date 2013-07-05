@@ -18,7 +18,7 @@
             =link_to photo.file_url(:large) do
               =image_tag photo.file_url(:thumb)
     
-    %p= @news.desc
+    %p= raw @news.desc
     
   .box-right
     = render_cell :news, :show
