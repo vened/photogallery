@@ -2,6 +2,12 @@ class Category < ActiveRecord::Base
   attr_accessible :title, :description, :path
   has_many :products
 
+  validates :title, :length => {:minimum => 1}
+  validates :path,
+            :uniqueness => true,
+            :length => {:minimum => 1}
+
+
   def to_param
     "#{path}"
   end

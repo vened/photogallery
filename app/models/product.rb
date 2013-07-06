@@ -3,6 +3,12 @@ class Product < ActiveRecord::Base
 
   has_many :attachments, :dependent => :destroy
 
+  validates :title, :length => {:minimum => 1}
+  validates :path,
+            :uniqueness => true,
+            :length => {:minimum => 1}
+
+
   def to_param
     "#{path}"
   end
