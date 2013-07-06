@@ -2,7 +2,7 @@
 class Order < ActiveRecord::Base
 
   attr_accessible :username, :surname, :email, :phone, :address, :date, :first_time, :last_time, :comment, :data,
-                  :price, :payment_method, :details
+                  :price, :payment_method, :details, :order_confirm
 
   attr_reader :items
 

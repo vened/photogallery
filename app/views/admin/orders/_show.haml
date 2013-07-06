@@ -1,0 +1,66 @@
+.panel
+  %h3
+    Заказ №
+    = @order.id
+    -if @order.order_confirm
+      %b{:style=>"color:green"} (Выполнен)
+    -else
+      %b{:style=>"color:red"} (Новый)
+  .panel_contents
+    .attributes_table
+      %table
+        %tr.row
+          %th ФИО
+          %td
+            = @order.username
+            = @order.surname
+        %tr.row
+          %th Телефон
+          %td= @order.phone
+        %tr.row
+          %th Email
+          %td= @order.email
+        %tr.row
+          %th Адрес
+          %td= @order.address
+        %tr.row
+          %th Дата доставки
+          %td
+            = @order.date
+            (c
+            = @order.first_time
+            до
+            = @order.last_time
+            )
+        %tr.row
+          %th Комментарий к заказу
+          %td= @order.comment
+        %tr.row
+          %th Стоимость (руб.)
+          %td= @order.price.to_i
+        -if @order.payment_method
+          %tr.row
+            %th Реквизиты к выставлению счёта
+            %td= @order.details
+
+.panel{:style => "margin-top:30px"}
+  %h3 Содержимое заказа
+  .panel_contents
+    .attributes_table
+      %table{:style=>"width:auto"}
+        %tr
+          %td Товар
+          %td Изображение
+          %td Количество
+          %td Стоимость за единицу
+          %td Общая стоимость
+        -for cart_item in JSON.parse(@order.data)
+          %tr
+            -if cart_item
+              -product = Product.find(cart_item[0])
+              %td= link_to product.title, product, :target => '_blank'
+              -if product.attachments.find_last
+                %td= image_tag product.attachments.find_last.file_url(:mini)
+              %td= cart_item[1]
+              %td= product.price.to_i
+              %td= product.price.to_i * cart_item[1]

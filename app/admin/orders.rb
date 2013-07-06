@@ -5,10 +5,15 @@ ActiveAdmin.register Order do
   config.batch_actions = false
 
   filter :username, :label => "asdcd"
+  filter :order_confirm, :label => "Выполнены"
 
 
   index do
     render "index"
+  end
+
+  show do
+    render "show"
   end
 
 

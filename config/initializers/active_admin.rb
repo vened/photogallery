@@ -24,8 +24,8 @@ ActiveAdmin.setup do |config|
   # Set the default namespace each administration resource
   # will be added to.
   #
-  # eg:
-  #   config.default_namespace = :hello_world
+  #eg:
+  #  config.default_namespace = :hello_world
   #
   # This will create resources in the HelloWorld module and
   # will namespace routes to /hello_world/*
@@ -100,7 +100,7 @@ ActiveAdmin.setup do |config|
   # Admin comments are enabled by default.
   #
   # Default:
-  # config.allow_comments = true
+  config.allow_comments = false
   #
   # You can turn them on and off for any given namespace by using a
   # namespace config block.

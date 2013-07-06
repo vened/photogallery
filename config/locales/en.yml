@@ -35,6 +35,7 @@ en:
 
 
   active_admin:
+    order: "Заказ"
     dashboard: "Панель управления"
     dashboard_welcome:
       welcome: "Добро пожаловать в Active Admin. Это стандартная страница управления сайтом."

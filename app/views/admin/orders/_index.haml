@@ -9,6 +9,7 @@
       %th Стоимость(руб.)
       %th Вариант оплаты
       %th Дата
+      %th Состояние заказа
       %th
 
   %tbody
@@ -28,6 +29,11 @@
           -else
             наличными курьеру
         %td= raw I18n.l item.created_at, :format => :day
+        %td
+          -if item.order_confirm
+            %b{:style=>"color:green"} Выполнен
+          -else
+            %b{:style=>"color:red"} Новый
         %td
           =link_to "Открыть", admin_order_path(item)
           &nbsp;
