@@ -1,0 +1,36 @@
+%table#index_table_orders.index_table.index{:cellspacing => "0", :cellpadding => "0", :border => "0",  :paginator => "true"}
+  %thead
+    %tr
+      %th №
+      %th ФИО
+      %th Телефон
+      %th Email
+      %th Адрес
+      %th Стоимость(руб.)
+      %th Вариант оплаты
+      %th Дата
+      %th
+
+  %tbody
+    -@orders.each do |item|
+      %tr{:class => "order_#{item.id}"}
+        %td= item.id
+        %td
+          = item.username
+          = item.surname
+        %td= item.phone
+        %td= item.email
+        %td= item.address
+        %td= item.price.to_i
+        %td
+          -if item.payment_method
+            безналичный расчёт
+          -else
+            наличными курьеру
+        %td= raw I18n.l item.created_at, :format => :day
+        %td
+          =link_to "Открыть", admin_order_path(item)
+          &nbsp;
+          =link_to "Редактировать", edit_admin_order_path(item)
+          &nbsp;
+          =link_to "Удалить", admin_order_path(item), :confirm => 'Точно удалить?', :method => :delete
