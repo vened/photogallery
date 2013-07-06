@@ -2,5 +2,7 @@
 .box-container.box-main-container
   .box-main
     %h1= @page.title
-  
     = raw @page.text
+
+  .box-right
+    = render_cell :news, :show

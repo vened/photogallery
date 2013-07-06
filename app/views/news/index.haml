@@ -19,7 +19,7 @@
             .title
               =link_to news.title, news
               
-            %p= news.desc
+            %p= raw truncate(news.desc, :length => 200, :separator => ' ')
 
   .box-right
     .box-gray
