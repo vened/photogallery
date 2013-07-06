@@ -33,3 +33,23 @@
 .nested_set{
   margin-left: 20px !important ;
 }
+
+body.active_admin table.index_table td{
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  font-size: 13px;
+}
+
+body.active_admin .table_tools {
+  display: block;
+  height: auto;
+  margin-bottom: 16px;
+  width: 100%;
+}
+body.active_admin #active_admin_content {
+  margin: 0;
+  padding: 0 30px;
+}
+body.active_admin #active_admin_content #sidebar {
+ margin-top: 25px;
+}

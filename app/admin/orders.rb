@@ -4,7 +4,7 @@ ActiveAdmin.register Order do
   menu :label => "Заказы"
   config.batch_actions = false
 
-  filter :username, :label => "asdcd"
+  filter :payment_method, :label => "Форма оплаты"
   filter :order_confirm, :label => "Выполнены"
 
 

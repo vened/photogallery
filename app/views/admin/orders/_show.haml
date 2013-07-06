@@ -15,23 +15,26 @@
             = @order.username
             = @order.surname
         %tr.row
-          %th Телефон
+          %th Контактный телефон
           %td= @order.phone
         %tr.row
           %th Email
           %td= @order.email
         %tr.row
-          %th Адрес
+          %th Адрес для доставки
           %td= @order.address
         %tr.row
-          %th Дата доставки
+          %th Желаемая дата доставки
           %td
             = @order.date
-            (c
+        %tr.row
+          %th Желаемое время доставки
+          %td
+            c
             = @order.first_time
             до
             = @order.last_time
-            )
+
         %tr.row
           %th Комментарий к заказу
           %td= @order.comment
@@ -49,11 +52,12 @@
     .attributes_table
       %table{:style=>"width:auto"}
         %tr
-          %td Товар
+          %td Наименование
           %td Изображение
+          %td Порция
           %td Количество
-          %td Стоимость за единицу
-          %td Общая стоимость
+          %td Цена
+          %td Итого
         -for cart_item in JSON.parse(@order.data)
           %tr
             -if cart_item
@@ -61,6 +65,9 @@
               %td= link_to product.title, product, :target => '_blank'
               -if product.attachments.find_last
                 %td= image_tag product.attachments.find_last.file_url(:mini)
+              %td
+                = product.weight.to_i
+                гр.
               %td= cart_item[1]
               %td= product.price.to_i
               %td= product.price.to_i * cart_item[1]
