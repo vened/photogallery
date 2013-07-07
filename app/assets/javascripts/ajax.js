@@ -24,7 +24,6 @@ $(document).ready(function () {
                     });
                     $.getJSON('/ajax/cart_price.json', function (data) {
                         priceTotal.html(data + " руб.");
-                        alert("dadc")
                         if (data >= 2500) {
                             getOrder.html("<a class='cart-order' href='/order/new'>Оформить заказ</a>");
                         } else {

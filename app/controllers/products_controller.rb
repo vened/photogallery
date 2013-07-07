@@ -38,10 +38,10 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @cart.update_product(prod)
         format.js   {}
-        #format.json { render json: @quantity, status: :created, location: @quantity }
+        format.json { render json: @quantity, status: :created, location: @quantity }
       else
         format.html { redirect_to :back }
-        #format.json { render json: @cart.errors, status: :unprocessable_entity }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
   end
