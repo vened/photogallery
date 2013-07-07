@@ -4,15 +4,23 @@ Shikocc::Application.routes.draw do
 
   #resources :products, :only => [:index, :show]
 
-  get '/internet-magazin' => 'products#index', :as => :products
-  get '/internet-magazin/:id' => 'products#show', :as => :product
+
+  #ёбнутейший роутинг начало
+  get '/internet-magazin' => 'categories#index', :as => :products
+  get '/shop/:id' => 'categories#category', :as => :category
+  resources :categories, :only => [], :path => '/' do
+    get '/:id' => 'products#show', :as => :product
+  end
+  #/tartaletki/rolly-iz-norvezhskoj-semgi-sobstvennogo-posola-s-syrom-filadelfiya/
+  #ёбнутейший роутинг конец
+
 
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   post 'update_quantity' => 'products#update_quantity'
   delete 'destroy_item' => 'products#destroy_item'
   get 'cart' => 'products#cart'
-  get '/shop/:id' => 'products#category', :as => :category
+
   resources :feedbacks, :only => [:index, :create]
 
 
@@ -31,7 +39,6 @@ Shikocc::Application.routes.draw do
   get '/ajax/cart' => 'ajax#cart'
   get '/ajax/cart_price' => 'ajax#cart_price'
   #end ajax
-
 
 
   #begin news

@@ -30,7 +30,7 @@
             %span
               = link_to category.title, category
           %hr
-        = render :partial => 'products', :object => category.products.first(3)
+        = render :partial => 'products/products', :object => category.products.first(3)
 
         .products-more
           = link_to "Все блюда раздела «#{category.title}»", category

@@ -8,7 +8,7 @@
         %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{product.id}"}
           %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
           .title
-            = link_to product.title, product
+            = link_to product.title, [product.category, product]
           .pull-right
             .quantity
               .minus -
