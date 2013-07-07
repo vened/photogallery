@@ -1,20 +1,5 @@
 Shikocc::Application.routes.draw do
 
-  #begin хаки для страниц из-за ёбнутейшего роутинга ниже
-  get '/service/:id' => 'pages#show'
-  #end хаки для страниц из-за ёбнутейшего роутинга ниже
-
-
-  #ёбнутейший роутинг начало
-  get '/internet-magazin' => 'categories#index', :as => :products
-  get '/shop/:id' => 'categories#category', :as => :category
-  resources :categories, :only => [], :path => '/' do
-    get '/:id' => 'products#show', :as => :product
-  end
-  #/tartaletki/rolly-iz-norvezhskoj-semgi-sobstvennogo-posola-s-syrom-filadelfiya/
-  #ёбнутейший роутинг конец
-
-
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   post 'update_quantity' => 'products#update_quantity'
@@ -54,10 +39,6 @@ Shikocc::Application.routes.draw do
   #end static pages
 
 
-  resources :pages, :path => "/", :only => [:index, :show]
-  root :to => 'pages#index'
-
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -86,6 +67,23 @@ Shikocc::Application.routes.draw do
     end
   end
 
+  #begin хаки для страниц из-за ёбнутейшего роутинга ниже
+  get '/service/:id' => 'pages#show'
+  #end хаки для страниц из-за ёбнутейшего роутинга ниже
+
+
+  #ёбнутейший роутинг начало
+  get '/internet-magazin' => 'categories#index', :as => :products
+  get '/shop/:id' => 'categories#category', :as => :category
+  resources :categories, :only => [], :path => '/' do
+    get '/:id' => 'products#show', :as => :product
+  end
+  #/tartaletki/rolly-iz-norvezhskoj-semgi-sobstvennogo-posola-s-syrom-filadelfiya/
+  #ёбнутейший роутинг конец
+
+  resources :pages, :path => "/", :only => [:index, :show]
+  root :to => 'pages#index'
 
   get '*section/:id' => 'pages#show'
+
 end
