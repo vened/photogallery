@@ -9,14 +9,14 @@
           -if @prod.attachments.find_last
             = image_tag @prod.attachments.find_last.file_url(:thumb)
         .product-info
-          %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@prod.id}"}
+          %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@prod.id}", :data => {:remote => "true"}}
             %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
             .title
               = link_to @prod.title, [@prod.category, @prod]
             .pull-right
               .quantity
                 .minus -
-                %input.calc{:type=>"text", :value=>"1", :name=>"quantity", :autocomplete=>"off"}
+                %input.calc{:type=>"text", :value=>"10", :name=>"quantity", :autocomplete=>"off"}
                 .plus +
               .price
                 = @prod.price.to_i

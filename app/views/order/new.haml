@@ -31,7 +31,7 @@
                   = product.price.to_i * cart_item[1]
                   руб.
                   
-                = link_to product.title, product
+                = link_to product.title, [product.category, product]
                 .dose
                   = cart_item[1]
                   порций

@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require ajax
 
+
+
 $(function () {
     var $wrapper = $('#wrapper');
     var $header = $('#header');

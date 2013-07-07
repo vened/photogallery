@@ -9,6 +9,7 @@ $(document).ready(function () {
             e.preventDefault();
 
 
+
             $.ajax($(this).attr('action'), {
 
                 async: false,
@@ -23,6 +24,7 @@ $(document).ready(function () {
                     });
                     $.getJSON('/ajax/cart_price.json', function (data) {
                         priceTotal.html(data + " руб.");
+                        alert("dadc")
                         if (data >= 2500) {
                             getOrder.html("<a class='cart-order' href='/order/new'>Оформить заказ</a>");
                         } else {
@@ -52,6 +54,27 @@ $(document).ready(function () {
     }
 
     cartUpdate();
+
+
+    function AddProductToCart() {
+        var cart = $('.btn-cart'),
+            addButton = $(".product-info form.button_to .cart-add");
+        addButton.on('click', function (e) {
+            e.preventDefault();
+            var form = $(this).closest("form");
+            form.submit();
+            form.on("ajax:error", function (data, status, xhr) {
+                alert("При попытке добавить товар в корзину произошла ошибка, попробуйте ещё раз")
+            });
+            form.on("ajax:success", function (data, status, xhr) {
+                $.getJSON('/ajax/cart.json', function (data) {
+                    cart.html(" В корзине " + data + " шт.");
+                });
+            });
+        });
+    };
+
+    AddProductToCart();
 
 
 });
