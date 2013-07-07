@@ -1,8 +1,8 @@
 Shikocc::Application.routes.draw do
 
-  #resources :attachments, :only => [:show]
-
-  #resources :products, :only => [:index, :show]
+  #begin хаки для страниц из-за ёбнутейшего роутинга ниже
+  get '/service/:id' => 'pages#show'
+  #end хаки для страниц из-за ёбнутейшего роутинга ниже
 
 
   #ёбнутейший роутинг начало
