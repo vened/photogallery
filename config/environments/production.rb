@@ -56,8 +56,8 @@ Shikocc::Application.configure do
       :address => "smtp.gmail.com",
       :port => 587,
       :domain => 'gmail.com',
-      :user_name => 'maxstbn@gmail.com',
-      :password => 'rjvgkbdbn',
+      :user_name => 'stn.maxim@gmail.com',
+      :password => 'nfnkfrf1',
       :authentication => 'plain',
       :enable_starttls_auto => true
   }
