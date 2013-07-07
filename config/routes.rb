@@ -1,5 +1,7 @@
 Shikocc::Application.routes.draw do
 
+  root :to => 'pages#index'
+
   post 'add_to_cart' => 'products#add_to_cart'
   post 'empty_cart' => 'products#empty_cart'
   post 'update_quantity' => 'products#update_quantity'
@@ -82,7 +84,6 @@ Shikocc::Application.routes.draw do
   #ёбнутейший роутинг конец
 
   resources :pages, :path => "/", :only => [:index, :show]
-  root :to => 'pages#index'
 
   get '*section/:id' => 'pages#show'
 
