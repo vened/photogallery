@@ -25,11 +25,11 @@
         &bull;
       
 
-    %li{:class => "#{'selected' if @page.parent_path == 'dostavka-kanape' if @page}"}
+    -#%li{:class => "#{'selected' if @page.parent_path == 'dostavka-kanape' if @page}"}
       %a{:href => "/dostavka-kanape/"}
         %span
           Доставка канапе
-    %li.del
+    -#%li.del
       %span
         &bull;
 
