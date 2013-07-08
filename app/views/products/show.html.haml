@@ -1,3 +1,15 @@
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    =link_to 'Интернет-магазин', products_path
+    &nbsp;|&nbsp;
+    =link_to @product.category.title, category_path(@product.category)
+    &nbsp;|&nbsp;
+    %span
+      =@product.title
+
+
 .box-container.box-main-container
   .box-main.page-product
     %h1= @product.title
@@ -7,7 +19,7 @@
         =image_tag at.file_url(:thumb)
       
     .product-info
-      %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@product.id}"}
+      %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@product.id}", :data => {:remote => "true"}}
         %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
         %h3 Состав
         %hr
