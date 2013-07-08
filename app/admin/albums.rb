@@ -5,6 +5,7 @@ ActiveAdmin.register Album do
 
   form(:html => {:multipart => true}) do |f|
     f.inputs "Создание/редактирование портфолио" do
+      f.input :created_at, :as => :datepicker, :label => "Дата"
       f.input :title, :label => "Название"
       f.input :desc, :label => "Описание"
       f.has_many :photos, :through => Photo do |s|
