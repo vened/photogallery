@@ -17,3 +17,6 @@
           %p= album.desc
           =link_to album do
             = image_tag album.photos.find_last.file_url(:thumb)
+
+  .box-right
+    = render_cell :cart, :mini_cart

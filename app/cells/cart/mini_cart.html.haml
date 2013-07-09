@@ -1,0 +1,87 @@
+- page_path = request.original_fullpath
+
+
+- if page_path == '/order/new'
+
+  .box-gray{:style => 'margin-bottom: 30px'}
+    .rounds-top
+    .box-inner
+      %h3 Товары в вашей корзине
+      %hr
+      %ul
+        -for cart_item in @cart.items
+          -if cart_item
+            - product = Product.find(cart_item[0])
+            %li
+              .price
+                = product.price.to_i * cart_item[1]
+                руб.
+
+              = link_to product.title, [product.category, product]
+              .dose
+                = cart_item[1]
+                порций
+      -if @prices.to_i < 5000
+        %hr
+        .price.price-total-small
+          = @prices
+          руб.
+        Стоимость заказа:
+        %hr
+        .price.price-total-small
+          = 300
+          руб.
+        %span{:style => "width:120px;display: inline-block;"}Стоимость доставки (бесплатно при заказе от 5000 руб.):
+        %hr
+        .price.price-total-small
+          = @prices.to_i + 300
+          руб.
+        Итоговая стоимость:
+      -else
+        %hr
+        .price.price-total-small
+          = @prices.to_i
+          руб.
+        Итоговая стоимость:
+
+    .rounds-bottom
+
+-else
+
+  .box-gray{:style => 'margin-bottom: 30px'}
+    .rounds-top
+    .box-inner
+      %h3 Товары в вашей корзине
+      %hr
+      -for cart_item in @cart.items
+        -if cart_item
+          - product = Product.find(cart_item[0])
+          %div{:style => 'margin-bottom: 10px'}
+            = link_to product.title, [product.category, product]
+            .dose
+              = cart_item[1]
+              порций
+      -if @prices.to_i < 5000
+        %hr
+        .price.price-total-small
+          = @prices
+          руб.
+        Стоимость заказа:
+        %hr
+        .price.price-total-small
+          = 300
+          руб.
+        %span{:style => "width:120px;display: inline-block;"}Стоимость доставки (бесплатно при заказе от 5000 руб.):
+        %hr
+        .price.price-total-small
+          = @prices.to_i + 300
+          руб.
+        Итоговая стоимость:
+      -else
+        %hr
+        .price.price-total-small
+          = @prices.to_i
+          руб.
+        Итоговая стоимость:
+
+    .rounds-bottom

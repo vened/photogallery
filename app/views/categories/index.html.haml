@@ -36,4 +36,6 @@
           = link_to "Все блюда раздела «#{category.title}»", category
 
 
-  = render :partial => 'shared/product_right_col'
+  .box-right
+    = render_cell :cart, :mini_cart
+    = render :partial => 'shared/product_right_col'
