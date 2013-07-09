@@ -201,7 +201,7 @@ ul.default {
 	width: 108px;
 	height: 34px;
 	line-height: 33px;
-	font-size: 16px;
+	font-size: 14px;
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -214,6 +214,27 @@ ul.default {
 input.cart-add{
 	height: auto;
 	padding: 5px 0;
+}
+
+.cart-short {
+	ul {
+		list-style: none;
+		margin: 0 !important;
+		
+		li {
+			line-height: 18px;
+			
+			.dose {
+				color: #333;
+			}
+		}
+	}
+	
+	.price {
+		float: right;
+		margin-left: 10px;
+		color: #5a2a00;
+	}
 }
 
 .cart-order{
@@ -257,7 +278,6 @@ input.cart-order{
 
 input.cart-confirm{
 	height: auto;
-	padding: 5px 0;
 }
 
 #footer{

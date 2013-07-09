@@ -86,10 +86,10 @@ $(function () {
     
     function initSlimbox() {
 		jQuery(function(){
-			jQuery('.size-thumbnail').parent().add($('.shutterset_')).slimbox({
-		        overlayOpacity: 0.6,
+			jQuery('.size-thumbnail').parent().add($('.shutterset_')).add('.album-photos a').slimbox({
+		        overlayOpacity: 0.8,
 		        captionAnimationDuration: 1,
-		        counterText: "Image {x} sur {y}",
+		        counterText: "{x} / {y}",
 		        closeKeys: [27, 70],
 		        nextKeys: [39, 83]
 			});

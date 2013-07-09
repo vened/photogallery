@@ -9,14 +9,16 @@
   .box-main
     %h1 Портфолио
   
-    %ul
+    %ul.cols-products
       - @albums.each do |album|
         %li
-          %h3
-            =link_to album.title, album
-          %p= album.desc
-          =link_to album do
-            = image_tag album.photos.find_last.file_url(:thumb)
+          .photo
+            =link_to album do
+              = image_tag album.photos.find_last.file_url(:thumb)
+          .product-info
+            .title
+              =link_to album.title, album
+            %p= album.desc
 
   .box-right
     = render_cell :cart, :mini_cart

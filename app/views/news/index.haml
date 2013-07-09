@@ -5,21 +5,17 @@
     %span Новости
 
 .box-container.box-main-container
-  .box-main
+  .box-main.box-news
     %h1 Новости
   
-    %ul.cols-products
+    %ul
       - @news_all.each do |news|
         %li
-          .photo
-            -if news.photos.find_last
-              = image_tag news.photos.find_last.file_url(:thumb)
-          
-          .product-info
-            .title
-              =link_to news.title, news
-              
-            %p= raw truncate(news.desc, :length => 200, :separator => ' ')
+          .date
+            05.7.2013
+          .title
+            =link_to news.title, news
+
 
   .box-right
     .box-gray
