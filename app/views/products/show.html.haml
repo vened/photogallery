@@ -22,7 +22,7 @@
     
     .photo
       -@images.each do |at|
-        =image_tag at.file_url(:thumb)
+        =image_tag at.file_url(:large)
       
     .product-info
       %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@product.id}", :data => {:remote => "true"}}
