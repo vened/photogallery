@@ -44,7 +44,9 @@
 
         %hr
 
-        %input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
+        -#%input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
+        .cart-add Заказать
+
         %span.price
           = @product.price.to_i
           руб
