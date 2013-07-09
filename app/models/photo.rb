@@ -3,6 +3,8 @@ class Photo < ActiveRecord::Base
 
   mount_uploader :file, PhotoUploader
 
+  validates :file, :presence => true
+
   belongs_to :album
   belongs_to :news
 

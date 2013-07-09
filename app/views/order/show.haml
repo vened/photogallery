@@ -65,7 +65,7 @@
     %tr
       -if cart_item
         -product = Product.find(cart_item[0])
-        %td= link_to product.title, product
+        %td= link_to product.title, [product.category, product]
         %td= cart_item[1]
         %td= product.price.to_i
         %td= product.price.to_i * cart_item[1]

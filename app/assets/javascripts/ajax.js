@@ -54,4 +54,27 @@ $(document).ready(function () {
     cartUpdate();
 
 
+    function AddProductToCart() {
+        var cart = $('.btn-cart'),
+            forms = $(".product-info form.button_to"),
+            addButton = $(".product-info form.button_to .cart-add");
+        addButton.on('click', function (e) {
+            e.preventDefault();
+            var form = $(this).closest("form");
+            form.submit();
+        });
+        forms.on("ajax:error", function (data, status, xhr) {
+            alert("При попытке добавить товар в корзину произошла ошибка, попробуйте ещё раз")
+        });
+        forms.on("ajax:success", function (data, status, xhr) {
+            console.log("scdeascd")
+            $.getJSON('/ajax/cart.json', function (data) {
+                cart.html(" В корзине " + data + " шт.");
+            });
+        });
+    };
+
+    AddProductToCart();
+
+
 });

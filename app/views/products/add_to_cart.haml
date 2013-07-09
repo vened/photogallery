@@ -1,7 +1,0 @@
-#cart
-  -for item in @cart.items
-    %p
-      = item.title
-      = item.quantity
-
-  = button_to "clear cart", :action => :empty_cart

@@ -12,51 +12,7 @@
   %h1 Оформление заказа
 
   .box-main
-
-
     = render 'form'
-    
+
   .box-right
-    .box-gray
-      .rounds-top
-      .box-inner
-        %h3 Товары в вашей корзине
-        %hr
-        %ul
-          -for cart_item in @cart.items
-            -if cart_item
-              - product = Product.find(cart_item[0])
-              %li
-                .price
-                  = product.price.to_i * cart_item[1]
-                  руб.
-                  
-                = link_to product.title, product
-                .dose
-                  = cart_item[1]
-                  порций
-        -if @prices.to_i < 5000
-          %hr
-          .price.price-total-small
-            = @prices
-            руб.
-          Стоимость заказа:
-          %hr
-          .price.price-total-small
-            = 300
-            руб.
-          %span{:style => "width:120px;display: inline-block;"}Стоимость доставки (бесплатно при заказе от 5000 руб.):
-          %hr
-          .price.price-total-small
-            = @prices.to_i + 300
-            руб.
-          Итоговая стоимость:
-        -else
-          %hr
-          .price.price-total-small
-            = @prices.to_i
-            руб.
-          Итоговая стоимость:
-
-
-      .rounds-bottom
+    = render_cell :cart, :mini_cart

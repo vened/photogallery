@@ -14,3 +14,6 @@
     -@photos.each do |photo|
       =link_to photo.file_url(:large) do
         =image_tag photo.file_url(:thumb)
+
+  .box-right
+    = render_cell :cart, :mini_cart

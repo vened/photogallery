@@ -10,6 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//
+//
+//
 //= require jquery
 //= require slimbox2
 //= require jquery_ujs
@@ -99,16 +102,16 @@ $(function () {
 
 $(document).ready(function () {
     var payment_details = $(".payment_details"),
-        order_payment_method = $("#order_payment_method");
+        order_payment_method = $("#order_payment");
 
     payment_details.hide();
 
-    if (order_payment_method.val() == 1){
+    if (order_payment_method.val() == 'Безналичный расчёт'){
         payment_details.show();
     }
 
     order_payment_method.on("change", function(){
-        if ($(this).val() == 1){
+        if ($(this).val() == 'Безналичный расчёт'){
             payment_details.show();
         }else{
             payment_details.hide();

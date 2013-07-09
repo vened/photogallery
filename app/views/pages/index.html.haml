@@ -38,7 +38,9 @@
         %span Самое лучшее для вас
       %hr
 
-
     = render :partial => 'products'
 
-  = render :partial => 'shared/product_right_col'
+
+  .box-right
+    = render_cell :cart, :mini_cart
+    = render :partial => 'shared/product_right_col'

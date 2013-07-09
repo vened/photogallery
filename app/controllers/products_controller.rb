@@ -15,8 +15,15 @@ class ProductsController < ApplicationController
     product = params[:id].to_i
     qa = params[:quantity].to_i
     prod = [product, qa]
-    @cart.add_product(prod)
-    redirect_to :back
+    respond_to do |format|
+      if @cart.add_product(prod)
+        format.js   {}
+        format.json { render json: @cart, status: :created, location: @cart }
+      else
+        format.html { redirect_to :back }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update_quantity
@@ -24,8 +31,19 @@ class ProductsController < ApplicationController
     product = params[:id].to_i
     qa = params[:quantity].to_i
     prod = [product, qa]
-    @cart.update_product(prod)
-    redirect_to :action => :cart
+
+    @cart_values = @cart.items.values
+    @quantity = @cart_values.inject(0){ |result, elem| result = result + elem }
+
+    respond_to do |format|
+      if @cart.update_product(prod)
+        format.js   {}
+        format.json { render json: @quantity, status: :created, location: @quantity }
+      else
+        format.html { redirect_to :back }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy_item
