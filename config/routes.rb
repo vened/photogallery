@@ -76,6 +76,7 @@ Shikocc::Application.routes.draw do
 
   #ёбнутейший роутинг начало
   get '/internet-magazin' => 'categories#index', :as => :products
+  get '/shop/' => 'categories#index', :as => :shop
   get '/shop/:id' => 'categories#category', :as => :category
   resources :categories, :only => [], :path => '/' do
     get '/:id' => 'products#show', :as => :product
