@@ -1,5 +1,5 @@
 class Album < ActiveRecord::Base
-  attr_accessible :desc, :title, :photos_attributes
+  attr_accessible :created_at, :desc, :title, :photos_attributes
 
   has_many :photos, :dependent => :destroy
 
