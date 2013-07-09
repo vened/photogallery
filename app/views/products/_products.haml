@@ -3,7 +3,8 @@
     %li
       .photo
         -if product.attachments.find_last
-          = image_tag product.attachments.find_last.file_url(:thumb)
+          = link_to([product.category, product]) do
+            = image_tag product.attachments.find_last.file_url(:thumb)
       .product-info
         %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{product.id}", :data => {:remote => "true"}}
           %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
