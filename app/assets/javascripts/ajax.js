@@ -9,7 +9,6 @@ $(document).ready(function () {
             e.preventDefault();
 
 
-
             $.ajax($(this).attr('action'), {
 
                 async: false,

@@ -41,7 +41,10 @@
         %tr.row
           %th Стоимость (руб.)
           %td= @order.price.to_i
-        -if @order.payment_method
+        %tr.row
+          %th Форма оплаты
+          %td= @order.payment
+        -if @order.payment == 'Безналичный расчёт'
           %tr.row
             %th Реквизиты к выставлению счёта
             %td= @order.details
@@ -62,7 +65,7 @@
           %tr
             -if cart_item
               -product = Product.find(cart_item[0])
-              %td= link_to product.title, product, :target => '_blank'
+              %td= link_to product.title, [product.category, product], :target => '_blank'
               -if product.attachments.find_last
                 %td= image_tag product.attachments.find_last.file_url(:mini)
               %td

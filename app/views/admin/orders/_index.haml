@@ -21,11 +21,7 @@
         %td= item.phone
         %td= item.email
         %td= item.price.to_i
-        %td
-          -if item.payment_method
-            безналичный расчёт
-          -else
-            наличными курьеру
+        %td= item.payment
         %td= raw I18n.l item.created_at, :format => :day
         %td
           -if item.order_confirm
