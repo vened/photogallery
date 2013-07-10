@@ -12,7 +12,7 @@
       - @news_all.each do |news|
         %li
           .date
-            05.7.2013
+            =news.created_at.strftime("%d.%m.%Y")
           .title
             =link_to news.title, news
 
