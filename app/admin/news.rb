@@ -18,6 +18,14 @@ ActiveAdmin.register News do
     f.buttons
   end
 
+  config.sort_order = 'created_at_desc'
+  
+  index do
+    column :created_at
+    column :title
+    default_actions
+  end
+
   controller do
 
     def show
