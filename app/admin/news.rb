@@ -5,6 +5,7 @@ ActiveAdmin.register News do
 
   form(:html => {:multipart => true}) do |f|
     f.inputs "Создание/редактирование Новости" do
+      f.input :created_at, :label => "Дата", :as => :datepicker
       f.input :title, :label => "Заголовок"
       f.input :desc, :label => "Текст"
       f.input :path, :label => "URL"
