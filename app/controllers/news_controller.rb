@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
 
   def index
-    @news_all = News.all
+    @news_all = News.order('news.created_at DESC').all
     @meta_title = "Новости"
   end
 
