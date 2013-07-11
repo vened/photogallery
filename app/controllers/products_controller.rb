@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def search
-    @results = Product.search 'Тирамиссу'
+    @result = Product.search(params[:query])
   end
 
 

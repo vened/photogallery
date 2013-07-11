@@ -21,8 +21,11 @@
     %h1= @product.title
     
     .photo
-      -@images.each do |at|
-        =image_tag at.file_url(:large)
+      -if @images.find_last
+        =image_tag @images.find_last.file_url(:large)
+      -else
+        %img{:src => '/images/nophoto_big.png'}
+
       
     .product-info
       %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@product.id}", :data => {:remote => "true"}}
