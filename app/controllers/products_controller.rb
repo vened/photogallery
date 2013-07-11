@@ -1,5 +1,11 @@
 class ProductsController < ApplicationController
 
+  def search
+    @results = Product.search 'Тирамиссу'
+  end
+
+
+
   def show
     @product = Product.find_by_path(params[:id])
     @all_prod = Product.last(3)

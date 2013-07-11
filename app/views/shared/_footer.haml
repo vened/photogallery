@@ -42,8 +42,9 @@
     .pull-left
       .copyright © Шико Catering Club. Все права защищены.
       .search-block
-        %form
-          %input{:name => "", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
+
+        %form{:action => '/search', :method => :get}
+          %input{:name => "query", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
           %input{:name => "", :value => "", :type => "image", :src => "/assets/icon_search.png"}
   -#
     .pull-right
