@@ -57,7 +57,8 @@ $(document).ready(function () {
     function AddProductToCart() {
         var cart = $('.btn-cart'),
             forms = $(".product-info form.button_to"),
-            addButton = $(".product-info form.button_to .cart-add");
+            addButton = $(".product-info form.button_to .cart-add"),
+            miniCart = $('.mini_cart');
         addButton.on('click', function (e) {
             e.preventDefault();
             var form = $(this).closest("form");
@@ -67,9 +68,11 @@ $(document).ready(function () {
             alert("При попытке добавить товар в корзину произошла ошибка, попробуйте ещё раз")
         });
         forms.on("ajax:success", function (data, status, xhr) {
-            console.log("scdeascd")
             $.getJSON('/ajax/cart.json', function (data) {
                 cart.html(" В корзине " + data + " шт.");
+            });
+            $.get('/ajax/mini_cart', function (data){
+                miniCart.html(data);
             });
         });
     };

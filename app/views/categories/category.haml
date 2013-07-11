@@ -14,5 +14,5 @@
     = render :partial => 'products/products', :object => @products
 
   .box-right
-    = render_cell :cart, :mini_cart
+    .mini_cart= render_cell :cart, :mini_cart
     = render :partial => 'shared/product_right_col'
