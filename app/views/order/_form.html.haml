@@ -17,7 +17,7 @@
   .cart-box.clearfix
     %input{:type=>"hidden", :name=>"order[data]", :value=> "#{@cart.items.to_json}"}
     %input{:type=>"hidden", :name=>"order[order_confirm]", :value=> 'false'}
-    -if @prices.to_i < 5000
+    -if @prices.to_i < 7000
       %input{:type=>"hidden", :name=>"order[price]", :value=> @prices.to_i + 300}
     -else
       %input{:type=>"hidden", :name=>"order[price]", :value=> @prices.to_i}

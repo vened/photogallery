@@ -16,7 +16,7 @@
         <%- product = Product.find(cart_item[0]) %>
         <%- @prices = @prices + product.price.to_i * cart_item[1] %>
     <% end %>
-    <%- if @prices.to_i < 5000 %>
+    <%- if @prices.to_i < 7000 %>
         <%= @prices.to_i + 300 %>
         руб.
     <% else %>
