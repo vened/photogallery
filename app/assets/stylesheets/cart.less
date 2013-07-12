@@ -24,6 +24,12 @@
 				width: 100%;
 				margin-right: 0;
 			}
+			
+			&.payment_method {
+				dd {
+					margin-right: 0;
+				}
+			}
 
 			.field_with_errors{
 				display: inline-block;
@@ -45,6 +51,11 @@
 			textarea{
 				.inputBox();
 				height: 70px;
+			}
+			
+			select {
+				font-size: 18px;
+				width: 100%;
 			}
 		}
 
@@ -82,7 +93,7 @@
 		font-family: Georgia;
 	}
 
-	table{
+	.cart-table {
 		width: 100%;
 		border: 0;
 		border-collapse: collapse;
@@ -94,6 +105,24 @@
 
 		.remove-from-cart{
 			padding-left: 20px;
+		}
+		
+		.photo {
+			.inline-block();
+			position: relative;
+			padding: 8px;
+			background: #fff;
+			.border-radius(5px);
+			border-bottom: 1px solid #dbdbdb;
+			width: 204px;
+			height: 184px;
+			margin-right: 20px;
+			
+			img {
+				vertical-align: top;
+				width: 204px;
+				height: 184px;
+			}
 		}
 	}
 

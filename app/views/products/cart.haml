@@ -14,7 +14,7 @@
   -else
     %h1 Ваша корзина
     .cart-box
-      %table
+      %table.cart-table
         -for item in @products
           %tr
             %td{:rowspan=>"2"}
@@ -44,7 +44,7 @@
               .cart-heading
               %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{item.id}", :data => {:method=>"delete", :confirm=>"Вы точно желаете удалить данную позицию из корзины?"}}
           %tr
-            %td{:colspan=>"4"}
+            %td{:colspan=>"4", :valign=>"top"}
               %hr
               .price-dose-total
                 %span.price-dose-total-js= item.price.to_i * @cart.items[item.id]
