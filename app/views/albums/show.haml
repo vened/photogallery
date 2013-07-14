@@ -10,6 +10,9 @@
   .box-main
     %h1= @album.title
     %p= @album.desc
+    %p Дата проведения: #{@album.created_at.strftime("%d.%m.%Y")}
+    %p Формат: #{@album.format}
+    %p Число гостей: #{@album.guests}
     
     %ul.cols-products.album-photos
       -@photos.each do |photo|
