@@ -9,10 +9,16 @@
 .box-container.box-main-container
   .box-main
     %h1= @album.title
-    %p= @album.desc
-    %p Дата проведения: #{@album.created_at.strftime("%d.%m.%Y")}
-    %p Формат: #{@album.format}
-    %p Число гостей: #{@album.guests}
+    -if @album.desc
+      %p= @album.desc
+    
+    .clearfix.album-params
+      .album-param.pull-left Дата проведения: #{@album.created_at.strftime("%d.%m.%Y")}
+      -if @album.format
+        .album-param.pull-left Формат: #{@album.format}
+        
+      -if @album.guests
+        .album-param.pull-left Число гостей: #{@album.guests}
     
     %ul.cols-products.album-photos
       -@photos.each do |photo|
