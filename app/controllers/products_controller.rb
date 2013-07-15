@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_path(params[:id])
-    @all_prod = Product.last(3)
+    @all_prod = Product.order("RANDOM()").last(6)
     @images = @product.attachments
     @meta_title = @product.title
     @metakey = @product.metakey

@@ -40,6 +40,7 @@ Shikocc::Application.routes.draw do
   #begin static pages
   get 'contacts' => 'pages#contacts'
   get 'about' => 'pages#about'
+  get 'dostavka-kanape' => 'pages#kanape'
   #end static pages
 
 

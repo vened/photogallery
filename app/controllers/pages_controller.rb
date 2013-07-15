@@ -6,6 +6,11 @@ class PagesController < ApplicationController
     @cat = Category.all
   end
 
+  def kanape
+    @category = Category.find_by_path('kanape')
+    @products = Product.where("category_id = #{@category.id}").order("RANDOM()").limit(6)
+  end
+
   def show
     @page = Page.find_by_path(params[:id])
     if @page.meta_title.nil?

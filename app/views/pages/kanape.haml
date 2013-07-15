@@ -1,0 +1,20 @@
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;
+    |
+    &nbsp;
+    %span
+      Доставка канапе на дом и в офис — заказать и купить канапе в Москве
+
+.box-container.box-main-container
+  .box-main
+    %h1 Доставка канапе на дом и в офис — заказать и купить канапе в Москве
+
+    = render :partial => 'products/products', :object => @products
+
+
+
+  .box-right
+    .mini_cart= render_cell :cart, :mini_cart
+    = render_cell :news, :show
