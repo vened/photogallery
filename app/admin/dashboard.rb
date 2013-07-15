@@ -32,13 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
                 td item.phone
                 td item.email
                 td item.price.to_i
-                td do
-                  if item.payment_method
-                    "безналичный расчёт"
-                  else
-                    "наличными курьеру"
-                  end
-                end
+                td item.payment
                 td item.date
               end
 
@@ -46,12 +40,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-
-      #   column do
-      #     panel "Info" do
-      #       para "Welcome to ActiveAdmin."
-      #     end
-      #   end
     end
   end # content
 end
