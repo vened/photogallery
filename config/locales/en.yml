@@ -136,3 +136,11 @@ en:
       block: "Список"
       grid: "Сетка"
       blog: "Блог"
+
+  formtastic:
+    actions:
+      update: "Сохранить изменения"
+
+  activerecord:
+    models:
+      order: "Заказ"

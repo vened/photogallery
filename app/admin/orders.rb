@@ -16,13 +16,6 @@ ActiveAdmin.register Order do
     render "show"
   end
 
-
-  #index do
-  #  column "Номер заказа", :id, :sortable => :id
-  #  column "Имя", :username, :sortable => false
-  #  column "Фамилия", :surname, :sortable => false
-  #  actions :defaults => true
-  #end
-
+  form :partial => "form"
 
 end
