@@ -58,7 +58,7 @@
         руб.
     %hr
     .cart-getorder
-      = link_to "Вернуться к покупкам", "/"
+      = link_to "Вернуться к покупкам", products_path
       %span.js-cart-getorder
         -if @prices >= 2500
           = link_to "Оформить заказ", :order_new, :class => "cart-order"

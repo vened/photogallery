@@ -9,6 +9,12 @@ class PagesController < ApplicationController
   def kanape
     @category = Category.find_by_path('kanape')
     @products = Product.where("category_id = #{@category.id}").order("RANDOM()").limit(6)
+    @cart = session[:cart]
+    @prices = 0
+    for item in @cart.items
+      product = Product.find(item[0])
+      @prices = @prices + product.price.to_i * item[1]
+    end
   end
 
   def show

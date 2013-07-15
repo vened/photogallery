@@ -12,6 +12,15 @@
     = render :partial => 'products/products', :object => @products
 
 
+    .cart-getorder
+      = link_to "Вернуться к покупкам", products_path
+      %span.js-cart-getorder
+        -if @prices >= 2500
+          = link_to "Оформить заказ", :order_new, :class => "cart-order"
+        -else
+          &nbsp;
+          %b Оформление заказа не возможно, минимальная сумма заказа 2500 руб.
+
 
   .box-right
     .mini_cart= render_cell :cart, :mini_cart
