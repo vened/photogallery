@@ -17,7 +17,7 @@
       %table.cart-table
         -for item in @products
           %tr
-            %td{:rowspan=>"2"}
+            %td
               .photo
                 -if item.attachments.find_last
                   = image_tag item.attachments.find_last.file_url(:thumb)
@@ -26,7 +26,10 @@
             %td
               .cart-heading.cart-title
                 = link_to item.title, [item.category, item]
-              .gray= item.category.title
+              .cart-category.gray= item.category.title
+              
+              .cart-descr.gray
+                Испанский сыровяленный окорок Хамон с маринованными мини-шампиньонами
             %td
               %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{item.id}", :data => {:remote => "true"} }
                 %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
@@ -40,15 +43,13 @@
                 .gray.cart-heading Цена за порцию
                 %span.price-dose-js= item.price.to_i
                 руб.
-            %td.remove-from-cart
-              .cart-heading
-              %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{item.id}", :data => {:method=>"delete", :confirm=>"Вы точно желаете удалить данную позицию из корзины?"}}
-          %tr
-            %td{:colspan=>"4", :valign=>"top"}
-              %hr
+            %td
               .price-dose-total
                 %span.price-dose-total-js= item.price.to_i * @cart.items[item.id]
                 руб.
+            %td.remove-from-cart
+              .cart-heading
+              %a.cart-delete{:rel=>"nofollow", :href=>"/destroy_item?id=#{item.id}", :data => {:method=>"delete", :confirm=>"Вы точно желаете удалить данную позицию из корзины?"}}
 
     
     .price-total

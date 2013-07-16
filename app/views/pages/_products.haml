@@ -8,9 +8,11 @@
             = link_to category.title, category
           -if @prod.attachments.find_last
             = link_to([@prod.category, @prod]) do
+              .decor
               = image_tag @prod.attachments.find_last.file_url(:thumb)
           -else
             = link_to([@prod.category, @prod]) do
+              .decor
               %img{:src => '/images/nophoto_small.png'}
         .product-info
           %form{:method=>"post", :class=>"button_to", :action=>"/add_to_cart?id=#{@prod.id}", :data => {:remote => "true"}}

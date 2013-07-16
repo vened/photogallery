@@ -14,6 +14,14 @@
 		.inline-block();
 		vertical-align: top;
 		
+		.decor {
+			position: absolute;
+			z-index: 1;
+			width: 204px;
+			height: 184px;
+			background: url('decor.png') no-repeat;
+		}
+		
 		.photo {
 			.inline-block();
 			position: relative;
@@ -33,13 +41,14 @@
 		
 		.product-category {
 			position: absolute;
+			z-index: 3;
 			top: 8px;
-			left: 0;
-			width: 100%;
+			left: 8px;
+			right: 8px;
 			background: #fff;
 			background: rgba(255,255,255,0.8);
 			height: 40px;
-			line-height: 40px;
+			line-height: 36px;
 			text-align: center;
 			overflow: hidden;
 			font-size: 14px;

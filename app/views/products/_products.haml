@@ -4,9 +4,11 @@
       .photo
         -if product.attachments.find_last
           = link_to([product.category, product]) do
+            .decor
             = image_tag product.attachments.find_last.file_url(:thumb)
         -else
           = link_to([product.category, product]) do
+            .decor
             %img{:src => '/images/nophoto_small.png'}
 
       .product-info

@@ -89,18 +89,46 @@
 
 	.cart-title{
 		font-size: 18px;
+		line-height: 20px;
 		font-style: italic;
 		font-family: Georgia;
+		margin-bottom: 10px;
+		width: 380px;
 	}
 
+	.cart-category {
+		font-size: 15px;
+		font-family: Georgia;
+		font-style: italic;
+		margin-bottom: 10px;
+	}
+	
+	.cart-descr {
+		width: 380px;
+		
+		span {
+			color: #444;
+		}
+	}
+	
 	.cart-table {
 		width: 100%;
 		border: 0;
 		border-collapse: collapse;
+		position: relative;
+		margin: -15px 0;
+
+		tr {
+			border-top: 1px dashed #d8d8d8;
+			
+			&:first-child {
+				border: 0;
+			}
+		}
 
 		td{
 			vertical-align: top;
-			padding-bottom: 30px;
+			padding: 15px 0;
 		}
 
 		.remove-from-cart{
@@ -114,14 +142,14 @@
 			background: #fff;
 			.border-radius(5px);
 			border-bottom: 1px solid #dbdbdb;
-			width: 204px;
-			height: 184px;
+			width: 143px;
+			height: 129px;
 			margin-right: 20px;
 			
 			img {
 				vertical-align: top;
-				width: 204px;
-				height: 184px;
+				width: 143px;
+				height: 129px;
 			}
 		}
 	}
@@ -135,7 +163,7 @@
 		span{
 			color: @linkColor;
 			margin-left: 70px;
-			margin-right: 86px;
+			margin-right: 67px;
 		}
 	}
 
@@ -144,13 +172,15 @@
 	}
 
 	.price-dose{
-		text-align: right;
+		text-align: center;
 	}
 
 	.price-dose-total{
 		font-size: 24px;
 		text-align: right;
-		padding-right: 66px;
+		padding: 30px 0px 0 20px;
+		white-space: nowrap;
+		text-align: right;
 	}
 
 	.cart-delete{
@@ -163,7 +193,7 @@
 	}
 
 	.cart-getorder{
-		padding: 15px 86px;
+		padding: 15px 67px;
 		text-align: right;
 
 		.cart-order{
