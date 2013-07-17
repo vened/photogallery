@@ -53,3 +53,9 @@ body.active_admin #active_admin_content {
 body.active_admin #active_admin_content #sidebar {
  margin-top: 25px;
 }
+
+.index_table tr.new td{background: #D9EDF7;}
+.index_table tr.process td{background: #FCF8E3;}
+.index_table tr.done td{background: #DFF0D8;}
+.index_table tr.fail td{background: #F2DEDE;}
+

@@ -5,7 +5,7 @@ ActiveAdmin.register Order do
   config.batch_actions = false
 
   filter :payment_method, :label => "Форма оплаты"
-  filter :order_confirm, :label => "Выполнены"
+  filter :confirm, :label => "Статус заказа", :as => :check_boxes, :collection => [['В обработке', 'В обработке'], ['Готово', 'Готово'], ['Отказ', 'Отказ'], ['Новый', 'Новый']]
 
 
   index do

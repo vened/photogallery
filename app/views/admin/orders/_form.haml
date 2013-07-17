@@ -10,7 +10,7 @@
     = f.input :last_time, :label => "до"
     = f.input :price, :label => "Стоимость (руб.)"
     = f.input :payment, :label => "Форма оплаты", :as => :select, :collection => [['Наличными курьеру', 'Наличными курьеру'], ['Пластиковой картой', 'Пластиковой картой'], ['Безналичный расчёт', 'Безналичный расчёт']]
-    = f.input :order_confirm, :label => "Стастус зака", :as => :select, :collection => [['Выполнен', true], ['Новый', false]]
+    = f.input :confirm, :label => "Стастус зака", :as => :select, :collection => [['В обработке','В обработке'], ['Готово','Готово'], ['Отказ','Отказ'], ['Новый','Новый']]
 
   .panel{:style => "margin-top:30px"}
     %h3 Содержимое заказа

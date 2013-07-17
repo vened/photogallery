@@ -8,12 +8,12 @@
       %th Стоимость(руб.)
       %th Форма оплаты
       %th Дата
-      %th Состояние заказа
+      %th Статус заказа
       %th
 
   %tbody
     -@orders.each do |item|
-      %tr{:class => "order_#{item.id}"}
+      %tr{:class => "#{'new' if item.confirm == 'Новый' } #{'process' if item.confirm == 'В обработке' } #{'done' if item.confirm == 'Готово' } #{'fail' if item.confirm == 'Отказ' }"}
         %td=link_to item.id, admin_order_path(item)
         %td
           = item.username
@@ -23,11 +23,7 @@
         %td= item.price.to_i
         %td= item.payment
         %td= raw I18n.l item.created_at, :format => :day
-        %td
-          -if item.order_confirm
-            %b{:style=>"color:green"} Выполнен
-          -else
-            %b{:style=>"color:red"} Новый
+        %td= item.confirm
         %td
           =link_to "Редактировать", edit_admin_order_path(item)
           &nbsp;

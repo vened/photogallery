@@ -2,10 +2,8 @@
   %h3
     Заказ №
     = @order.id
-    -if @order.order_confirm
-      %b{:style=>"color:green"} (Выполнен)
-    -else
-      %b{:style=>"color:red"} (Новый)
+    %b{:style=>"color:green"} (#{@order.confirm})
+
   .panel_contents
     .attributes_table
       %table

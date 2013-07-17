@@ -12,7 +12,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Новые заказы" do
-          @orders = Order.where("order_confirm = ?", false).order("created_at DESC")
+          @orders = Order.where("confirm = ?", 'Новый').order("created_at DESC")
           table do
             tr do
               th "№"

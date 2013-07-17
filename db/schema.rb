@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20130714165659) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "payment"
+    t.string   "confirm"
   end
 
   create_table "pages", :force => true do |t|
