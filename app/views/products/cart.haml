@@ -29,7 +29,7 @@
               .cart-category.gray= item.category.title
               
               .cart-descr.gray
-                Испанский сыровяленный окорок Хамон с маринованными мини-шампиньонами
+                = item.desc
             %td
               %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{item.id}", :data => {:remote => "true"} }
                 %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}

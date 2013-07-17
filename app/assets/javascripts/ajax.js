@@ -41,7 +41,7 @@ $(document).ready(function () {
             var countProduct = $(this).find(".calc").val(),
                 priceDoseTotalB = $(this).closest("tr"),
                 priceDose = priceDoseTotalB.find(".price-dose-js").html(),
-                priceDoseTotal = priceDoseTotalB.find("+ tr .price-dose-total-js");
+                priceDoseTotal = priceDoseTotalB.find(".price-dose-total-js");
 
             priceDoseTotal.html(countProduct * priceDose);
             //end обновление цены товара
