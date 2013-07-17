@@ -9,7 +9,7 @@
     %li.del
       %span
         &bull;
-    %li{:class => "#{'selected' if @products || @product || @categories}"}
+    %li{:class => "#{'selected' if @product || @categories || @category}"}
       %a{:href => "/internet-magazin"}
         %span
           Интернет-магазин
@@ -25,11 +25,11 @@
         &bull;
       
 
-    -#%li{:class => "#{'selected' if @page.parent_path == 'dostavka-kanape' if @page}"}
+    %li{:class => "#{'selected' if @kanape}"}
       %a{:href => "/dostavka-kanape/"}
         %span
           Доставка канапе
-    -#%li.del
+    %li.del
       %span
         &bull;
 

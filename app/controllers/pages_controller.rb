@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   end
 
   def kanape
-    @category = Category.find_by_path('kanape')
-    @products = Product.where("category_id = #{@category.id}").order("RANDOM()").limit(6)
+    @cat = Category.find_by_path('kanape')
+    @kanape = Product.where("category_id = #{@cat.id}").order("RANDOM()").limit(6)
     @cart = session[:cart]
     @prices = 0
     for item in @cart.items
