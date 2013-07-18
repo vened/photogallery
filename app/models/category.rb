@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :title, :description, :path
+  attr_accessible :title, :description, :path, :total
   has_many :products
 
   validates :title, :length => {:minimum => 1}
