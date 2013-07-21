@@ -1,6 +1,31 @@
-%br
-%br
-%br
+.box-container
+  .breadcrumbs
+    = link_to 'Главная', '/'
+    &nbsp;|&nbsp;
+    %span Поиск
 
-- @result.each do |item|
-  =debug item
+.box-container.box-main-container.page-cart
+  .box-main
+    %h1 Поиск
+
+    -#%form{:action => '/search', :method => :get}
+      %input{:name => "query", :value => "", :type => "text", :class => "input", :placeholder => "Поиск"}
+      %input{:name => "", :value => "", :type => "image", :src => "/assets/icon_search.png"}
+
+    %form{:action => '/search', :method => :get}
+      .cart-box.clearfix
+        %dl{:style=>"width:500px"}
+          %dd
+            %input{:name => "query", :value => "", :type => "text", :class => "input", :placeholder => "Поиск", :style => "width:480px"}
+        %input.cart-add{:type=>"submit", :value=>"Искать", :style=>"font-size:16px;height:34px;"}
+
+
+    -if @result.blank?
+      %div{:style=>"margin: 30px 0"} Ничего не найдено, попробуйте ещё раз
+    -else
+      = render :partial => 'products/products', :object => @result
+
+
+  .box-right
+    .mini_cart= render_cell :cart, :mini_cart
+    = render :partial => 'shared/product_right_col'

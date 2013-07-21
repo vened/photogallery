@@ -14,7 +14,7 @@ gem 'the_sortable_tree', '~> 2.3.0'
 #begin search
 #gem 'sunspot_rails'
 #gem 'sunspot_solr'
-gem 'mysql2',          '0.3.12b4'
+gem 'mysql2',          '0.3.12b5'
 gem 'thinking-sphinx', '~> 3.0.2'
 #end search
 
