@@ -14,6 +14,11 @@ class OrderController < ApplicationController
 
   def create
     @cart = session[:cart]
+    @prices = 0
+    for item in @cart.items
+      product = Product.find(item[0])
+      @prices = @prices + product.price.to_i * item[1]
+    end
     @order = Order.new(params[:order])
     if @order.save
       session[:cart] = nil
@@ -33,6 +38,5 @@ class OrderController < ApplicationController
       @prices = @prices + product.price.to_i * item[1]
     end
   end
-
 
 end
