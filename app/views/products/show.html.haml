@@ -2,13 +2,17 @@
   .breadcrumbs
     = link_to 'Главная', '/'
     &nbsp;|&nbsp;
-    =link_to 'Интернет-магазин', products_path
+    
+    %span{:itemscope=>"", :itemtype=>"http://data-vocabulary.org/Breadcrumb"}
+      %a{:href=>products_path, :itemprop=>"url"}
+        %span{:itemprop=>"title"} Интернет-магазин
     &nbsp;|&nbsp;
-    =link_to @product.category.title, category_path(@product.category)
+    %span{:itemscope=>"", :itemtype=>"http://data-vocabulary.org/Breadcrumb"}
+      %a{:href=>category_path(@product.category), :itemprop=>"url"}
+        %span{:itemprop=>"title"} #{@product.category.title}
     &nbsp;|&nbsp;
     %span
       =@product.title
-
 
 .box-container.box-main-container
 
@@ -17,12 +21,14 @@
     = render :partial => 'shared/product_right_col'
 
 
-  .box-main.page-product
-    %h1= @product.title
+  .box-main.page-product{:itemscope=>"", :itemtype=>"http://schema.org/Product"}
+    %h1{:itemprop => "name"} 
+      = @product.title
     
     .photo
       .decor
       -if @images.find_last
+        %meta{:itemprop=>"image", :content=>@images.find_last.file_url(:large)}
         =image_tag @images.find_last.file_url(:large)
       -else
         %img{:src => '/images/nophoto_big.png'}
@@ -33,7 +39,7 @@
         %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
         %h3 Состав
         %hr
-        .descr
+        .descr{:itemprop => "description"}
           = @product.desc
         %hr
         .weight
@@ -43,17 +49,18 @@
         %span.gray Количество порций:
         %span.quantity
           .minus -
-          %input.calc{:type=>"text", :value=>"#{@product.category.total}", :name=>"quantity", :autocomplete=>"off"}
+          %input.calc{:type=>"text", :value=>"#{@product.category.total}", :data => {:min => "#{@product.category.total}"}, :name=>"quantity", :autocomplete=>"off"}
           .plus +
 
         %hr
 
         -#%input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
         .cart-add Заказать
-
-        %span.price
-          = @product.price.to_i
-          руб
+        %div{:itemprop=>"offers", :itemscope=>"", :itemtype=>"http://schema.org/Offer"}
+          %span.price{:itemprop => "price"}
+            = @product.price.to_i
+            руб
+          %meta{:itemprop=>"priceCurrency", :content=>"RUB"}
 
 
   .box-main

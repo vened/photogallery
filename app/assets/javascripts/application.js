@@ -16,6 +16,7 @@
 //= require jquery
 //= require slimbox2
 //= require jquery_ujs
+//= require underscore
 //= require ajax
 
 $(function () {
@@ -47,40 +48,40 @@ $(function () {
 
         function update() {
             var $this = $(this);
+            var $form = $this.closest('.cart_update_quantity');
             var $input = $this.closest('.quantity').find('input[type=text]');
             var value = $input.val() * 1;
+            var min = $input.data('min');
             var newvalue = value + ($this.hasClass('minus') ? -1 : 1);
 
-            if (newvalue < 1) {
-                newvalue = 1;
+            if (newvalue < min) {
+            	return;
             }
 
             $input.val(newvalue);
-
-            var form = $this.closest('.cart_update_quantity');
-            form.submit();
+            $form.trigger('submit');
 
             return false;
         }
 
-        $input.on('change, keyup', function(){
-            var $this = $(this);
-            var form = $this.closest('.cart_update_quantity');
-            form.submit();
-        });
-
         $plus.on('click', update);
         $minus.on('click', update);
-        $input.on('keyup', function (e) {
-            if (this.value && this.value < 1) {
-                this.value = 1;
-            }
-        });
+        $input.on('keyup change', _.debounce(function (e) {
+        	var $this = $(this);
+        	var $form = $this.closest('.cart_update_quantity');
+            $form.trigger('submit');
+        }, 300));
 
         $input.on('blur', function (e) {
-            if (!this.value) {
-                this.value = 1;
+        	var $this = $(this);
+        	var $form = $this.closest('.cart_update_quantity');
+        	var min = $this.data('min');
+
+            if (!$this.val() || $this.val() < min) {
+                $this.val(min);
             }
+            
+            $form.trigger('submit');
         })
     }
     

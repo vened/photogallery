@@ -27,18 +27,18 @@
               .cart-heading.cart-title
                 = link_to item.title, [item.category, item]
               .cart-category.gray= item.category.title
-              
+            -#
               .cart-descr.gray
                 = item.desc
-            %td
+            %td{:width => 90}
               %form{:method=>"post", :class=>"cart_update_quantity", :action=>"/update_quantity?id=#{item.id}", :data => {:remote => "true"} }
                 %input{:type=>"hidden", :value=>'external_token', :name=>"authenticity_token"}
                 .quantity.m0
                   .gray.cart-heading Количество порций
                   .minus -
-                  %input.calc{:type=>"text", :value=> @cart.items[item.id], :name=>"quantity", :autocomplete=>"off"}
+                  %input.calc{:type=>"text", :value=> @cart.items[item.id], :data => {:min => 10}, :name=>"quantity", :autocomplete=>"off"}
                   .plus +
-            %td
+            %td{:width => 90}
               .price-dose
                 .gray.cart-heading Цена за порцию
                 %span.price-dose-js= item.price.to_i
