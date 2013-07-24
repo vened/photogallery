@@ -56,7 +56,7 @@
 
         -#%input.cart-add{:type=>"submit", :value=>"Заказать", :action => :add_to_cart, :id => @product}
         .cart-add Заказать
-        %div{:itemprop=>"offers", :itemscope=>"", :itemtype=>"http://schema.org/Offer"}
+        %span{:itemprop=>"offers", :itemscope=>"", :itemtype=>"http://schema.org/Offer"}
           %span.price{:itemprop => "price"}
             = @product.price.to_i
             руб
