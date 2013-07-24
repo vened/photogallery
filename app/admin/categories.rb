@@ -14,6 +14,7 @@ ActiveAdmin.register Category do
       f.input :description, :label => "Описание"
       f.input :path, :label => "URL"
       f.input :total, :label => "Минимальное кол-во в заказе", :as => :select, :collection => [['1','1'], ['10','10']]
+      f.input :sortable, :label => "Сортировка", :as => :select, :collection => Hash[Category.all.map{|b| [b.title,b.sortable]}]
     end
     f.buttons
   end
