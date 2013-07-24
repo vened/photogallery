@@ -36,7 +36,7 @@
                 .quantity.m0
                   .gray.cart-heading Количество порций
                   .minus -
-                  %input.calc{:type=>"text", :value=> @cart.items[item.id], :data => {:min => 10}, :name=>"quantity", :autocomplete=>"off"}
+                  %input.calc{:type=>"text", :value=> @cart.items[item.id], :data => {:min => item.category.total}, :name=>"quantity", :autocomplete=>"off"}
                   .plus +
             %td{:width => 90}
               .price-dose

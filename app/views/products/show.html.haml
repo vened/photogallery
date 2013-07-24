@@ -24,11 +24,11 @@
   .box-main.page-product{:itemscope=>"", :itemtype=>"http://schema.org/Product"}
     %h1{:itemprop => "name"} 
       = @product.title
-    
+
     .photo
       .decor
       -if @images.find_last
-        %meta{:itemprop=>"image", :content=>@images.find_last.file_url(:large)}
+        %meta{:itemprop=>"image", :content => "http://#{request.host}/#{@images.find_last.file_url(:large)}"}
         =image_tag @images.find_last.file_url(:large)
       -else
         %img{:src => '/images/nophoto_big.png'}
