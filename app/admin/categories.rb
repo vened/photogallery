@@ -1,6 +1,8 @@
 # encoding: utf-8
 ActiveAdmin.register Category do
 
+  config.sort_order = "sortable_asc"
+
   menu :label => "Категории продуктов"
 
 
@@ -8,13 +10,25 @@ ActiveAdmin.register Category do
     link_to "New Category", new_admin_category_path
   end
 
+  index do
+    column "Название", :title
+    column "Описание", :description
+    column "URL", :path
+    column "Минимальное кол-во в заказе", :total
+    column "Сортировка", :sortable
+    actions
+  end
+
+
   form do |f|
     f.inputs "Создание/редактирование Категории" do
-      f.input :title, :label => "Заголовок"
+      f.input :title, :label => "Название"
       f.input :description, :label => "Описание"
       f.input :path, :label => "URL"
       f.input :total, :label => "Минимальное кол-во в заказе", :as => :select, :collection => [['1','1'], ['10','10']]
-      f.input :sortable, :label => "Сортировка", :as => :select, :collection => Hash[Category.all.map{|b| [b.title,b.sortable]}]
+      f.input :sortable, :as => :hidden, :input_html => { :name => 'category[sortable_old]' }
+      f.input :sortable, :label => "Сортировка", :as => :select, :collection => Hash[Category.order("sortable ASC").map{|b| [b.title,b.sortable]}], :include_blank => false
+      #f.input :sortable, :label => "Сортировка"
     end
     f.buttons
   end
@@ -31,8 +45,12 @@ ActiveAdmin.register Category do
 
     def update
       @category = Category.find_by_path(params[:id])
+      @categories = Category.where("sortable >= '#{params[:category][:sortable]}' AND sortable < '#{params[:category][:sortable_old]}'")
+      @categories.each do |cat|
+        cat.update_attribute('sortable', cat.sortable.to_i + 1)
+      end
       if @category.update_attributes(params[:category])
-        redirect_to admin_category_url, notice: 'Категория успешно обновлена'
+        redirect_to admin_categories_url, notice: 'Категория успешно обновлена'
       else
         render :action => 'edit'
       end
