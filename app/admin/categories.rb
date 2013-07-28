@@ -25,10 +25,15 @@ ActiveAdmin.register Category do
       f.input :title, :label => "Название"
       f.input :description, :label => "Описание"
       f.input :path, :label => "URL"
-      f.input :total, :label => "Минимальное кол-во в заказе", :as => :select, :collection => [['1','1'], ['10','10']]
-      f.input :sortable, :as => :hidden, :input_html => { :name => 'category[sortable_old]' }
-      f.input :sortable, :label => "Сортировка", :as => :select, :collection => Hash[Category.order("sortable ASC").map{|b| [b.title,b.sortable]}], :include_blank => false
-      #f.input :sortable, :label => "Сортировка"
+      f.input :total, :label => "Минимальное кол-во в заказе", :input_html => {:value => 10}
+      f.input :sortable, :as => :hidden, :input_html => {:value => 1}
+      #f.input :sortable, :as => :hidden, :input_html => {:name => 'category[sortable_old]'}
+      #f.input :sortable, :label => "Сортировка", :as => :select, :collection => Hash[Category.order("sortable ASC").map { |b| [b.title, b.sortable] }], :include_blank => false
+      if f.object.new_record?
+        f.input :sortable, :label => "Сортировка", :input_html => {:value => 1}
+      else
+        f.input :sortable, :label => "Сортировка"
+      end
     end
     f.buttons
   end
@@ -43,12 +48,21 @@ ActiveAdmin.register Category do
       @category = Category.find_by_path(params[:id])
     end
 
+    def create
+      @category = Category.new(params[:category])
+      if @category.save
+        redirect_to admin_categories_url, notice: 'Категория успешно созданна'
+      else
+        render :new
+      end
+    end
+
     def update
       @category = Category.find_by_path(params[:id])
-      @categories = Category.where("sortable >= '#{params[:category][:sortable]}' AND sortable < '#{params[:category][:sortable_old]}'")
-      @categories.each do |cat|
-        cat.update_attribute('sortable', cat.sortable.to_i + 1)
-      end
+      #@categories = Category.where("sortable >= #{params[:category][:sortable]} AND sortable < #{params[:category][:sortable_old]}")
+      #@categories.each do |cat|
+      #  cat.update_attribute('sortable', cat.sortable + 1)
+      #end
       if @category.update_attributes(params[:category])
         redirect_to admin_categories_url, notice: 'Категория успешно обновлена'
       else
