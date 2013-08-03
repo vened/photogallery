@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def category
+    @categories = Category.order("sortable ASC")
     @category = Category.find_by_path(params[:id])
     @products = Product.where("category_id = #{@category.id}").order("updated_at DESC")
     @meta_title = @category.title

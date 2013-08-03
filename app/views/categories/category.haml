@@ -11,6 +11,19 @@
   .box-main
     %h1= @category.title
 
+    .products-nav
+      .text-del
+        %h2
+          %span Самое лучшее для вас
+        %hr
+
+        %ul.products-nav-list.clearfix
+          -@categories.each do |category|
+            -if category.products.length > 0
+              %li
+                = link_to category.title, category
+
+
     = render :partial => 'products/products', :object => @products
 
   .box-right
