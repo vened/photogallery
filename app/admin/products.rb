@@ -34,7 +34,7 @@ ActiveAdmin.register Product do
       f.input :category, :label => "Категория"
       f.input :path, :label => "Url"
       f.has_many :attachments, :through => Product do |s|
-        s.input :file, :as => :file, :label => "Фото",:hint => s.object.file.nil? ? s.template.content_tag(:span, "Нет фото") : s.template.image_tag(s.object.file_url(:thumb))
+        s.input :file, :as => :file, :label => "Фото", :hint => s.object.file.nil? ? s.template.content_tag(:span, "Нет фото") : s.template.image_tag(s.object.file_url(:thumb))
         s.input :_destroy, :as => :boolean, :label => "Удалить"
       end
     end
@@ -68,10 +68,49 @@ ActiveAdmin.register Product do
       @product = Product.find_by_path(params[:id])
     end
 
+    def create
+      params[:product][:path].gsub!(/\//){"-"}
+      params[:product][:path].gsub!(/\./){"-"}
+      params[:product][:path].gsub!(/\:/){""}
+      params[:product][:path].gsub!(/\-{1,}\Z/){""}
+      if params[:product][:path] == ""
+        @title = params[:product][:title]
+        @rep_title = @title.gsub(/\//){"-"}
+        @rep_title = @rep_title.gsub(/\./){"-"}
+        @rep_title = @rep_title.gsub(/\:/){""}
+        @rep_title = @rep_title.gsub(/\s+/){"-"}
+        @rep_title = @rep_title.gsub(/\-{1,}\Z/){""}
+        params[:product][:path] = @rep_title
+      end
+
+      @product = Product.new(params[:product])
+
+      if @product.save
+        redirect_to admin_product_url(@product), notice: 'Товар успешно создан'
+      else
+        render :new
+      end
+    end
+
     def update
       @product = Product.find_by_path(params[:id])
+
+      params[:product][:path].gsub!(/\//){"-"}
+      params[:product][:path].gsub!(/\./){"-"}
+      params[:product][:path].gsub!(/\:/){""}
+      params[:product][:path].gsub!(/\-{1,}\Z/){""}
+      if params[:product][:path] == ""
+        @title = params[:product][:title]
+        @rep_title = @title.gsub(/\//){"-"}
+        @rep_title = @rep_title.gsub(/\./){"-"}
+        @rep_title = @rep_title.gsub(/\:/){""}
+        @rep_title = @rep_title.gsub(/\s+/){"-"}
+        @rep_title = @rep_title.gsub(/\-{1,}\Z/){""}
+        params[:product][:path] = @rep_title
+      end
+
       if @product.update_attributes(params[:product])
-        redirect_to admin_product_url, notice: 'Товар успешно обновлен'
+        redirect_to admin_product_url(@product), notice: "Товар успешно обновлен"
       else
         render :action => 'edit'
       end

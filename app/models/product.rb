@@ -5,8 +5,8 @@ class Product < ActiveRecord::Base
 
   validates :title, :length => {:minimum => 1}
   validates :path,
-            :uniqueness => true,
-            :length => {:minimum => 1}
+            :uniqueness => true
+  #:format => {:with => /\A[a-zA-Zа-яА-Я0-9\-]+\z/, :message => "Допускается только латиница и/или цифры"}
 
 
   def to_param
