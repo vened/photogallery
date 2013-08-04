@@ -1,7 +1,7 @@
 %ul.cols-products
   - @cat.each do |category|
     -if category.products.length > 0
-      - @prod = Product.find_by_category_id(category.id)
+      - @prod = Product.order("updated_at DESC").find_by_category_id(category.id)
       %li
         .photo
           .product-category
