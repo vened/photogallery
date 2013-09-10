@@ -1,10 +1,7 @@
-.box-container.box-main-container
-  .box-main
-    %h1= @album.title
+%h1= @album.title
 
-    %ul.cols-products.album-photos
-      -@photos.each do |photo|
-        %li
-          .photo
-            =link_to photo.file_url(:large) do
-              =image_tag photo.file_url(:thumb)
+%ul.album.clearfix
+  -@photos.each do |photo|
+    %li.photo
+      =link_to photo.file_url(:large) do
+        =image_tag photo.file_url(:thumb)

@@ -5,14 +5,17 @@
     %title= title
     %meta{:name => "keywords",  :content => metakey }
     %meta{:name => "description",  :content => metadesc }
-    -#= csrf_meta_tags
+    = csrf_meta_tags
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
 
   %body
-    #wrap
-      #wrapperw
-        #container
-          = render 'shared/menu'
-          #content
-            = yield
+    .container
+
+      .cube
+        .cube_1
+          .cube_action.cube_action_1
+        .cube_2
+          .cube_action.cube_action_2
+          -#= render 'shared/menu'
+          -#= yield

@@ -14,7 +14,6 @@
 //
 //
 //= require jquery
-//= require slimbox2
 //= require jquery_ujs
 //= require underscore
 //= require ajax

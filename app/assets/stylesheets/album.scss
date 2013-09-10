@@ -1,0 +1,12 @@
+.album {
+  position: relative;
+  margin: -20px;
+  .photo {
+    float: left;
+    margin: 20px;
+    vertical-align: top;
+    img {
+      vertical-align: top;
+    }
+  }
+}

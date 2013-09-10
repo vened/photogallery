@@ -36,7 +36,7 @@ ActiveAdmin.register Page do
     def create
       @page = Page.new(params[:page])
       if @page.save
-        redirect_to admin_pages_url, notice: 'страница успешно созданна'
+        redirect_to admin_pages_url, :notice => 'страница успешно созданна'
       else
         render :new
       end

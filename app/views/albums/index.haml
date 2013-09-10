@@ -1,15 +1,9 @@
-.box-container.box-main-container
-  .box-main
-    %h1 Портфолио
-  
-    %ul.cols-products
-      - @albums.each do |album|
-        %li
-          .photo
-            =link_to album do
-              = image_tag album.photos.find_last.file_url(:thumb)
-          .product-info
-            .title.album-title
-              -#=link_to album.title, album
-              -#-if album.desc
-                %p= album.desc
+%h1 Портфолио
+%ul.albums
+  - @albums.each do |album|
+    %li
+      =link_to album do
+        %h2= album.title
+      .photo
+        =link_to album do
+          = image_tag album.photos.find_last.file_url(:thumb)
