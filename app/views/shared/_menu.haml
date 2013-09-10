@@ -2,53 +2,11 @@
   .yellow_rounds
    
   %ul
-    %li{:class => "#{'selected' if @about }"}
-      %a{:href => "/about"}
-        %span
-          О компании
-    %li.del
-      %span
-        &bull;
-    %li{:class => "#{'selected' if @product || @categories || @category}"}
-      %a{:href => "/internet-magazin"}
-        %span
-          Интернет-магазин
-    %li.del
-      %span
-        &bull;
     %li{:class => "#{'selected' if @albums || @album}"}
       =link_to albums_path do
         %span
           Портфолио
-    %li.del
-      %span
-        &bull;
-      
-
-    %li{:class => "#{'selected' if @kanape}"}
-      %a{:href => "/dostavka-kanape/"}
-        %span
-          Доставка канапе
-    %li.del
-      %span
-        &bull;
-
       -#%li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
         %a{:href => "/clients"}
           %span
             Наши клиенты
-      -#%li.del
-        %span
-          &bull;
-    
-    %li{:class => "#{'selected' if @contacts }"}
-      %a{:href => "/contacts"}
-        %span
-          Контакты
-    %li.del
-      %span
-        &bull;
-    %li{:class => "#{'selected' if @feedbacks || @feedback}"}
-      %a{:href => "/feedbacks"}
-        %span
-          Обратная связь

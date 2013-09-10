@@ -12,32 +12,32 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Новые заказы" do
-          @orders = Order.where("confirm = ?", 'Новый').order("created_at DESC")
-          table do
-            tr do
-              th "№"
-              th "Клиент"
-              th "Телефон"
-              th "Email"
-              th "Стоимость(руб.)"
-              th "Форма оплаты"
-              th "Дата"
-              th
-            end
-            @orders.each do |item|
-
-              tr do
-                td link_to item.id, admin_order_path(item)
-                td item.username
-                td item.phone
-                td item.email
-                td item.price.to_i
-                td item.payment
-                td item.date
-              end
-
-            end
-          end
+          #@orders = Order.where("confirm = ?", 'Новый').order("created_at DESC")
+          #table do
+          #  tr do
+          #    th "№"
+          #    th "Клиент"
+          #    th "Телефон"
+          #    th "Email"
+          #    th "Стоимость(руб.)"
+          #    th "Форма оплаты"
+          #    th "Дата"
+          #    th
+          #  end
+          #  @orders.each do |item|
+          #
+          #    tr do
+          #      td link_to item.id, admin_order_path(item)
+          #      td item.username
+          #      td item.phone
+          #      td item.email
+          #      td item.price.to_i
+          #      td item.payment
+          #      td item.date
+          #    end
+          #
+          #  end
+          #end
         end
       end
     end

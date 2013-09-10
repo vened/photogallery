@@ -1,31 +1,10 @@
-.box-container
-  .breadcrumbs
-    = link_to 'Главная', '/'
-    &nbsp;|&nbsp;
-    = link_to 'Портфолио', albums_path
-    &nbsp;|&nbsp;
-    %span= @album.title
-
 .box-container.box-main-container
   .box-main
     %h1= @album.title
-    -if @album.desc
-      %p= @album.desc
-    
-    .clearfix.album-params
-      .album-param.pull-left Дата проведения: #{@album.created_at.strftime("%d.%m.%Y")}
-      -if @album.format
-        .album-param.pull-left Формат: #{@album.format}
-        
-      -if @album.guests
-        .album-param.pull-left Число гостей: #{@album.guests}
-    
+
     %ul.cols-products.album-photos
       -@photos.each do |photo|
         %li
           .photo
             =link_to photo.file_url(:large) do
               =image_tag photo.file_url(:thumb)
-
-  .box-right
-    .mini_cart= render_cell :cart, :mini_cart

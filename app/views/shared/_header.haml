@@ -3,9 +3,3 @@
     .box-main
       %a{:href => "/", :class => "logo"}
         %img{:src => "/assets/logo.png", :alt => "Шико Catering Club"}
-
-      = render 'shared/header_info'
-
-    .box-right
-      %a.btn-cart{:href => "/cart"}
-        = render_cell :cart, :show

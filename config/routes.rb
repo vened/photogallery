@@ -2,46 +2,14 @@ Shikocc::Application.routes.draw do
 
   root :to => 'pages#index'
 
-  post 'add_to_cart' => 'products#add_to_cart'
-  post 'empty_cart' => 'products#empty_cart'
-  post 'update_quantity' => 'products#update_quantity'
-  delete 'destroy_item' => 'products#destroy_item'
-  get 'cart' => 'products#cart'
-  get 'search' => 'products#search'
-
-  resources :feedbacks, :only => [:index, :create]
-
-
-  #begin order
-  get '/order/new' => 'order#new'
-  post 'order/create' => 'order#create'
-  get 'order/:id' => 'order#show'
-  #end order
-
   #begin albums
-  get '/photos' => 'albums#index', :as => :albums
-  get '/nggallery/page-20/album-2/:id' => 'albums#show', :as => :album
+  resources :albums, :only => [:index, :show], :as => :albums
+  #get '/photos' => 'albums#index', :as => :albums
+  #get '/nggallery/page-20/album-2/:id' => 'albums#show', :as => :album
   #end albums
-
-  #begin ajax
-  get '/ajax/cart' => 'ajax#cart'
-  get '/ajax/cart_price' => 'ajax#cart_price'
-  get '/ajax/mini_cart' => 'ajax#mini_cart'
-  #end ajax
-
-
-  #begin news
-  resources :news, :only => [:index, :show]
-  #end news
 
 
   get '/admin' => 'admin/dashboard#index'
-
-  #begin static pages
-  get 'contacts' => 'pages#contacts'
-  get 'about' => 'pages#about'
-  get 'dostavka-kanape' => 'pages#kanape'
-  #end static pages
 
 
   ActiveAdmin.routes(self)
@@ -71,21 +39,6 @@ Shikocc::Application.routes.draw do
       end
     end
   end
-
-  #begin хаки для страниц из-за ёбнутейшего роутинга ниже
-  get '/service/:id' => 'pages#show'
-  #end хаки для страниц из-за ёбнутейшего роутинга ниже
-
-
-  #ёбнутейший роутинг начало
-  get '/internet-magazin' => 'categories#index', :as => :products
-  get '/shop/' => 'categories#index', :as => :shop
-  get '/shop/:id' => 'categories#category', :as => :category
-  resources :categories, :only => [], :path => '/' do
-    get '/:id' => 'products#show', :as => :product
-  end
-  #/tartaletki/rolly-iz-norvezhskoj-semgi-sobstvennogo-posola-s-syrom-filadelfiya/
-  #ёбнутейший роутинг конец
 
   resources :pages, :path => "/", :only => [:index, :show]
 

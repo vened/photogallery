@@ -1,10 +1,3 @@
-.box-container
-  .breadcrumbs
-    = link_to 'Главная', '/'
-    &nbsp;|&nbsp;
-    -#= link_to 'Портфолио', albums_path
-    %span Портфолио
-
 .box-container.box-main-container
   .box-main
     %h1 Портфолио
@@ -17,17 +10,6 @@
               = image_tag album.photos.find_last.file_url(:thumb)
           .product-info
             .title.album-title
-              =link_to album.title, album
-              -if album.desc
+              -#=link_to album.title, album
+              -#-if album.desc
                 %p= album.desc
-              
-            .album-param Дата: #{album.created_at.strftime("%d.%m.%Y")}
-            
-            -if album.format
-              .album-param Формат: #{album.format}
-              
-            -if album.guests
-              .album-param Кол-во гостей: #{album.guests} персон
-
-  .box-right
-    .mini_cart= render_cell :cart, :mini_cart

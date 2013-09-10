@@ -3,18 +3,6 @@ class PagesController < ApplicationController
 
   def index
     #@pages = Page.nested_set.all
-    @cat = Category.all
-  end
-
-  def kanape
-    @cat = Category.find_by_path('kanape')
-    @kanape = Product.where("category_id = #{@cat.id}").order("RANDOM()").limit(6)
-    @cart = session[:cart]
-    @prices = 0
-    for item in @cart.items
-      product = Product.find(item[0])
-      @prices = @prices + product.price.to_i * item[1]
-    end
   end
 
   def show

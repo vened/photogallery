@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714165659) do
+ActiveRecord::Schema.define(:version => 20130704212342) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -48,71 +48,8 @@ ActiveRecord::Schema.define(:version => 20130714165659) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
-    t.text     "desc"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "format"
-    t.integer  "guests"
-  end
-
-  create_table "attachments", :force => true do |t|
-    t.string   "file"
-    t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "attachments", ["product_id"], :name => "index_attachments_on_product_id"
-
-  create_table "categories", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "path"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "total"
-    t.integer  "sortable"
-  end
-
-  create_table "feedbacks", :force => true do |t|
-    t.string   "username"
-    t.text     "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "email"
-  end
-
-  create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "meta_key"
-    t.string   "meta_desc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "path"
-  end
-
-  add_index "news", ["title"], :name => "index_news_on_title"
-
-  create_table "orders", :force => true do |t|
-    t.string   "username"
-    t.string   "surname"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "address"
-    t.string   "date"
-    t.string   "first_time"
-    t.string   "last_time"
-    t.text     "comment"
-    t.text     "data"
-    t.text     "details"
-    t.decimal  "price"
-    t.boolean  "order_confirm"
-    t.boolean  "payment_method"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "payment"
-    t.string   "confirm"
   end
 
   create_table "pages", :force => true do |t|
@@ -133,35 +70,11 @@ ActiveRecord::Schema.define(:version => 20130714165659) do
   create_table "photos", :force => true do |t|
     t.string   "file"
     t.integer  "album_id"
-    t.integer  "news_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
-  add_index "photos", ["news_id"], :name => "index_photos_on_news_id"
-
-  create_table "products", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "metakey"
-    t.string   "metadesc"
-    t.string   "path"
-    t.decimal  "price"
-    t.decimal  "weight"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
-    t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "photos", ["id"], :name => "index_photos_on_id"
 
 end
