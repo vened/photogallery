@@ -11,8 +11,27 @@
 
   %body
     .container
-      = render 'shared/menu'
-      = yield
+      .sidebar
+        %h1 Photograph
+        %ul.nav
+          %li
+            %a.link{:href=>"/albums"} Портфолио
+          %li
+            %a.link{:href=>"/albums"} Портфолио
+            %ul.sub
+              %li
+                %a.link{:href=>"/albums"} Портфолио
+              %li.selected
+                %a.link{:href=>"/albums"} Портфолио
+              %li
+                %a.link{:href=>"/albums"} Портфолио
+          %li
+            %a.link{:href=>"/albums"} Портфолио
+          %li
+            %a.link{:href=>"/albums"} Портфолио
+        -#= render 'shared/menu'
+      .content
+        = yield
 
     .overlay
       .overlay_bg

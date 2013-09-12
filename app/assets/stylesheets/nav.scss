@@ -1,0 +1,15 @@
+.nav{
+  li{
+    margin: 5px 0;
+  }
+  .sub{
+    padding: 0 0 0 15px;
+    font-size: 13px;
+  }
+  .selected{
+    a{
+      border-bottom: 1px solid #FFB2B2;
+      color: #FF0000;
+    }
+  }
+}

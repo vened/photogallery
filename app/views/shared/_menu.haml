@@ -3,7 +3,7 @@
    
   %ul
     %li{:class => "#{'selected' if @albums || @album}"}
-      =link_to albums_path do
+      =link_to albums_path, :class => 'link' do
         %span
           Портфолио
       -#%li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
