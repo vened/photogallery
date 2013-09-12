@@ -13,3 +13,10 @@
     .container
       = render 'shared/menu'
       = yield
+
+    .overlay
+      .overlay_bg
+      .layer.js-layer
+        .prev.js-prev.js-open-photo{:data =>{:index => 0}}
+        .next.js-next.js-open-photo{:data =>{:index => 0}}
+        .layer_in.js-layer_in

@@ -4,12 +4,6 @@
   -@index = 0
   -@photos.each do |photo|
     %li.photo
-      =link_to photo.file_url(:thumb), :class => 'js-open-photo', :data =>{:index => @index} do
+      =link_to photo.file_url(:large), :class => 'js-open-lyer js-open-photo', :data =>{:index => @index} do
         =image_tag photo.file_url(:thumb)
     -@index = @index + 1
-
-
-.layer.js-layer
-  .prev.js-prev.js-open-photo{:data =>{:index => 0}}
-  .next.js-next.js-open-photo{:data =>{:index => 0}}
-  .layer_in.js-layer_in

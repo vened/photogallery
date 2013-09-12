@@ -1,9 +1,14 @@
 $(function () {
 
 
-    var photo = $('.js-open-photo'),
+    var container = $('.container'),
+        photo = $('.js-open-photo'),
+        openLayer = $('.js-open-lyer'),
+        overlay = $('.overlay'),
+        overlayBg = $('.overlay_bg'),
         layer = $('.js-layer'),
         layerIn = $('.js-layer_in', layer);
+
 
     var photos = photo.map(function () {
         return this.href;
@@ -12,6 +17,7 @@ $(function () {
     function AppendPhoto(src, i) {
         layerIn.html("<img src='" + src + "'/>");
     }
+
 
     function actionElementAtributes(i, p) {
         var next = $('.js-next', layer),
@@ -36,5 +42,14 @@ $(function () {
         AppendPhoto(photos[index], index);
     });
 
+    openLayer.on('click', function () {
+        overlay.width($('body').width());
+        overlay.height($('body').height());
+        overlay.show();
+    });
+
+    overlayBg.on('click', function(){
+        overlay.hide();
+    });
 
 });
