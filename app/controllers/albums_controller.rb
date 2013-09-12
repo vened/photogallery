@@ -9,6 +9,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @photos = @album.photos
     @meta_title = @album.title
+    #render :json => @photos
   end
 
 
