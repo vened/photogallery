@@ -1,12 +1,16 @@
 .navigation
   .yellow_rounds
    
-  %ul
+  %ul.nav
     %li{:class => "#{'selected' if @albums || @album}"}
       =link_to albums_path, :class => 'link' do
-        %span
-          Портфолио
-      -#%li{:class => "#{'selected' if @page.parent_path == 'clients' if @page}"}
-        %a{:href => "/clients"}
-          %span
-            Наши клиенты
+        Портфолио
+      %ul.sub
+        %li
+          %a.link{:href=>"/albums"} Портфолио
+        %li
+          %a.link{:href=>"/albums"} Портфолио
+        %li
+          %a.link{:href=>"/albums"} Портфолио
+    %li{:class => "#{'selected' if @page.parent_path == 'contacts' if @page}"}
+      %a{:href => "/contacts"} Контакты

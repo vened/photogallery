@@ -7,7 +7,7 @@
     font-size: 13px;
   }
   .selected{
-    a{
+    > a{
       border-bottom: 1px solid #FFB2B2;
       color: #FF0000;
     }
