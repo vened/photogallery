@@ -19,7 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.2.1'
-#gem 'unicorn'
+gem 'unicorn'
 #gem 'tilt'
 #gem 'debugger'
 
