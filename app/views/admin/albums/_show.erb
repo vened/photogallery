@@ -1,0 +1,31 @@
+<div class="panel">
+  <h3><%= @album.title %></h3>
+
+  <div class="panel_contents">
+
+    <div class="album_images">
+      <%- @album.photos.each do |photo| %>
+          <div class="album_photo">
+            <%= image_tag photo.file_url(:thumb) %>
+            <%= link_to '', delete_photo_admin_albums_path(photo), :class => 'delete_photo', :method => :delete, :title => 'Удалить' %>
+          </div>
+      <%- end %>
+    </div>
+
+    <%= form_tag({:action => :upload_photo}, :multipart => true, :class => 'upload_photo', :data => {:action => upload_photo_admin_albums_path}) do %>
+        <div class="field">
+          <label>Добавить фото</label>
+          <%= file_field_tag 'file', :multiple => true, :class => 'file_input' %>
+        </div>
+    <% end %>
+
+    <div id="img-container">
+      <ul class="img-list"></ul>
+    </div>
+
+    <div class="upload_action">
+      <span class="upload-all">Загрузить</span>
+    </div>
+
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :file
+  attr_accessible :file, :album_id
 
   mount_uploader :file, PhotoUploader
 

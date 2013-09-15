@@ -17,6 +17,12 @@ Shikocc::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   namespace :admin do
+    resources :albums do
+      collection do
+        post 'upload_photo/:id' => 'albums#upload_photo', :as => :upload_photo
+        delete 'delete_photo/:id' => 'albums#delete_photo', :as => :delete_photo
+      end
+    end
     resources :pages do
       collection do
 
