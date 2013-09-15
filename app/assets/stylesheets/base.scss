@@ -25,7 +25,11 @@ body {
     box-shadow: 0 0 5px #4c4c4c;
   }
   .content {
-
+    .content-in{
+      position: relative;
+      height: 100%;
+      overflow: auto;
+    }
   }
 
 }

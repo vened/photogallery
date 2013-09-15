@@ -1,13 +1,17 @@
 $(function () {
 
 
-    var container = $('.container'),
+    var body = $("body"),
+        container = $('.container'),
         photo = $('.js-open-photo'),
         openLayer = $('.js-open-lyer'),
         overlay = $('.overlay'),
         overlayBg = $('.overlay_bg'),
         layer = $('.js-layer'),
         layerIn = $('.js-layer_in', layer);
+
+    container.find('.content').height(body.height());
+
 
 
     var photos = photo.map(function () {
