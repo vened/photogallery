@@ -39,6 +39,7 @@
   left: 0;
   top: 0;
   z-index: 10;
+  width: 100%;
   text-align: center;
   .overlay_bg {
     position: absolute;
@@ -55,22 +56,53 @@
   position: relative;
   display: inline-block;
   z-index: 2;
-  margin-top: 50px;
-  padding: 30px;
+  margin-top: 20px;
   background: #fff;
   box-shadow: 0 0 15px #333;
+  .layer_in{
+    height: 100%;
+    img{
+      max-height: 100%;
+      //opacity: 0;
+    }
+  }
+  .layer-close,
   .next,
   .prev {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: transparent;
+    top: 50%;
+    left: 15px;
+    width: 30px;
+    height: 31px;
+    z-index: 10;
+    margin-top: -15px;
+    background: url(../assets/tn3/tn3.png);
     cursor: pointer;
   }
   .next {
-    right: 0;
+    right: 15px;
     left: auto;
+    background-position: -39px -2px;
+    &:hover{
+      background-position: -39px -39px;
+    }
+  }
+  .prev{
+    background-position: -4px -2px;
+    &:hover{
+      background-position: -4px -39px;
+    }
+  }
+  .layer-close{
+    left: auto;
+    right: 8px;
+    top:8px;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    background-position: -239px -9px;
+    &:hover{
+      background-position: -239px -47px;
+    }
   }
 }

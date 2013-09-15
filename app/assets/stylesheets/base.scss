@@ -1,9 +1,8 @@
 html,
 body {
   height: 100%;
-  background: #fff;
+  background: url(../assets/bgr.jpg);
   color: #263352;
-  text-shadow: 0 1px 0 #fff;
 }
 
 .container {
@@ -21,8 +20,10 @@ body {
   .sidebar {
     width: 200px;
     padding: 25px 30px;
-    background: linear-gradient(to bottom, #DBE2E7, #B9C7D0);
-    box-shadow: 0 0 5px #4c4c4c;
+    //background: linear-gradient(to bottom, #DBE2E7, #B9C7D0);
+    background: url(../assets/sidebar.jpg);
+    //box-shadow: 1px 0 7px #333;
+    color: #fff;
   }
   .content {
     .content-in{
@@ -50,16 +51,6 @@ a {
   &:hover {
     color: red;
   }
-}
-
-.link {
-  border-bottom: 1px solid #B2D1F0;
-  text-decoration: none;
-}
-
-.link:hover {
-  border-bottom: 1px solid #FFB2B2;
-  color: #FF0000;
 }
 
 .clearfix {

@@ -1,15 +1,25 @@
 .nav{
   li{
-    margin: 5px 0;
+    margin: 10px 0;
   }
   .sub{
     padding: 0 0 0 15px;
     font-size: 13px;
   }
+  .link {
+    color: #6A6C6E;
+    border-bottom: none;
+    text-decoration: none;
+    transition: text-shadow .25s;
+    &:hover {
+      color: #fff;
+      border: medium none;
+      text-shadow: 0 0 30px #856FB3, 0 0 30px #856FB3, 0 0 30px #856FB3;
+    }
+  }
   .selected{
     > a{
-      border-bottom: 1px solid #FFB2B2;
-      color: #FF0000;
+      color: #fff;
     }
   }
 }
