@@ -16,12 +16,44 @@
 //= require jquery
 //= require jquery_ujs
 //= require tn3/js/tn3lite
-
+//
+//var tn1 = $('.mygallery').tn3({
+//    skinDir:"/skins",
+//    responsive:"width",
+//    width: 960,
+//    height:425,
+//    mouseWheel: false,
+//    image:{
+//        crop:true,
+//        transitions:[{
+//            type:"fade"
+//        }]
+//    },
+//    touch: {
+//        skin: "tn3",
+//        fsMode: "/tn3_touch_fullscreen.html"
+//    },
+//    external:[{
+//        origin:"xml",
+//        url:"/wp-content/themes/tn3_black/examples/example2.xml"
+//    }],
+//    content:[{
+//        plugin: "mediaelement",
+//        options: {
+//            features: ['current','progress','duration','fullscreen'],
+//            useFullScreen: true
+//        }
+//    }]
+//});
 
 $(document).ready(function () {
     //Thumbnailer.config.shaderOpacity = 1;
     var tn1 = $('.mygallery').tn3({
         skinDir: "skins",
+        responsive:"height",
+//        width: 960,
+//        height: 450,
+        mouseWheel: true,
         imageClick: "fullscreen",
         image: {
             maxZoom: 1.5,
@@ -38,15 +70,15 @@ $(document).ready(function () {
                     type: "grid",
                     duration: 460,
                     easing: "easeInQuad",
-                    gridX: 1,
-                    gridY: 8,
+                    gridX: 10,
+                    gridY: 20,
                     // flat, diagonal, circle, random
                     sort: "random",
                     sortReverse: false,
                     diagonalStart: "bl",
                     // fade, scale
                     method: "scale",
-                    partDuration: 360,
+                    partDuration: 1360,
                     partEasing: "easeOutSine",
                     partDirection: "left"
                 }
