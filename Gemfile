@@ -26,4 +26,6 @@ gem 'jquery-rails', '~> 2.2.1'
 
 group :development do
   gem 'quiet_assets'
+  gem "capistrano"
+  gem "rvm-capistrano"
 end
