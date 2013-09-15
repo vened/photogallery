@@ -6,7 +6,7 @@ load 'deploy/assets'
 set :application, "dev.gymh.ru"
 set :rails_env, "development"
                          #set :rails_env, "development"
-set :domain, "max@gymh.ru" # Это необходимо для деплоя через ssh. Именно ради этого я настоятельно советовал сразу же залить на сервер свой ключ, чтобы не вводить паролей.
+set :domain, "max@dev.gymh.ru" # Это необходимо для деплоя через ssh. Именно ради этого я настоятельно советовал сразу же залить на сервер свой ключ, чтобы не вводить паролей.
 set :deploy_to, "/home/max/www/#{application}"
 set :use_sudo, false
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
