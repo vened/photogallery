@@ -1,0 +1,35 @@
+<%= render 'shared/slider' %>
+<%= render 'shared/header' %>
+<div id="work" class="page" style="padding-top: 30px">
+  <div class="container">
+    <!-- Title Page -->
+    <div class="row">
+      <div class="span12">
+        <div class="title-page" style="margin-bottom: 30px">
+          <h2 class="title">
+            <%= @album.title %>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div class="row">
+          <section id="projects">
+            <ul id="thumbs">
+              <%- @photos.each do |photo| %>
+                  <li class="item-thumbs span3">
+                    <a href="<%= photo.file_url(:large) %>" class="hover-wrap fancybox" data-fancybox-group="gallery">
+                      <span class="overlay-img"></span>
+                      <span class="overlay-img-thumb font-icon-search"></span>
+                    </a>
+                    <%= image_tag photo.file_url(:thumb) %>
+                  </li>
+              <%- end %>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

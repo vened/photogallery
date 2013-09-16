@@ -1,7 +1,0 @@
-%ul.album.js-album.clearfix
-  -@index = 0
-  -@photos.each do |photo|
-    %li.photo
-      =link_to photo.file_url(:large), :class => 'js-open-lyer js-open-photo', :data =>{:index => @index} do
-        =image_tag photo.file_url(:thumb)
-    -@index = @index + 1

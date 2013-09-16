@@ -3,7 +3,7 @@ Shikocc::Application.routes.draw do
   root :to => 'pages#index'
 
   #begin albums
-  resources :albums, :only => [:index, :show], :as => :albums
+  resources :albums, :only => [:show], :as => :albums
   #get '/photos' => 'albums#index', :as => :albums
   #get '/nggallery/page-20/album-2/:id' => 'albums#show', :as => :album
   #end albums
@@ -46,8 +46,8 @@ Shikocc::Application.routes.draw do
     end
   end
 
-  resources :pages, :path => "/", :only => [:index, :show]
+  resources :pages, :path => "/", :only => [:index]
 
-  get '*section/:id' => 'pages#show'
+  #get '*section/:id' => 'pages#show'
 
 end
