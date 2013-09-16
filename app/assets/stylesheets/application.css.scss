@@ -9,8 +9,14 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *
-*= require reset
-*= require base
-*= require nav
-*= require album
+*= require flat/bootstrap.min
+*= require flat/main
+*= require flat/supersized
+*= require flat/supersized.shutter
+*= require flat/jquery.fancybox
+*= require flat/fonts
+*= require flat/shortcodes
+*= require flat/bootstrap-responsive.min
+*= require flat/responsive
+*= require flat/custom
 */
