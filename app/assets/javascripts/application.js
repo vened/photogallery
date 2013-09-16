@@ -13,16 +13,4 @@
 //
 //
 //
-//= require jquery
 //= require jquery_ujs
-//= require flat/bootstrap.min
-//= require flat/jquery.fancybox.pack
-//= require flat/jquery.fancybox-media
-//= require flat/jquery.isotope
-//= require flat/jquery.tweet
-//= require flat/main
-//= require flat/modernizr
-//= require flat/plugins
-//= require flat/supersized.3.2.7.min
-//= require flat/waypoints
-//= require flat/waypoints-sticky

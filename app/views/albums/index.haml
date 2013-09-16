@@ -1,5 +1,8 @@
-%h1 Портфолио
-%ul.albums
+= render 'shared/slider'
+= render 'shared/header'
+#work.page
+  %h1 Портфолио
+  %ul.albums
   - @albums.each do |album|
     %li
       =link_to album do
