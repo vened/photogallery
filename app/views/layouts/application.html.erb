@@ -34,7 +34,7 @@
 
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "flat/modernizr" %>
+  <%= javascript_include_tag "application" %>
 
 </head>
 <body>
@@ -61,18 +61,16 @@
 </a>
 <!-- End Back to Top -->
 
-<!-- Js -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
-<%= javascript_include_tag "flat/bootstrap.min" %>
-<%= javascript_include_tag "flat/supersized.3.2.7.min" %>
-<%= javascript_include_tag "flat/waypoints" %>
-<%= javascript_include_tag "flat/waypoints-sticky" %>
-<%= javascript_include_tag "flat/jquery.isotope" %>
-<%= javascript_include_tag "flat/jquery.fancybox.pack" %>
-<%= javascript_include_tag "flat/jquery.fancybox-media" %>
-<%= javascript_include_tag "flat/plugins" %>
-<%= javascript_include_tag "flat/main" %>
-<!-- End Js -->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> &lt;!&ndash; jQuery Core &ndash;&gt;-->
+<script src="/javascripts/flat/bootstrap.js"></script>
+<script src="/javascripts/flat/supersized.js"></script>
+<script src="/javascripts/flat/waypoints.js"></script>
+<script src="/javascripts/flat/waypoints-sticky.js"></script>
+<script src="/javascripts/flat/jquery-isotope.js"></script>
+<script src="/javascripts/flat/fancybox-pack.js"></script>
+<script src="/javascripts/flat/fancybox-media.js"></script>
+<script src="/javascripts/flat/plugins.js"></script>
+<script src="/javascripts/flat/main.js"></script>
 
 </body>
 </html>
