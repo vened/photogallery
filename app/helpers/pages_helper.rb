@@ -2,38 +2,15 @@
 module PagesHelper
 
   def title
-    base_title = "Шико Catering Club"
-    if @meta_title.nil?
-      base_title
-    else
-      "#{@meta_title} | #{base_title}"
-    end
+    "Фотограф Ботунов Григорий"
   end
 
   def metakey
-    base_meta_key = "кейтеринг, выездной фуршет, фуршет"
-    if @metakey.nil?
-      base_meta_key
-    else
-      @metakey
-    end
+    "фотограф, свадебный фотограф, фотограф на свадьбу, свадьба, профессиональны фотограф"
   end
 
   def metadesc
-    base_meta_desc = "Высококачественные услуги в области выездного ресторанного бизнеса"
-    if @metadesc.nil?
-      base_meta_desc
-    else
-      @metadesc
-    end
+    "Фотограф Ботунов Григорий. Свадебный фотограф Ботунов Григорий. Профессиональный фотограф на свадьбу. Свадебный фотограф Москва."
   end
 
-  #закомментил Стасову сохранялку на диск
-  #def render_page
-  #  begin
-  #    @rendered = Haml::Engine.new(@page.text).render
-  #  rescue Haml::SyntaxError
-  #    @rendered = Haml::Engine.new(@page.text.gsub(/\s{2,}/, '')).render
-  #  end
-  #end
 end
