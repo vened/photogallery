@@ -195,66 +195,6 @@ jQuery(function($){
     }
 
 
-    /* ==================================================
-     Contact Form
-     ================================================== */
-
-    CHAKRA.contactForm = function(){
-        $("#contact-submit").on('click',function() {
-            $contact_form = $('#contact-form');
-
-            var fields = $contact_form.serialize();
-
-            $.ajax({
-                type: "POST",
-                url: "_include/php/contact.php",
-                data: fields,
-                dataType: 'json',
-                success: function(response) {
-
-                    if(response.status){
-                        $('#contact-form input').val('');
-                        $('#contact-form textarea').val('');
-                    }
-
-                    $('#response').empty().html(response.html);
-                }
-            });
-            return false;
-        });
-    }
-
-
-    /* ==================================================
-     Twitter Feed
-     ================================================== */
-
-    CHAKRA.tweetFeed = function(){
-        var valueTop = -64; // Margin Top Value
-
-        $("#ticker").tweet({
-            username: "Bluxart", // Change this with YOUR ID
-            page: 1,
-            avatar_size: 0,
-            count: 10,
-            template: "{text}{time}",
-            filter: function(t){ return ! /^@\w+/.test(t.tweet_raw_text); },
-            loading_text: "loading ..."
-        }).bind("loaded", function() {
-                var ul = $(this).find(".tweet_list");
-                var ticker = function() {
-                    setTimeout(function() {
-                        ul.find('li:first').animate( {marginTop: valueTop + 'px'}, 500, 'linear', function() {
-                            $(this).detach().appendTo(ul).removeAttr('style');
-                        });
-                        ticker();
-                    }, 5000);
-                };
-                ticker();
-            });
-
-    }
-
 
     /* ==================================================
      Menu Highlight
@@ -396,88 +336,6 @@ jQuery(function($){
     }
 
     /* ==================================================
-     Map
-     ================================================== */
-
-    CHAKRA.map = function(){
-        if($('.map').length > 0)
-        {
-
-            $('.map').each(function(i,e){
-
-                $map = $(e);
-                $map_id = $map.attr('id');
-                $map_lat = $map.attr('data-mapLat');
-                $map_lon = $map.attr('data-mapLon');
-                $map_zoom = parseInt($map.attr('data-mapZoom'));
-                $map_title = $map.attr('data-mapTitle');
-
-
-
-                var latlng = new google.maps.LatLng($map_lat, $map_lon);
-                var options = {
-                    scrollwheel: false,
-                    draggable: false,
-                    zoomControl: false,
-                    disableDoubleClickZoom: false,
-                    disableDefaultUI: true,
-                    zoom: $map_zoom,
-                    center: latlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var styles = [
-                    {
-                        stylers: [
-                            { hue: "#2F3238" },
-                            { saturation: -20 }
-                        ]
-                    }, {
-                        featureType: "road",
-                        elementType: "geometry",
-                        stylers: [
-                            { lightness: 100 },
-                            { visibility: "simplified" }
-                        ]
-                    }, {
-                        featureType: "road",
-                        elementType: "labels",
-                        stylers: [
-                            { visibility: "off" }
-                        ]
-                    }
-                ];
-
-                var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
-
-                var map = new google.maps.Map(document.getElementById($map_id), options);
-
-                var image = 'assets/img/marker.png';
-                var marker = new google.maps.Marker({
-                    position: latlng,
-                    map: map,
-                    title: $map_title,
-                    icon: image
-                });
-
-                map.mapTypes.set('map_style', styledMap);
-                map.setMapTypeId('map_style');
-
-                var contentString = '<p><strong>Company Name</strong><br>Address here</p>';
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map,marker);
-                });
-
-            });
-        }
-    }
-
-    /* ==================================================
      Init
      ================================================== */
 
@@ -518,14 +376,11 @@ jQuery(function($){
         CHAKRA.goUp();
         CHAKRA.filter();
         CHAKRA.fancyBox();
-        CHAKRA.contactForm();
-        CHAKRA.tweetFeed();
         CHAKRA.scrollToTop();
         CHAKRA.utils();
         CHAKRA.accordion();
         CHAKRA.toggle();
         CHAKRA.toolTip();
-        CHAKRA.map();
     });
 
     $(window).resize(function(){

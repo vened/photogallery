@@ -71,28 +71,7 @@
 <!-- End Homepage Slider -->
 
 <!-- Header -->
-<header>
-  <div class="sticky-nav">
-    <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
-
-    <div id="logo">
-      <a id="goUp" href="#home-slider" title="Chakra | Responsive One Page Template">Chakra Template</a>
-    </div>
-
-    <nav id="menu">
-      <ul id="menu-nav">
-        <li class="current"><a href="#home-slider">Home</a></li>
-        <li><a href="#work">Our Work</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="blog.html" class="external">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="shortcodes.html" class="external">Shortcodes</a></li>
-      </ul>
-    </nav>
-
-  </div>
-</header>
+<%= render 'shared/header' %>
 <!-- End Header -->
 
 <!-- Our Work Section -->
@@ -578,30 +557,7 @@
 
     <!-- Contact Form -->
     <div class="row">
-      <div class="span9">
-
-        <form id="contact-form" class="contact-form" action="#">
-          <p class="contact-name">
-            <input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
-          </p>
-          <p class="contact-email">
-            <input id="contact_email" type="text" placeholder="Email Address" value="" name="email" />
-          </p>
-          <p class="contact-message">
-            <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
-          </p>
-          <p class="contact-submit">
-            <a id="contact-submit" class="submit" href="#">Send Your Email</a>
-          </p>
-
-          <div id="response">
-
-          </div>
-        </form>
-
-      </div>
-
-      <div class="span3">
+      <div class="span12">
         <div class="contact-details">
           <h3>Contact Details</h3>
           <ul>
@@ -622,23 +578,6 @@
   </div>
 </div>
 <!-- End Contact Section -->
-
-<!-- Twitter Feed -->
-<div id="twitter-feed" class="page-alternate">
-  <div class="container">
-    <div class="row">
-      <div class="span12">
-        <div class="follow">
-          <a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><i class="font-icon-social-twitter"></i></a>
-        </div>
-
-        <div id="ticker" class="query">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Twitter Feed -->
 
 <!-- Socialize -->
 <div id="social-area" class="page">
@@ -676,11 +615,8 @@
 </a>
 <!-- End Back to Top -->
 
-<%#= render 'shared/menu' %>
-
 <!-- Js -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
-<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> <!-- Google Map API -->
 <%= javascript_include_tag "flat/bootstrap.min" %>
 <%= javascript_include_tag "flat/supersized.3.2.7.min" %>
 <%= javascript_include_tag "flat/waypoints" %>
@@ -688,7 +624,6 @@
 <%= javascript_include_tag "flat/jquery.isotope" %>
 <%= javascript_include_tag "flat/jquery.fancybox.pack" %>
 <%= javascript_include_tag "flat/jquery.fancybox-media" %>
-<%= javascript_include_tag "flat/jquery.tweet" %>
 <%= javascript_include_tag "flat/plugins" %>
 <%= javascript_include_tag "flat/main" %>
 <!-- End Js -->
