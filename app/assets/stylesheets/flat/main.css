@@ -1586,3 +1586,19 @@ footer .credits {
     -o-transition: none;
     transition: none;
 }
+
+
+.social_icons{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin: 0 0 0 5px;
+	font-size: 0;
+	vertical-align: middle;
+}
+.social_icons.fb{
+	background: url(fb.png);
+}
+.social_icons.vk{
+	background: url(vk.png);
+}
