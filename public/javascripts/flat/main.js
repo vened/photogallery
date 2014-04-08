@@ -78,6 +78,7 @@ jQuery(function($){
             thumbnail_navigation    :   0,			// Thumbnail navigation
             slides 					:  	[			// Slideshow Images
                 {image : '/assets/slider-images/image01.jpg', title : '<div class="slide-content">Свадебные фото</div>', thumb : '', url : ''},
+                {image : '/assets/slider-images/image03.jpg', title : '<div class="slide-content">Свадебные фото</div>', thumb : '', url : ''},
                 {image : '/assets/slider-images/image02.jpg', title : '<div class="slide-content">Портретная съёмка</div>', thumb : '', url : ''}
             ],
 
